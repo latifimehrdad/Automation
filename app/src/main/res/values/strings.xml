@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Automation</string>
+
+    <string name="reTry">تلاش مجدد …</string>
+
+
+    <string name="ML_SharePreferences">SharePreferences</string>
+    <string name="ML_AccessToken">AccessToken</string>
+    <string name="ML_Expires">Expires</string>
+    <string name="ML_PhoneNumber">PhoneNumber</string>
+
+    <string name="ML_PleaseEnterPersonalCode">کد پرسنلی خودرا در کادر زیر وارد نمایید</string>
+
+    <string name="hint_PersonalCode">کد پرسنلی</string>
+
+</resources>

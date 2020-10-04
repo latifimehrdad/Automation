@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E1341E</color>
+    <color name="colorPrimaryDark">#1ECBE1</color> //android status bar
+    <color name="colorAccent">@color/colorPrimaryDark</color>
+
+    <color name="ML_Shadow">#40000000</color>
+    <color name="ML_WaveTextColor">#02DE95</color>
+    <color name="ML_WaveTextMin">#018E60</color>
+
+    <color name="ML_WaveTextMaxLight">#FF7474</color>
+    <color name="ML_WaveTextMaxDark">#C90000</color>
+    <color name="ML_WaveTextMaxText">#DBFD34</color>
+
+    <color name="ML_Border">#0790A8</color>
+
+    <color name="ML_EditText">#057A8A</color>
+    <color name="ML_EditEmpty">#F6F5DD</color>
+
+    <color name="ML_delimiter">#591ECBE1</color>
+
+    <color name="ML_Transparent">#00000000</color>
+
+</resources>
