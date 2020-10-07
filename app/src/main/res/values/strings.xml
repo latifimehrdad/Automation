@@ -3,14 +3,28 @@
 
     <string name="reTry">تلاش مجدد …</string>
 
+    <string name="errorEmptyTextPersonalCode">کد پرسنلی را وارد نمایید</string>
 
+    <string name="ML_PleaseEnterPersonalCode">کد پرسنلی خودرا در کادر زیر وارد نمایید</string>
+    <string name="hint_PersonalCode">کد پرسنلی</string>
+    <string name="getVerifyCode">دریافت کد ورود</string>
+
+
+    <string name="EnterVerify">لطفا شش رقم کد ورود را وارد نمایید</string>
+
+    <string name="cancel">بیخیال</string>
+    <string name="elapsedTimeGetSMS">زمان باقی مانده جهت دریافت پیامک</string>
+    <string name="reTryGetSMS">دریافت مجدد</string>
+
+
+
+
+    //______________________________________________________________________________________________
+    <string name="ML_PersonalCode">PersonalCode</string>
     <string name="ML_SharePreferences">SharePreferences</string>
     <string name="ML_AccessToken">AccessToken</string>
     <string name="ML_Expires">Expires</string>
     <string name="ML_PhoneNumber">PhoneNumber</string>
 
-    <string name="ML_PleaseEnterPersonalCode">کد پرسنلی خودرا در کادر زیر وارد نمایید</string>
-
-    <string name="hint_PersonalCode">کد پرسنلی</string>
 
 </resources>

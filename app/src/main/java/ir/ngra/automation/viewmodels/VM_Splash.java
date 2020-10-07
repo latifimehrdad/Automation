@@ -2,20 +2,103 @@ package ir.ngra.automation.viewmodels;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 
 import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
 import ir.ngra.automation.R;
+import ir.ngra.automation.models.MD_Hi;
 import ir.ngra.automation.utility.ObservableActions;
 
 public class VM_Splash extends VM_Latifi {
 
+    private MD_Hi md_hi;
 
     //______________________________________________________________________________________________ VM_Splash
     public VM_Splash(Activity context) {
         setContext(context);
     }
     //______________________________________________________________________________________________ VM_Splash
+
+
+
+    //______________________________________________________________________________________________ callHI
+    public void callHI() {
+//        callHiService();
+        checkToken();
+    }
+    //______________________________________________________________________________________________ callHI
+
+
+
+
+    //______________________________________________________________________________________________ callHiService
+    public void callHiService() {
+
+        checkUpdate();
+
+/*        RetrofitComponent retrofitComponent =
+                ApplicationWMS
+                        .getApplicationWMS(getContext())
+                        .getRetrofitComponent();
+
+
+        setPrimaryCall(retrofitComponent
+                .getRetrofitApiInterface()
+                .getHi(RetrofitApis.client_id_value,
+                        RetrofitApis.client_secret_value,
+                        getContext().getResources().getString(R.string.UpdateAppName)));
+
+        if (getPrimaryCall() == null)
+            return;
+
+        getPrimaryCall().enqueue(new Callback<MR_Hi>() {
+            @Override
+            public void onResponse(Call<MR_Hi> call, Response<MR_Hi> response) {
+                setResponseMessage(checkResponse(response, true));
+                if (getResponseMessage() == null) {
+                    md_hi = response.body().getResult();
+                    setResponseMessage("");
+                    checkUpdate();
+                } else
+                    sendActionToObservable(StaticValues.ML_ResponseError);
+            }
+
+            @Override
+            public void onFailure(Call<MR_Hi> call, Throwable t) {
+                onFailureRequest();
+            }
+        });*/
+    }
+    //______________________________________________________________________________________________ callHiService
+
+
+
+
+    //______________________________________________________________________________________________ checkUpdate
+    private void checkUpdate() {
+        PackageInfo pInfo;
+        float versionName = 0;
+        try {
+            pInfo = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
+            versionName = Float.valueOf(pInfo.versionName);
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+
+        String v = md_hi.getVersion();
+        v = v.replaceAll("v", "");
+        float lastVersion = Float.valueOf(v);
+
+
+        if (versionName < lastVersion)
+            sendActionToObservable(ObservableActions.gotoUpdate);
+        else
+            checkToken();
+    }
+    //______________________________________________________________________________________________ checkUpdate
+
+
 
 
     //______________________________________________________________________________________________ checkToken
@@ -136,6 +219,12 @@ public class VM_Splash extends VM_Latifi {
     }
     //______________________________________________________________________________________________ getLoginInformation
 
+
+    //______________________________________________________________________________________________ getMd_hi
+    public MD_Hi getMd_hi() {
+        return md_hi;
+    }
+    //______________________________________________________________________________________________ getMd_hi
 
 
 }

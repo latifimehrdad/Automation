@@ -1,11 +1,14 @@
 package ir.ngra.automation.views.activity;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +16,7 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.mlcode.latifiarchitecturelibrary.activity.Activity_Latifi;
+import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.ActivityMainBinding;
 import ir.ngra.automation.viewmodels.VM_Main;
@@ -30,6 +34,8 @@ public class MainActivity extends Activity_Latifi {
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer_layout;
 
+    ConstraintLayout constraintLayout;
+
 
     //______________________________________________________________________________________________ onCreate
     @Override
@@ -38,6 +44,8 @@ public class MainActivity extends Activity_Latifi {
         vm_main = new VM_Main(this);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setMain(vm_main);
+        constraintLayout = findViewById(R.id.constraintLayout);
+        FR_Latifi.constraintLayout = constraintLayout;
         ButterKnife.bind(this);
         setListener();
     }
@@ -90,6 +98,7 @@ public class MainActivity extends Activity_Latifi {
         drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
     //______________________________________________________________________________________________ lockDrawer
+
 
 
 }

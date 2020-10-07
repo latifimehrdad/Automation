@@ -24,34 +24,23 @@
             android:src="@drawable/loading_splash"/>
 
 
-        <LinearLayout
-            android:id="@+id/linearLayoutRefresh"
+        <ir.ngra.automation.views.customs.ML_Button
+            android:id="@+id/ml_ButtonReTry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:background="@drawable/dw_button"
+            app:connectBack="@drawable/dw_button_normal"
+            app:img_height="@dimen/_20sdp"
+            app:img_src="@drawable/ic_refresh"
+            app:img_tint="@color/mlWhite"
+            app:img_width="@dimen/_20sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/_11sdp"
-                android:textColor="@color/mlWhite"
-                android:text="@string/reTry"
-                android:paddingRight="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_10sdp"/>
-
-            <ImageView
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:src="@drawable/ic_refresh"
-                app:tint="@color/mlWhite" />
-
-        </LinearLayout>
+            app:fontFamily="@font/iransanslight"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textColor="@color/mlWhite"
+            app:textValue="@string/reTry"
+            app:textValueSize="@dimen/_13sdp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

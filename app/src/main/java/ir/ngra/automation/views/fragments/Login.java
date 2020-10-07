@@ -4,12 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 
 import butterknife.BindView;
@@ -17,7 +15,9 @@ import butterknife.ButterKnife;
 import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.LoginBinding;
+import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Login;
+import ir.ngra.automation.views.activity.MainActivity;
 import ir.ngra.automation.views.customs.ML_Button;
 import ir.ngra.automation.views.customs.ML_EditText;
 
@@ -27,12 +27,15 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
 
     private VM_Login vm_login;
 
-    @BindView(R.id.linearLayoutRefresh)
-    ML_Button linearLayoutRefresh;
+    @BindView(R.id.ml_ButtonLogin)
+    ML_Button ml_ButtonLogin;
 
-    @BindView(R.id.ML_EditTextTest)
-    ML_EditText ML_EditTextTest;
+    @BindView(R.id.ml_EditTextPersonalCode)
+    ML_EditText ml_EditTextPersonalCode;
 
+
+    @BindView(R.id.ConstraintLayout)
+    ConstraintLayout ConstraintLayout;
 
 
     //______________________________________________________________________________________________ onCreateView
@@ -67,6 +70,14 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
     @Override
     public void getActionFromObservable(Byte action) {
 
+        ml_ButtonLogin.stopLoading();
+
+        if (action.equals(ObservableActions.gotoVerify)) {
+            Bundle bundle = new Bundle();
+            bundle.putString(getResources().getString(R.string.ML_PersonalCode), vm_login.getNationalCode());
+            getNavController().navigate(R.id.action_login_to_verify, bundle);
+        }
+
     }
     //______________________________________________________________________________________________ getActionFromObservable
 
@@ -91,20 +102,21 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
     private void setOnClicks() {
 
 
-        linearLayoutRefresh.setOnClickListener(v -> {
-            if (!ML_EditTextTest.checkValidation()) {
-                ML_EditTextTest.setErrorLayout("متن نمایید");
-            }
-/*            if (vm_login.getNationalCode() == null || vm_login.getNationalCode().equalsIgnoreCase("")) {
-                ML_EditTextTest.setErrorLayout("کد را وارد نمایید");
+        ml_ButtonLogin.setOnClickListener(v -> {
+
+            if (ml_ButtonLogin.isClick()) {
+                vm_login.cancelRequestByUser();
             } else {
-                Toast.makeText(getContext(), vm_login.getNationalCode(), Toast.LENGTH_SHORT).show();
-            }*/
-            //vm_login.notifyChange();
+                if (!ml_EditTextPersonalCode.checkValidation()) {
+                    ml_EditTextPersonalCode.setErrorLayout(getResources().getString(R.string.errorEmptyTextPersonalCode));
+                } else {
+                    ml_ButtonLogin.startLoading();
+                    vm_login.sendPersonalCode();
+                }
+            }
+
         });
     }
     //______________________________________________________________________________________________ setOnClicks
-
-
 
 }

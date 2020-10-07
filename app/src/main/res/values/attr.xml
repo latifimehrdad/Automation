@@ -178,6 +178,7 @@
         <attr name="img_height" format="dimension"  />
         <attr name="img_src" format="reference" />
         <attr name="img_tint" format="color" />
+        <attr name="gif_src" format="reference"/>
 
         <attr name="connectBack" format="reference|color" />
         <attr name="waitBack" format="reference|color" />
@@ -185,8 +186,12 @@
         <attr name="textColor" format="color"/>
         <attr name="textValue" format="string" localization="suggested" />
         <attr name="textValueSize" format="dimension"/>
+        <attr name="waitText" format="string"/>
         <attr name="fontFamily"/>
 
     </declare-styleable>
+
+
+
 
 </resources>

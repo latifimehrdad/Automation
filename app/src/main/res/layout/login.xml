@@ -8,6 +8,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -23,7 +24,6 @@
             android:gravity="center">
 
             <pl.droidsonroids.gif.GifImageView
-                android:id="@+id/gifImageViewLoading"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +43,7 @@
 
 
             <ir.ngra.automation.views.customs.ML_EditText
-                android:id="@+id/ML_EditTextTest"
+                android:id="@+id/ml_EditTextPersonalCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -75,19 +75,22 @@
 
 
             <ir.ngra.automation.views.customs.ML_Button
-                android:id="@+id/linearLayoutRefresh"
+                android:id="@+id/ml_ButtonLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                app:connectBack="@drawable/dw_button"
-                app:textValue="@string/reTry"
+                app:connectBack="@drawable/dw_button_normal"
+                app:textValue="@string/getVerifyCode"
                 app:textValueSize="@dimen/_13sdp"
                 app:textColor="@color/mlWhite"
-                app:img_src="@drawable/ic_refresh"
+                app:img_src="@drawable/ic_mobile_message"
                 app:img_height="@dimen/_20sdp"
                 app:img_width="@dimen/_20sdp"
                 app:img_tint="@color/mlWhite"
+                app:gif_src="@drawable/gif_clock"
                 app:fontFamily="@font/iransanslight"
+                app:waitBack="@drawable/dw_button_wait"
+                app:waitText="@string/cancel"
                 />
 
 
