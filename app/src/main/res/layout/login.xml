@@ -39,7 +39,7 @@
                 android:textSize="@dimen/_11sdp"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:gravity="center"
-                android:text="@string/ML_PleaseEnterPersonalCode"/>
+                android:text="@string/ML_PleaseEnterPhoneNumber"/>
 
 
             <ir.ngra.automation.views.customs.ML_EditText
@@ -52,8 +52,8 @@
                 app:editWidth="@dimen/_120sdp"
                 app:emptyBack="@drawable/dw_edit_empty"
                 app:normalBack="@drawable/dw_edit_normal"
-                app:editHint="@string/hint_PersonalCode"
-                app:text="@={login.nationalCode}"
+                app:editHint="@string/hint_PhoneNumber"
+                app:text="@={login.phoneNumber}"
                 app:textSize="@dimen/_12sdp"
                 app:delimiterWidth="@dimen/_2sdp"
                 app:delimiterBack="@drawable/dw_delimiter"
@@ -67,9 +67,9 @@
                 app:image_tint="@color/colorPrimaryDark"
                 app:inputTypeEdit="number"
                 app:textMaxLine="1"
-                app:textMaxLength="10"
+                app:textMaxLength="11"
                 app:editSplitter="false"
-                app:validationType="text"
+                app:validationType="mobile"
                 app:fontFamily="@font/iransanslight"
                 />
 

@@ -31,10 +31,11 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
 
     private VM_Verify vm_verify;
 
-    private boolean ReTryGetSMSClick = false;
     private Handler timer;
     private Runnable runnable;
-
+    private Handler timerLoading;
+    private Runnable runnableLoading;
+    private int index = 1;
 
 
     @BindView(R.id.VerifyCode1)
@@ -94,7 +95,7 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     public void onStart() {
         super.onStart();
         setPublishSubjectFromObservable(verify.this, vm_verify);
-        vm_verify.setPhoneNumber(getArguments().getString(getResources().getString(R.string.ML_PhoneNumber),""));
+        vm_verify.setPhoneNumber(getArguments().getString(getResources().getString(R.string.ML_PhoneNumber), ""));
     }
     //______________________________________________________________________________________________ onCreateView
 
@@ -104,10 +105,17 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     public void getActionFromObservable(Byte action) {
 
         ml_ButtonReTry.stopLoading();
+        stopLoading();
 
         if (action.equals(ObservableActions.gotoVerify)) {
             startTimer(120);
             return;
+        }
+
+        if (action.equals(ObservableActions.gotoHome)) {
+            String verified = getContext().getResources().getString(R.string.ML_Verified);
+            setVariableToNavigation(verified, verified);
+            removeCallBackAndBack();
         }
 
     }
@@ -117,7 +125,8 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     //______________________________________________________________________________________________ actionWhenFailureRequest
     @Override
     public void actionWhenFailureRequest() {
-
+        ml_ButtonReTry.stopLoading();
+        stopLoading();
     }
     //______________________________________________________________________________________________ actionWhenFailureRequest
 
@@ -221,8 +230,7 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
                     VerifyCode6.getText().toString();
 
             hideKeyboard();
-//            ShowProgressDialog();
-//            vm_verify.verifyNumber(PhoneNumber, code);
+            editTextLoading(code);
         }
 
     }
@@ -241,12 +249,9 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     //______________________________________________________________________________________________ setBackVerifyCodeView
 
 
-
-
     //______________________________________________________________________________________________ startTimer
     private void startTimer(int Elapse) {
 
-        ReTryGetSMSClick = false;
         textViewElapseTime.setVisibility(View.VISIBLE);
         textViewElapseMessage.setVisibility(View.VISIBLE);
         ml_ButtonReTry.setVisibility(View.GONE);
@@ -277,23 +282,22 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     //______________________________________________________________________________________________ startTimer
 
 
-
     //______________________________________________________________________________________________ reTryGetSMS
     private void reTryGetSMS() {
         textViewElapseTime.setVisibility(View.GONE);
         textViewElapseMessage.setVisibility(View.GONE);
         ml_ButtonReTry.setVisibility(View.VISIBLE);
-        ReTryGetSMSClick = true;
     }
     //______________________________________________________________________________________________ reTryGetSMS
-
 
 
     //______________________________________________________________________________________________ setClick
     private void setClick() {
 
         ml_ButtonReTry.setOnClickListener(v -> {
-            if (ReTryGetSMSClick) {
+            if (ml_ButtonReTry.isClick())
+                vm_verify.cancelRequestByUser();
+            else {
                 ml_ButtonReTry.startLoading();
                 vm_verify.sendNumber();
             }
@@ -302,5 +306,81 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     }
     //______________________________________________________________________________________________ setClick
 
+
+    //______________________________________________________________________________________________ editTextLoading
+    private void editTextLoading(String code) {
+        index = 1;
+        VerifyCode1.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+        timerLoading = new Handler();
+        runnableLoading = () -> {
+            switch (index) {
+                case 1:
+                    VerifyCode1.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode2.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    index = 2;
+                    break;
+
+                case 2:
+                    VerifyCode2.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode3.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    index = 3;
+                    break;
+
+                case 3:
+                    VerifyCode3.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode4.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    index = 4;
+                    break;
+
+                case 4:
+                    VerifyCode4.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode5.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    index = 5;
+                    break;
+
+                case 5:
+                    VerifyCode5.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode6.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    index = 6;
+                    break;
+
+                case 6:
+                    VerifyCode6.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode1.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    index = 1;
+                    break;
+            }
+            timerLoading.postDelayed(runnableLoading, 80);
+        };
+        timerLoading.postDelayed(runnableLoading, 100);
+
+        vm_verify.setCode(code);
+        vm_verify.verifyNumber();
+    }
+    //______________________________________________________________________________________________ editTextLoading
+
+
+    //______________________________________________________________________________________________ stopLoading
+    private void stopLoading() {
+
+        VerifyCode1.requestFocus();
+
+        VerifyCode1.getText().clear();
+        VerifyCode2.getText().clear();
+        VerifyCode3.getText().clear();
+        VerifyCode4.getText().clear();
+        VerifyCode5.getText().clear();
+        VerifyCode6.getText().clear();
+
+        VerifyCode1.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+        VerifyCode2.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+        VerifyCode3.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+        VerifyCode4.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+        VerifyCode5.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+        VerifyCode6.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+        if (timerLoading != null && runnableLoading != null)
+            timerLoading.removeCallbacks(runnableLoading);
+    }
+    //______________________________________________________________________________________________ stopLoading
 
 }

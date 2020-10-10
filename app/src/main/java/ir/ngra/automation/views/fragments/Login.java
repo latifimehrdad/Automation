@@ -17,7 +17,6 @@ import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.LoginBinding;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Login;
-import ir.ngra.automation.views.activity.MainActivity;
 import ir.ngra.automation.views.customs.ML_Button;
 import ir.ngra.automation.views.customs.ML_EditText;
 
@@ -62,6 +61,9 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
     public void onStart() {
         super.onStart();
         setPublishSubjectFromObservable(Login.this, vm_login);
+        String verified = getVariableFromNavigation(getContext().getResources().getString(R.string.ML_Verified));
+        if (verified != null)
+            removeCallBackAndBack();
     }
     //______________________________________________________________________________________________ onCreateView
 
@@ -74,7 +76,7 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
 
         if (action.equals(ObservableActions.gotoVerify)) {
             Bundle bundle = new Bundle();
-            bundle.putString(getResources().getString(R.string.ML_PersonalCode), vm_login.getNationalCode());
+            bundle.putString(getResources().getString(R.string.ML_PhoneNumber), vm_login.getPhoneNumber());
             getNavController().navigate(R.id.action_login_to_verify, bundle);
         }
 
@@ -85,7 +87,7 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
     //______________________________________________________________________________________________ actionWhenFailureRequest
     @Override
     public void actionWhenFailureRequest() {
-
+        ml_ButtonLogin.stopLoading();
     }
     //______________________________________________________________________________________________ actionWhenFailureRequest
 
@@ -108,10 +110,10 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
                 vm_login.cancelRequestByUser();
             } else {
                 if (!ml_EditTextPersonalCode.checkValidation()) {
-                    ml_EditTextPersonalCode.setErrorLayout(getResources().getString(R.string.errorEmptyTextPersonalCode));
+                    ml_EditTextPersonalCode.setErrorLayout(getResources().getString(R.string.errorEmptyTextPhoneNumber));
                 } else {
                     ml_ButtonLogin.startLoading();
-                    vm_login.sendPersonalCode();
+                    vm_login.getLoginCode();
                 }
             }
 

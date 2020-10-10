@@ -6,10 +6,18 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 
+import ir.mlcode.latifiarchitecturelibrary.utility.StaticValues;
 import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_Hi;
+import ir.ngra.automation.models.MD_SettingInfo;
+import ir.ngra.automation.models.MD_Token;
+import ir.ngra.automation.models.MR_Hi;
 import ir.ngra.automation.utility.ObservableActions;
+import ir.ngra.automation.views.application.AutomationApp;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class VM_Splash extends VM_Latifi {
 
@@ -25,8 +33,8 @@ public class VM_Splash extends VM_Latifi {
 
     //______________________________________________________________________________________________ callHI
     public void callHI() {
-//        callHiService();
-        checkToken();
+        Handler handler = new Handler();
+        handler.postDelayed(() -> callHiService(), 3000);
     }
     //______________________________________________________________________________________________ callHI
 
@@ -36,18 +44,10 @@ public class VM_Splash extends VM_Latifi {
     //______________________________________________________________________________________________ callHiService
     public void callHiService() {
 
-        checkUpdate();
-
-/*        RetrofitComponent retrofitComponent =
-                ApplicationWMS
-                        .getApplicationWMS(getContext())
-                        .getRetrofitComponent();
-
-
-        setPrimaryCall(retrofitComponent
+        setPrimaryCall(AutomationApp.getAutomationApp(getContext())
                 .getRetrofitApiInterface()
-                .getHi(RetrofitApis.client_id_value,
-                        RetrofitApis.client_secret_value,
+                .getHi(AutomationApp.client_id_value,
+                        AutomationApp.client_secret_value,
                         getContext().getResources().getString(R.string.UpdateAppName)));
 
         if (getPrimaryCall() == null)
@@ -69,7 +69,7 @@ public class VM_Splash extends VM_Latifi {
             public void onFailure(Call<MR_Hi> call, Throwable t) {
                 onFailureRequest();
             }
-        });*/
+        });
     }
     //______________________________________________________________________________________________ callHiService
 
@@ -91,9 +91,10 @@ public class VM_Splash extends VM_Latifi {
         float lastVersion = Float.valueOf(v);
 
 
-        if (versionName < lastVersion)
+        if (versionName < lastVersion) {
+            setResponseMessage(getContext().getResources().getString(R.string.newVersionIsAvailable));
             sendActionToObservable(ObservableActions.gotoUpdate);
-        else
+        } else
             checkToken();
     }
     //______________________________________________________________________________________________ checkUpdate
@@ -129,20 +130,12 @@ public class VM_Splash extends VM_Latifi {
     //______________________________________________________________________________________________ getTokenFromServer
     public void getTokenFromServer() {
 
-        Handler handler = new Handler();
-        handler.postDelayed(() -> sendActionToObservable(ObservableActions.goToLogin),3000);
 
-
-/*        RetrofitComponent retrofitComponent = ApplicationWMS
-                .getApplicationWMS(getContext())
-                .getRetrofitComponent();
-
-        setPrimaryCall(retrofitComponent
+        setPrimaryCall(AutomationApp.getAutomationApp(getContext())
                 .getRetrofitApiInterface()
-                .getToken(
-                        RetrofitApis.client_id_value,
-                        RetrofitApis.client_secret_value,
-                        RetrofitApis.grant_type_value));
+                .getToken(AutomationApp.client_id_value,
+                        AutomationApp.client_secret_value,
+                        AutomationApp.grant_type_value));
 
         if (getPrimaryCall() == null)
             return;
@@ -152,9 +145,8 @@ public class VM_Splash extends VM_Latifi {
             public void onResponse(Call<MD_Token> call, Response<MD_Token> response) {
                 setResponseMessage(checkResponse(response, true));
                 if (getResponseMessage() == null) {
-                    md_Token = response.body();
-                    if (getUtility().saveToken(getContext(), md_Token))
-                        sendActionToObservable(StaticValues.ML_GotoLogin);
+                    if (AutomationApp.getAutomationApp(getContext()).saveToken(response.body()))
+                        sendActionToObservable(ObservableActions.goToLogin);
                 } else
                     sendActionToObservable(StaticValues.ML_ResponseError);
             }
@@ -163,7 +155,7 @@ public class VM_Splash extends VM_Latifi {
             public void onFailure(Call<MD_Token> call, Throwable t) {
                 onFailureRequest();
             }
-        });*/
+        });
     }
     //______________________________________________________________________________________________ getTokenFromServer
 
@@ -174,19 +166,10 @@ public class VM_Splash extends VM_Latifi {
     //______________________________________________________________________________________________ getLoginInformation
     public void getLoginInformation() {
 
+        String authorization = getAuthorizationTokenFromSharedPreferences(R.string.ML_SharePreferences,
+                R.string.ML_AccessToken);
 
-        Handler handler = new Handler();
-        handler.postDelayed(() -> sendActionToObservable(ObservableActions.goToLogin),3000);
-
-
-/*        RetrofitComponent retrofitComponent =
-                ApplicationWMS
-                        .getApplicationWMS(getContext())
-                        .getRetrofitComponent();
-
-        String authorization = getAuthorizationTokenFromSharedPreferences();
-
-        setPrimaryCall(retrofitComponent
+        setPrimaryCall(AutomationApp.getAutomationApp(getContext())
                 .getRetrofitApiInterface()
                 .getSettingInfo(
                         authorization));
@@ -194,17 +177,18 @@ public class VM_Splash extends VM_Latifi {
         if (getPrimaryCall() == null)
             return;
 
-        getPrimaryCall().enqueue(new Callback<ModelSettingInfo>() {
+        getPrimaryCall().enqueue(new Callback<MD_SettingInfo>() {
             @Override
-            public void onResponse(Call<ModelSettingInfo> call, Response<ModelSettingInfo> response) {
+            public void onResponse(Call<MD_SettingInfo> call, Response<MD_SettingInfo> response) {
                 setResponseMessage(checkResponse(response, true));
                 if (getResponseMessage() == null) {
-                    profile = response.body().getResult();
+                    MD_SettingInfo.ModelProfileSetting profile = response.body().getResult();
                     if (profile != null) {
-                        if (getUtility().saveProfile(getContext(), profile))
-                            sendActionToObservable(StaticValues.ML_GoToHome);
+                        if (AutomationApp.getAutomationApp(getContext()).saveProfile(getContext(), profile))
+                            setResponseMessage("خوش آمدید");
+                            sendActionToObservable(ObservableActions.gotoHome);
                     } else {
-                        if (getUtility().logOut(getContext()))
+                        if (AutomationApp.getAutomationApp(getContext()).logOut(getContext()))
                             getTokenFromServer();
                     }
                 } else
@@ -212,12 +196,54 @@ public class VM_Splash extends VM_Latifi {
             }
 
             @Override
-            public void onFailure(Call<ModelSettingInfo> call, Throwable t) {
+            public void onFailure(Call<MD_SettingInfo> call, Throwable t) {
                 onFailureRequest();
             }
-        });*/
+        });
     }
     //______________________________________________________________________________________________ getLoginInformation
+
+
+
+
+    //______________________________________________________________________________________________ refreshToken
+    public void refreshToken() {
+
+        String refresh_token = getRefreshTokenFromSharedPreferences(R.string.ML_SharePreferences,
+                R.string.ML_RefreshToken);
+
+        setPrimaryCall(AutomationApp.getAutomationApp(getContext())
+                .getRetrofitApiInterface()
+                .getRefreshToken(
+                        AutomationApp.client_id_value,
+                        AutomationApp.client_secret_value,
+                        AutomationApp.grant_type_value_Refresh_Token,
+                        refresh_token));
+
+        if (getPrimaryCall() == null)
+            return;
+
+        getPrimaryCall().enqueue(new Callback<MD_Token>() {
+            @Override
+            public void onResponse(Call<MD_Token> call, Response<MD_Token> response) {
+                setResponseMessage(checkResponse(response, true));
+                if (getResponseMessage() == null) {
+                    if (AutomationApp.getAutomationApp(getContext()).saveToken(response.body()))
+                        sendActionToObservable(ObservableActions.gotoHome);
+                } else {
+                    AutomationApp.getAutomationApp(getContext()).logOut(getContext());
+                    getTokenFromServer();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MD_Token> call, Throwable t) {
+                onFailureRequest();
+            }
+        });
+    }
+    //______________________________________________________________________________________________ refreshToken
+
 
 
     //______________________________________________________________________________________________ getMd_hi

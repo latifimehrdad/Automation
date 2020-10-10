@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Automation</string>
+    <string name="UpdateAppName">Samtam_Citizen</string>
 
     <string name="reTry">تلاش مجدد …</string>
 
-    <string name="errorEmptyTextPersonalCode">کد پرسنلی را وارد نمایید</string>
+    <string name="errorEmptyTextPhoneNumber">شماره تلفن همراه خود را وارد نمایید</string>
 
-    <string name="ML_PleaseEnterPersonalCode">کد پرسنلی خودرا در کادر زیر وارد نمایید</string>
-    <string name="hint_PersonalCode">کد پرسنلی</string>
+    <string name="ML_PleaseEnterPhoneNumber">شماره تلفن همراه خود را در کادر زیر وارد نمایید</string>
+    <string name="hint_PhoneNumber">شماره تلفن همراه</string>
     <string name="getVerifyCode">دریافت کد ورود</string>
 
 
@@ -15,6 +16,8 @@
     <string name="cancel">بیخیال</string>
     <string name="elapsedTimeGetSMS">زمان باقی مانده جهت دریافت پیامک</string>
     <string name="reTryGetSMS">دریافت مجدد</string>
+    
+    <string name="newVersionIsAvailable">نسخه جدید برنامه در دسترس می باشد. تا بارگیری کامل فایل شکیبا باشید</string>
 
 
 
@@ -24,7 +27,16 @@
     <string name="ML_SharePreferences">SharePreferences</string>
     <string name="ML_AccessToken">AccessToken</string>
     <string name="ML_Expires">Expires</string>
-    <string name="ML_PhoneNumber">PhoneNumber</string>
+    <string name="ML_PhoneNumber">ML_PhoneNumber</string>
+    <string name="ML_Verified">ML_Verified</string>
+    <string name="ML_TokenType">TokenType</string>
+    <string name="ML_ExpireSin">ExpireSin</string>
+    <string name="ML_ClientId">ClientId</string>
+    <string name="ML_Issued">Issued</string>
+    <string name="ML_RefreshToken">RefreshToken</string>
+    <string name="ML_Name">ML_Name</string>
+    <string name="ML_lastName">ML_lastName</string>
+    <string name="ML_Gender">ML_Gender</string>
 
 
 </resources>

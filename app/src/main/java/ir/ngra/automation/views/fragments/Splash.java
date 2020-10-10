@@ -55,7 +55,9 @@ public class Splash extends FR_Latifi implements FR_Latifi.fragmentActions {
     public void onStart() {
         super.onStart();
         setPublishSubjectFromObservable(Splash.this, vm_splash);
-        //vm_splash.callHI();
+        gifImageViewLoading.setVisibility(View.VISIBLE);
+        ml_ButtonReTry.setVisibility(View.GONE);
+        vm_splash.callHI();
     }
     //______________________________________________________________________________________________ onCreateView
 
@@ -66,6 +68,11 @@ public class Splash extends FR_Latifi implements FR_Latifi.fragmentActions {
 
         if (action.equals(ObservableActions.goToLogin)) {
             getNavController().navigate(R.id.action_splash_to_login);
+            return;
+        }
+
+        if (action.equals(ObservableActions.gotoHome)) {
+
             return;
         }
 
@@ -87,7 +94,8 @@ public class Splash extends FR_Latifi implements FR_Latifi.fragmentActions {
     //______________________________________________________________________________________________ actionWhenFailureRequest
     @Override
     public void actionWhenFailureRequest() {
-
+        gifImageViewLoading.setVisibility(View.GONE);
+        ml_ButtonReTry.setVisibility(View.VISIBLE);
     }
     //______________________________________________________________________________________________ actionWhenFailureRequest
 
