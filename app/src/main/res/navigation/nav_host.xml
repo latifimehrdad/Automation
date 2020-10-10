@@ -37,6 +37,14 @@
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left"/>
 
+        <action
+            android:id="@+id/action_splash_to_home"
+            app:destination="@id/home"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+
     </fragment>
 
     <fragment
@@ -66,5 +74,11 @@
         android:name="ir.ngra.automation.views.fragments.verify"
         android:label="verify"
         tools:layout="@layout/verify"/>
+
+    <fragment
+        android:id="@+id/home"
+        android:name="ir.ngra.automation.views.fragments.Home"
+        android:label="Home"
+        tools:layout="@layout/home"/>
 
 </navigation>

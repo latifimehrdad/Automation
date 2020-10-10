@@ -13,6 +13,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.facebook.drawee.drawable.ProgressBarDrawable;
+import com.facebook.drawee.generic.RoundingParams;
+import com.facebook.drawee.view.SimpleDraweeView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.mlcode.latifiarchitecturelibrary.activity.Activity_Latifi;
@@ -34,6 +38,9 @@ public class MainActivity extends Activity_Latifi {
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer_layout;
 
+    @BindView(R.id.simpleDraweeViewProfile)
+    SimpleDraweeView simpleDraweeViewProfile;
+
     ConstraintLayout constraintLayout;
 
 
@@ -48,8 +55,19 @@ public class MainActivity extends Activity_Latifi {
         FR_Latifi.constraintLayout = constraintLayout;
         ButterKnife.bind(this);
         setListener();
+        setProfile();
     }
     //______________________________________________________________________________________________ onCreate
+
+
+
+    //______________________________________________________________________________________________ setProfile
+    private void setProfile() {
+
+        vm_main.getUtility().setRoundImage(simpleDraweeViewProfile, getResources().getColor(R.color.colorAccent), 3, 30,30,0,0);
+    }
+    //______________________________________________________________________________________________ setProfile
+
 
 
     //______________________________________________________________________________________________ setListener

@@ -3,8 +3,8 @@
 
     <declare-styleable name="ML_EditText">
 
-        <attr name="image_width" format="dimension"  />
-        <attr name="image_height" format="dimension"  />
+        <attr name="image_width" format="dimension" />
+        <attr name="image_height" format="dimension" />
         <attr name="image_src" format="reference" />
         <attr name="image_tint" format="color" />
 
@@ -12,20 +12,20 @@
         <attr name="emptyBack" format="reference|color" />
 
         <attr name="delimiterBack" format="reference|color" />
-        <attr name="delimiter_marginLeft" format="dimension"  />
+        <attr name="delimiter_marginLeft" format="dimension" />
         <attr name="delimiter_marginTop" format="dimension" />
-        <attr name="delimiter_marginRight" format="dimension"  />
-        <attr name="delimiter_marginBottom" format="dimension"  />
+        <attr name="delimiter_marginRight" format="dimension" />
+        <attr name="delimiter_marginBottom" format="dimension" />
 
-        <attr name="editSplitter" format="boolean"/>
-        <attr name="editWidth" format="dimension"/>
-        <attr name="editTextColor" format="color"/>
-        <attr name="editHint" format="string"/>
+        <attr name="editSplitter" format="boolean" />
+        <attr name="editWidth" format="dimension" />
+        <attr name="editTextColor" format="color" />
+        <attr name="editHint" format="string" />
         <attr name="text" format="string" localization="suggested" />
-        <attr name="textSize" format="dimension"/>
-        <attr name="fontFamily"/>
-        <attr name="textMaxLine" format="integer"/>
-        <attr name="textMaxLength" format="integer"/>
+        <attr name="textSize" format="dimension" />
+        <attr name="fontFamily" />
+        <attr name="textMaxLine" format="integer" />
+        <attr name="textMaxLength" format="integer" />
         <attr name="validationType">
             <enum name="none" value="0" />
             <enum name="mobile" value="1" />
@@ -166,7 +166,7 @@
                  {@link android.text.InputType#TYPE_DATETIME_VARIATION_TIME}. -->
             <flag name="time" value="0x00000024" />
         </attr>
-        <attr name="delimiterWidth" format="dimension"/>
+        <attr name="delimiterWidth" format="dimension" />
 
 
     </declare-styleable>
@@ -174,24 +174,22 @@
 
     <declare-styleable name="ML_Button">
 
-        <attr name="img_width" format="dimension"  />
-        <attr name="img_height" format="dimension"  />
+        <attr name="img_width" format="dimension" />
+        <attr name="img_height" format="dimension" />
         <attr name="img_src" format="reference" />
         <attr name="img_tint" format="color" />
-        <attr name="gif_src" format="reference"/>
+        <attr name="gif_src" format="reference" />
 
         <attr name="connectBack" format="reference|color" />
         <attr name="waitBack" format="reference|color" />
 
-        <attr name="textColor" format="color"/>
+        <attr name="textColor" format="color" />
         <attr name="textValue" format="string" localization="suggested" />
-        <attr name="textValueSize" format="dimension"/>
-        <attr name="waitText" format="string"/>
-        <attr name="fontFamily"/>
+        <attr name="textValueSize" format="dimension" />
+        <attr name="waitText" format="string" />
+        <attr name="fontFamily" />
 
     </declare-styleable>
-
-
 
 
 </resources>

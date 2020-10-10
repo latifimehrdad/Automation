@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+
     android:orientation="vertical"
     android:layout_width="@dimen/_200sdp"
     android:layout_height="match_parent"
     android:layout_gravity="end"
-    android:background="@color/colorPrimary"
-    >
+    android:gravity="center_horizontal"
+    android:padding="@dimen/_5sdp"
+    android:background="@color/mlWhite">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/simpleDraweeViewProfile"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        fresco:placeholderImage="@drawable/enter_code"
+        />
+
+
+    <ir.ngra.automation.views.customs.ML_Button
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        app:connectBack="@drawable/dw_button_drawer_edit"
+        app:img_tint="@color/mlWhite"
+        app:img_width="@dimen/_20sdp"
+        app:img_height="@dimen/_20sdp"
+        app:img_src="@drawable/ic_user"
+        app:textColor="@color/mlWhite"
+        app:textValueSize="@dimen/_10sdp"
+        app:textValue="@string/changePicture"
+        app:fontFamily="@font/iransanslight"
+        />
+
+
+
+
+
 
 </LinearLayout>
