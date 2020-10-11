@@ -3,6 +3,9 @@ package ir.ngra.automation.views.application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import io.github.inflationx.calligraphy3.CalligraphyConfig;
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import io.github.inflationx.viewpump.ViewPump;
 import ir.mlcode.latifiarchitecturelibrary.application.APP_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_SettingInfo;
@@ -32,8 +35,24 @@ public class AutomationApp extends APP_Latifi {
         setContext(context);
         setHost(Host);
         configurationRetrofit();
+        //configurationCalligraphy();
     }
     //______________________________________________________________________________________________ onCreate
+
+
+
+    //______________________________________________________________________________________________ configurationCalligraphy
+    private void configurationCalligraphy() {
+        ViewPump.init(ViewPump.builder()
+                .addInterceptor(new CalligraphyInterceptor(
+                        new CalligraphyConfig.Builder()
+                                .setDefaultFontPath("font/vazir_light.ttf")
+                                .setFontAttrId(ir.mlcode.latifiarchitecturelibrary.R.attr.fontPath)
+                                .build()))
+                .build());
+
+    }
+    //______________________________________________________________________________________________ configurationCalligraphy
 
 
 
@@ -122,5 +141,22 @@ public class AutomationApp extends APP_Latifi {
     }
     //______________________________________________________________________________________________ logOut
 
+
+
+    //______________________________________________________________________________________________ getUserName
+    public String getUserName() {
+        SharedPreferences share = context.getSharedPreferences(context.getString(R.string.ML_SharePreferences), 0);
+        if (share == null)
+            return null;
+        else {
+            String name = share.getString(context.getResources().getString(R.string.ML_Name), "");
+            String last = share.getString(context.getResources().getString(R.string.ML_lastName), "");
+            if (name.equalsIgnoreCase("") && last.equalsIgnoreCase(""))
+                return null;
+            else
+                return name + " " + last;
+        }
+    }
+    //______________________________________________________________________________________________ getUserName
 
 }

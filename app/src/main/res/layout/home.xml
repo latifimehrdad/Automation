@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="home"
@@ -8,10 +9,208 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/ML_Border">
+        android:layout_height="match_parent">
 
 
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:src="@drawable/ic_camping"
+                app:tint="@color/ML_Border" />
+
+            <TextView
+                fontPath="font/vazir_bold.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="مانده مرخصی : 15 روز"
+                android:textColor="@color/ML_Border"
+                android:textSize="@dimen/_11sdp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="right"
+            android:text="@string/arrivalTimeToday"
+            android:textColor="@color/ML_Border"
+            android:textSize="@dimen/_11sdp"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+
+            <TextView
+                fontPath="font/iransans_web_medium.ttf"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/dw_edit_normal"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="1"
+                android:textColor="@color/ML_Border"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                fontPath="font/iransans_web_medium.ttf"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginLeft="@dimen/_2sdp"
+                android:background="@drawable/dw_edit_normal"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="8"
+                android:textColor="@color/ML_Border"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                fontPath="font/iransans_web_medium.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35sdp"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text=":"
+                android:textColor="@color/ML_Border"
+                android:textSize="@dimen/_20sdp" />
+
+
+            <TextView
+                fontPath="font/iransans_web_medium.ttf"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/dw_edit_normal"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="5"
+                android:textColor="@color/ML_Border"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                fontPath="font/iransans_web_medium.ttf"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginLeft="@dimen/_2sdp"
+                android:background="@drawable/dw_edit_normal"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="7"
+                android:textColor="@color/ML_Border"
+                android:textSize="@dimen/_14sdp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="right"
+            android:text="@string/departureTimeToday"
+            android:textColor="@color/ML_Border"
+            android:textSize="@dimen/_11sdp"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+
+            <TextView
+                fontPath="font/iransans_web_medium.ttf"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/dw_edit_normal"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="1"
+                android:textColor="@color/ML_Border"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                fontPath="font/iransans_web_medium.ttf"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginLeft="@dimen/_2sdp"
+                android:background="@drawable/dw_edit_normal"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="8"
+                android:textColor="@color/ML_Border"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                fontPath="font/iransans_web_medium.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35sdp"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text=":"
+                android:textColor="@color/ML_Border"
+                android:textSize="@dimen/_20sdp" />
+
+
+            <TextView
+                fontPath="font/iransans_web_medium.ttf"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/dw_edit_normal"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="5"
+                android:textColor="@color/ML_Border"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                fontPath="font/iransans_web_medium.ttf"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginLeft="@dimen/_2sdp"
+                android:background="@drawable/dw_edit_normal"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="7"
+                android:textColor="@color/ML_Border"
+                android:textSize="@dimen/_14sdp" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

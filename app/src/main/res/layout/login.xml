@@ -70,7 +70,7 @@
                 app:textMaxLength="11"
                 app:editSplitter="false"
                 app:validationType="mobile"
-                app:fontFamily="@font/iransanslight"
+                app:fontFamily="@font/vazir_light"
                 />
 
 
@@ -88,9 +88,9 @@
                 app:img_width="@dimen/_20sdp"
                 app:img_tint="@color/mlWhite"
                 app:gif_src="@drawable/gif_clock"
-                app:fontFamily="@font/iransanslight"
                 app:waitBack="@drawable/dw_button_wait"
                 app:waitText="@string/cancel"
+                app:fontFamily="@font/vazir_light"
                 />
 
 

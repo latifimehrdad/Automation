@@ -21,6 +21,14 @@
 
     <string name="changePicture">تغییر عکس</string>
 
+    <string name="nameLastName">نام و نام خانوادگی</string>
+
+    <string name="PowerOff">قدرت گرفته از</string>
+    <string name="BounceNegra">نگرا</string>
+
+    <string name="arrivalTimeToday">ساعت ورود امروز</string>
+    <string name="departureTimeToday">ساعت خروج امروز</string>
+
 
 
 

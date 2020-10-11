@@ -8,13 +8,13 @@
     android:layout_height="match_parent"
     android:layout_gravity="end"
     android:gravity="center_horizontal"
-    android:padding="@dimen/_5sdp"
     android:background="@color/mlWhite">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/simpleDraweeViewProfile"
         android:layout_width="@dimen/_80sdp"
         android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         fresco:placeholderImage="@drawable/enter_code"
         />
 
@@ -22,19 +22,172 @@
     <ir.ngra.automation.views.customs.ML_Button
         android:layout_width="@dimen/_80sdp"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
         app:connectBack="@drawable/dw_button_drawer_edit"
         app:img_tint="@color/mlWhite"
-        app:img_width="@dimen/_20sdp"
-        app:img_height="@dimen/_20sdp"
+        app:img_width="@dimen/_18sdp"
+        app:img_height="@dimen/_18sdp"
         app:img_src="@drawable/ic_user"
         app:textColor="@color/mlWhite"
-        app:textValueSize="@dimen/_10sdp"
+        app:textValueSize="@dimen/_9sdp"
         app:textValue="@string/changePicture"
-        app:fontFamily="@font/iransanslight"
+        app:fontFamily="@font/vazir_light"
         />
 
 
+    <TextView
+        android:id="@+id/textViewUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"
+        android:lines="2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@color/ML_Line"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/_3sdp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/_11sdp"
+                android:gravity="right"
+                android:textColor="@color/colorAccent"
+                android:text="@string/changePicture"/>
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginBottom="@dimen/_3sdp"
+                android:background="@color/colorAccent"
+                android:alpha="0.3"/>
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                app:tint="@color/colorAccent"
+                android:src="@drawable/ic_user"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@color/ML_Line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/_11sdp"
+                android:gravity="right"
+                android:textColor="@color/colorAccent"
+                android:text="@string/changePicture"/>
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginBottom="@dimen/_3sdp"
+                android:background="@color/colorAccent"
+                android:alpha="0.3"/>
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                app:tint="@color/colorAccent"
+                android:src="@drawable/ic_user"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@color/ML_Line"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_3sdp"
+        android:background="@color/mlMenu2"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:gravity="center"
+                android:text="@string/BounceNegra"
+                android:textSize="@dimen/_8sdp"
+                android:textColor="@color/ML_EditText"
+                />
+
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/ImageViewCopyRight"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/heart_gif"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:gravity="center"
+                android:text="@string/PowerOff"
+                android:textSize="@dimen/_8sdp"
+                android:textColor="@color/ML_EditText"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
 

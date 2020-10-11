@@ -49,7 +49,7 @@
 
                 <EditText
                     android:id="@+id/VerifyCode1"
-                    fontPath="font/iransans_web_medium.ttf"
+                    fontPath="font/vazir_bold.ttf"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -204,9 +204,9 @@
                     app:img_width="@dimen/_20sdp"
                     app:img_tint="@color/mlWhite"
                     app:gif_src="@drawable/gif_clock"
-                    app:fontFamily="@font/iransanslight"
                     app:waitBack="@drawable/dw_button_wait"
                     app:waitText="@string/cancel"
+                    app:fontFamily="@font/vazir_light"
                     />
 
                 <TextView

@@ -1,5 +1,6 @@
 package ir.ngra.automation.views.activity;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -12,6 +13,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.facebook.drawee.drawable.ProgressBarDrawable;
 import com.facebook.drawee.generic.RoundingParams;
@@ -19,11 +21,13 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import ir.mlcode.latifiarchitecturelibrary.activity.Activity_Latifi;
 import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.ActivityMainBinding;
 import ir.ngra.automation.viewmodels.VM_Main;
+import ir.ngra.automation.views.application.AutomationApp;
 
 public class MainActivity extends Activity_Latifi {
 
@@ -40,6 +44,9 @@ public class MainActivity extends Activity_Latifi {
 
     @BindView(R.id.simpleDraweeViewProfile)
     SimpleDraweeView simpleDraweeViewProfile;
+
+    @BindView(R.id.textViewUserName)
+    TextView textViewUserName;
 
     ConstraintLayout constraintLayout;
 
@@ -60,11 +67,15 @@ public class MainActivity extends Activity_Latifi {
     //______________________________________________________________________________________________ onCreate
 
 
-
     //______________________________________________________________________________________________ setProfile
     private void setProfile() {
 
-        vm_main.getUtility().setRoundImage(simpleDraweeViewProfile, getResources().getColor(R.color.colorAccent), 3, 30,30,0,0);
+        vm_main.getUtility().setRoundImage(simpleDraweeViewProfile, getResources().getColor(R.color.colorAccent), 3, 30, 30, 0, 0);
+        String name = AutomationApp.getAutomationApp(this).getUserName();
+        if (name == null || name.equalsIgnoreCase(""))
+            textViewUserName.setText(getString(R.string.nameLastName));
+        else
+            textViewUserName.setText(name);
     }
     //______________________________________________________________________________________________ setProfile
 
@@ -116,6 +127,16 @@ public class MainActivity extends Activity_Latifi {
         drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
     //______________________________________________________________________________________________ lockDrawer
+
+
+
+/*
+    //______________________________________________________________________________________________ attachBaseContext
+    public void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
+    }
+    //______________________________________________________________________________________________ attachBaseContext
+*/
 
 
 

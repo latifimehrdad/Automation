@@ -36,11 +36,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:fontFamily="@font/iransanslight"
             app:layout_constraintTop_toTopOf="parent"
             app:textColor="@color/mlWhite"
             app:textValue="@string/reTry"
-            app:textValueSize="@dimen/_13sdp" />
+            app:textValueSize="@dimen/_13sdp"
+            app:fontFamily="@font/vazir_normal"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
