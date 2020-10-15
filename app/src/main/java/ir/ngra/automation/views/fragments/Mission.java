@@ -1,37 +1,24 @@
 package ir.ngra.automation.views.fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
-import ir.ngra.automation.databinding.HomeBinding;
+import ir.ngra.automation.databinding.MissionBinding;
+import ir.ngra.automation.viewmodels.VM_Mission;
 
-import ir.ngra.automation.viewmodels.VM_Home;
+public class Mission extends FR_Latifi implements FR_Latifi.fragmentActions {
 
-public class Home extends FR_Latifi implements FR_Latifi.fragmentActions {
 
-    private VM_Home vm_home;
-    private boolean doubleExitApplication = false;
-
-    @BindView(R.id.linearLayoutWorkVacation)
-    LinearLayout linearLayoutWorkVacation;
-
-    @BindView(R.id.layoutCircle)
-    LinearLayout layoutCircle;
-
-    @BindView(R.id.linearLayoutMission)
-    LinearLayout linearLayoutMission;
+    private VM_Mission vm_mission;
 
 
     //______________________________________________________________________________________________ onCreateView
@@ -40,9 +27,9 @@ public class Home extends FR_Latifi implements FR_Latifi.fragmentActions {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         if (getView() == null) {
-            vm_home = new VM_Home(getActivity());
-            HomeBinding binding = DataBindingUtil.inflate(inflater, R.layout.home, container, false);
-            binding.setHome(vm_home);
+            vm_mission = new VM_Mission(getActivity());
+            MissionBinding binding = DataBindingUtil.inflate(inflater, R.layout.mission, container, false);
+            binding.setMission(vm_mission);
             setView(binding.getRoot());
             ButterKnife.bind(this, getView());
             setOnClicks();
@@ -57,7 +44,7 @@ public class Home extends FR_Latifi implements FR_Latifi.fragmentActions {
     @Override
     public void onStart() {
         super.onStart();
-        setPublishSubjectFromObservable(Home.this, vm_home);
+        setPublishSubjectFromObservable(Mission.this, vm_mission);
     }
     //______________________________________________________________________________________________ onCreateView
 
@@ -82,24 +69,7 @@ public class Home extends FR_Latifi implements FR_Latifi.fragmentActions {
     //______________________________________________________________________________________________ OnBackPress
     @Override
     public void OnBackPress() {
-
-
-        if (doubleExitApplication)
-            System.exit(1);
-        else {
-            layoutCircle.setAlpha(0.1f);
-            doubleExitApplication = true;
-            showToast(
-                    getResources().getString(R.string.doubleExit),
-                    getResources().getColor(R.color.colorPrimary),
-                    getResources().getDrawable(R.drawable.ic_exit),
-                    getResources().getColor(R.color.colorPrimary));
-            Handler handler = new Handler();
-            handler.postDelayed(() -> {
-                doubleExitApplication = false;
-                layoutCircle.setAlpha(1);
-            }, 4000);
-        }
+        removeCallBackAndBack();
     }
     //______________________________________________________________________________________________ OnBackPress
 
@@ -107,13 +77,8 @@ public class Home extends FR_Latifi implements FR_Latifi.fragmentActions {
     //______________________________________________________________________________________________ setOnClicks
     private void setOnClicks() {
 
-        linearLayoutWorkVacation.setOnClickListener(v -> getNavController().navigate(R.id.action_home_to_workVacation));
-
-
-        linearLayoutMission.setOnClickListener(v -> getNavController().navigate(R.id.action_home_to_mission));
 
     }
     //______________________________________________________________________________________________ setOnClicks
-
 
 }

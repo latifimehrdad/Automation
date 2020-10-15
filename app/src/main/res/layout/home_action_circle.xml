@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="@dimen/_202sdp"
+    android:layout_height="@dimen/_202sdp">
+    
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayoutWorkVacation"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/home_back_circle_accent_tleft"
+            android:paddingTop="@dimen/_30sdp"
+            >
+
+            <ImageView
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:padding="@dimen/_3sdp"
+                android:tint="@color/mlWhite"
+                android:src="@drawable/ic_camping"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:gravity="center"
+                android:textColor="@color/mlWhite"
+                android:textSize="@dimen/_9sdp"
+                fontPath="font/iransans_web_medium.ttf"
+                android:text="@string/workVacation"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutMission"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="@dimen/_30sdp"
+            android:background="@drawable/home_back_circle_primery_tright"
+            android:layout_marginLeft="@dimen/_2sdp"
+            >
+
+            <ImageView
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center"
+                android:padding="@dimen/_3sdp"
+                android:tint="@color/mlWhite"
+                android:src="@drawable/ic_businessman"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:gravity="center"
+                android:textColor="@color/mlWhite"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:textSize="@dimen/_9sdp"
+                fontPath="font/iransans_web_medium.ttf"
+                android:text="@string/missionRequest"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_2sdp"
+        >
+
+        <LinearLayout
+            android:id="@+id/Answered"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/home_back_circle_primery_bleft"
+            android:paddingBottom="@dimen/_30sdp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:gravity="center"
+                android:textColor="@color/mlWhite"
+                android:textSize="@dimen/_9sdp"
+                fontPath="font/iransans_web_medium.ttf"
+                android:text="@string/changeWorkTime"
+                />
+
+            <ImageView
+                android:id="@+id/AnsweredCount"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:gravity="center"
+                android:padding="@dimen/_3sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:tint="@color/mlWhite"
+                android:src="@drawable/ic_professor"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/FollowUp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/home_back_circle_accent_bright"
+            android:layout_marginLeft="@dimen/_2sdp"
+            android:paddingBottom="@dimen/_30sdp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                android:textColor="@color/mlWhite"
+                android:textSize="@dimen/_9sdp"
+                fontPath="font/iransans_web_medium.ttf"
+                android:text="@string/LegalReceipt"
+                />
+
+            <ImageView
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:gravity="center"
+                android:padding="@dimen/_3sdp"
+                android:textSize="@dimen/_9sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:tint="@color/mlWhite"
+                android:src="@drawable/ic_salary"
+                />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

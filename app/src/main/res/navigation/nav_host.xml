@@ -79,6 +79,38 @@
         android:id="@+id/home"
         android:name="ir.ngra.automation.views.fragments.Home"
         android:label="Home"
-        tools:layout="@layout/home"/>
+        tools:layout="@layout/home">
+
+        <action
+            android:id="@+id/action_home_to_workVacation"
+            app:destination="@id/workVacation"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+
+        <action
+            android:id="@+id/action_home_to_mission"
+            app:destination="@id/mission"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/workVacation"
+        android:name="ir.ngra.automation.views.fragments.WorkVacation"
+        android:label="WorkVacation"
+        tools:layout="@layout/work_vacation"/>
+
+
+    <fragment
+        android:id="@+id/mission"
+        android:name="ir.ngra.automation.views.fragments.Mission"
+        android:label="Mission"
+        tools:layout="@layout/mission"/>
 
 </navigation>

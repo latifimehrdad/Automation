@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -80,10 +81,13 @@ public class MainActivity extends Activity_Latifi {
     //______________________________________________________________________________________________ setProfile
 
 
-
     //______________________________________________________________________________________________ setListener
     @SuppressLint("RtlHardcoded")
     private void setListener() {
+
+        imageViewMenu.setOnClickListener(v -> {
+            drawer_layout.openDrawer(Gravity.RIGHT , true);
+        });
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
@@ -137,7 +141,6 @@ public class MainActivity extends Activity_Latifi {
     }
     //______________________________________________________________________________________________ attachBaseContext
 */
-
 
 
 }

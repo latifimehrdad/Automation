@@ -29,6 +29,14 @@
     <string name="arrivalTimeToday">ساعت ورود امروز</string>
     <string name="departureTimeToday">ساعت خروج امروز</string>
 
+    <string name="workVacation">درخواست مرخصی</string>
+    <string name="missionRequest">درخواست ماموریت</string>
+
+    <string name="changeWorkTime">تغییر ساعت تردد</string>
+    <string name="LegalReceipt">فیش حقوقی</string>
+
+    <string name="doubleExit">"برای خروج 2 بار کلیک کنید"</string>
+
 
 
 

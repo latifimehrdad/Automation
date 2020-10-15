@@ -215,12 +215,16 @@
 
 
         <LinearLayout
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+            <include layout="@layout/home_action_circle"
+                android:id="@+id/layoutCircle"/>
 
         </LinearLayout>
 
