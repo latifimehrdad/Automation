@@ -12,13 +12,12 @@ import androidx.databinding.DataBindingUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ir.mlcode.latifiarchitecturelibrary.customs.ML_Toast;
 import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.LoginBinding;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Login;
-import ir.ngra.automation.views.customs.ML_Button;
-import ir.ngra.automation.views.customs.ML_EditText;
 
 
 public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
@@ -26,11 +25,11 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
 
     private VM_Login vm_login;
 
-    @BindView(R.id.ml_ButtonLogin)
+/*    @BindView(R.id.ml_ButtonLogin)
     ML_Button ml_ButtonLogin;
 
     @BindView(R.id.ml_EditTextPersonalCode)
-    ML_EditText ml_EditTextPersonalCode;
+    ML_EditText ml_EditTextPersonalCode;*/
 
 
     @BindView(R.id.ConstraintLayout)
@@ -61,7 +60,7 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
     public void onStart() {
         super.onStart();
         setPublishSubjectFromObservable(Login.this, vm_login);
-        String verified = getVariableFromNavigation(getContext().getResources().getString(R.string.ML_Verified));
+        String verified = getVariableFromNavigation(getResources().getString(R.string.ML_Verified));
         if (verified != null)
             removeCallBackAndBack();
     }
@@ -72,7 +71,7 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
     @Override
     public void getActionFromObservable(Byte action) {
 
-        ml_ButtonLogin.stopLoading();
+        /*ml_ButtonLogin.stopLoading();*/
 
         if (action.equals(ObservableActions.gotoVerify)) {
             Bundle bundle = new Bundle();
@@ -87,7 +86,7 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
     //______________________________________________________________________________________________ actionWhenFailureRequest
     @Override
     public void actionWhenFailureRequest() {
-        ml_ButtonLogin.stopLoading();
+        /*ml_ButtonLogin.stopLoading();*/
     }
     //______________________________________________________________________________________________ actionWhenFailureRequest
 
@@ -104,20 +103,21 @@ public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
     private void setOnClicks() {
 
 
-        ml_ButtonLogin.setOnClickListener(v -> {
+        /*ml_ButtonLogin.setOnClickListener(v -> {
 
             if (ml_ButtonLogin.isClick()) {
                 vm_login.cancelRequestByUser();
             } else {
                 if (!ml_EditTextPersonalCode.checkValidation()) {
                     ml_EditTextPersonalCode.setErrorLayout(getResources().getString(R.string.errorEmptyTextPhoneNumber));
+
                 } else {
                     ml_ButtonLogin.startLoading();
                     vm_login.getLoginCode();
                 }
             }
 
-        });
+        });*/
     }
     //______________________________________________________________________________________________ setOnClicks
 

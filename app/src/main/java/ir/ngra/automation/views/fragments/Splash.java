@@ -16,7 +16,6 @@ import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.SplashBinding;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Splash;
-import ir.ngra.automation.views.customs.ML_Button;
 import pl.droidsonroids.gif.GifImageView;
 
 public class Splash extends FR_Latifi implements FR_Latifi.fragmentActions {
@@ -27,8 +26,8 @@ public class Splash extends FR_Latifi implements FR_Latifi.fragmentActions {
     @BindView(R.id.gifImageViewLoading)
     GifImageView gifImageViewLoading;
 
-    @BindView(R.id.ml_ButtonReTry)
-    ML_Button ml_ButtonReTry;
+/*    @BindView(R.id.ml_ButtonReTry)
+    ML_Button ml_ButtonReTry;*/
 
     //______________________________________________________________________________________________ onCreateView
     @Nullable
@@ -56,7 +55,7 @@ public class Splash extends FR_Latifi implements FR_Latifi.fragmentActions {
         super.onStart();
         setPublishSubjectFromObservable(Splash.this, vm_splash);
         gifImageViewLoading.setVisibility(View.VISIBLE);
-        ml_ButtonReTry.setVisibility(View.GONE);
+        /*ml_ButtonReTry.setVisibility(View.GONE);*/
         vm_splash.callHI();
     }
     //______________________________________________________________________________________________ onCreateView
@@ -95,7 +94,7 @@ public class Splash extends FR_Latifi implements FR_Latifi.fragmentActions {
     @Override
     public void actionWhenFailureRequest() {
         gifImageViewLoading.setVisibility(View.GONE);
-        ml_ButtonReTry.setVisibility(View.VISIBLE);
+        /*ml_ButtonReTry.setVisibility(View.VISIBLE);*/
     }
     //______________________________________________________________________________________________ actionWhenFailureRequest
 
@@ -111,11 +110,11 @@ public class Splash extends FR_Latifi implements FR_Latifi.fragmentActions {
     //______________________________________________________________________________________________ setOnClicks
     private void setOnClicks() {
 
-        ml_ButtonReTry.setOnClickListener(v -> {
+        /*ml_ButtonReTry.setOnClickListener(v -> {
             gifImageViewLoading.setVisibility(View.VISIBLE);
             ml_ButtonReTry.setVisibility(View.GONE);
             vm_splash.callHI();
-        });
+        });*/
     }
     //______________________________________________________________________________________________ setOnClicks
 

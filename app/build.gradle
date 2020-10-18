@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "ir.ngra.automation"
-        minSdkVersion 18
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.4"
@@ -39,13 +39,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'com.github.latifimehrdad:LatifiArchitecture:1.23'
+    implementation 'com.github.latifimehrdad:LatifiArchitecture:1.30'
 
     implementation 'com.jakewharton:butterknife:10.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.21'
-    implementation 'com.github.Cutta:GifView:1.1'
-
 
 }

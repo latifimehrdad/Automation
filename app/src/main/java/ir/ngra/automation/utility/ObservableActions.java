@@ -7,5 +7,7 @@ public class ObservableActions{
     public static Byte gotoVerify = 3;
     public static Byte gotoHome = 4;
 
+    public static Byte getWorkVacationType = 5;
+
 
 }

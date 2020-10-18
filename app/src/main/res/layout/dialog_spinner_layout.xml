@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/spinnerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select or Search Items"
+            android:textSize="@dimen/_13sdp"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold" />
+
+
+<!--        <ir.ngra.automation.views.customs.ML_EditText
+            android:id="@+id/ml_EditTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:delimiterBack="@drawable/dw_delimiter"
+            app:delimiterWidth="@dimen/_2sdp"
+            app:delimiter_marginLeft="@dimen/_5sdp"
+            app:delimiter_marginRight="@dimen/_5sdp"
+            app:editHint="@string/searchHint"
+            app:editSplitter="false"
+            app:editTextColor="@color/ML_EditText"
+            app:editable="true"
+            app:emptyBack="@drawable/dw_edit_empty"
+            app:image_height="@dimen/_20sdp"
+            app:image_src="@drawable/ic_search"
+            app:image_tint="@color/colorAccent"
+            app:image_width="@dimen/_20sdp"
+            app:inputTypeEdit="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:normalBack="@drawable/dw_edit_normal"
+            app:textMaxLength="50"
+            app:textMaxLine="1"
+            app:textSize="@dimen/_11sdp"
+            app:validationType="text" />-->
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="#d1d1d1" />
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            android:divider="#d1d1d1"
+            android:dividerHeight="0.1dp"/>
+
+        <TextView
+            android:clickable="true"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_gravity="right"
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_red"
+            android:textColor="@color/mlWhite"
+            android:text="@string/cancel" />
+
+    </LinearLayout>
+
+</LinearLayout>

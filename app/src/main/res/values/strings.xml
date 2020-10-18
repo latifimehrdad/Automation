@@ -3,41 +3,43 @@
     <string name="UpdateAppName">Samtam_Citizen</string>
 
     <string name="reTry">تلاش مجدد …</string>
-
-    <string name="errorEmptyTextPhoneNumber">شماره تلفن همراه خود را وارد نمایید</string>
-
     <string name="ML_PleaseEnterPhoneNumber">شماره تلفن همراه خود را در کادر زیر وارد نمایید</string>
     <string name="hint_PhoneNumber">شماره تلفن همراه</string>
     <string name="getVerifyCode">دریافت کد ورود</string>
-
-
     <string name="EnterVerify">لطفا شش رقم کد ورود را وارد نمایید</string>
-
     <string name="cancel">بیخیال</string>
     <string name="elapsedTimeGetSMS">زمان باقی مانده جهت دریافت پیامک</string>
     <string name="reTryGetSMS">دریافت مجدد</string>
-    
     <string name="newVersionIsAvailable">نسخه جدید برنامه در دسترس می باشد. تا بارگیری کامل فایل شکیبا باشید</string>
-
     <string name="changePicture">تغییر عکس</string>
-
     <string name="nameLastName">نام و نام خانوادگی</string>
-
     <string name="PowerOff">قدرت گرفته از</string>
     <string name="BounceNegra">نگرا</string>
-
     <string name="arrivalTimeToday">ساعت ورود امروز</string>
     <string name="departureTimeToday">ساعت خروج امروز</string>
-
     <string name="workVacation">درخواست مرخصی</string>
     <string name="missionRequest">درخواست ماموریت</string>
-
     <string name="changeWorkTime">تغییر ساعت تردد</string>
     <string name="LegalReceipt">فیش حقوقی</string>
-
     <string name="doubleExit">"برای خروج 2 بار کلیک کنید"</string>
 
+    <string name="errorEmptyTextPhoneNumber">شماره تلفن همراه خود را وارد نمایید</string>
 
+
+    <string name="workVacationType">نوع مرخصی</string>
+    <string name="chooseWorkVacationType">انتخاب نوع مرخصی</string>
+    <string name="searchWorkVacationType">جستجوی نوع مرخصی</string>
+
+    <string name="Substitute">جانشین</string>
+    <string name="chooseSubstitute">انتخاب جانشین</string>
+    <string name="searchSubstitute">جستجوی جانشین</string>
+
+    <string name="chooseStartDate">انتخاب تاریخ شروع</string>
+    <string name="chooseStartTime">انتخاب ساعت شروع</string>
+    <string name="chooseEndDate">انتخاب تاریخ پایان</string>
+    <string name="chooseEndTime">انتخاب ساعت پایان</string>
+    <string name="sendRequest">ارسال در خواست</string>
+    <string name="searchHint">جستجو</string>
 
 
     //______________________________________________________________________________________________

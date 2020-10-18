@@ -23,10 +23,9 @@
             >
 
             <ImageView
-                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
                 android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:padding="@dimen/_3sdp"
                 android:tint="@color/mlWhite"
                 android:src="@drawable/ic_camping"
@@ -36,8 +35,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
                 android:gravity="center"
                 android:textColor="@color/mlWhite"
                 android:textSize="@dimen/_9sdp"
@@ -60,10 +57,10 @@
             >
 
             <ImageView
-                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_5sdp"
                 android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
-                android:layout_marginTop="@dimen/_5sdp"
+
                 android:gravity="center"
                 android:padding="@dimen/_3sdp"
                 android:tint="@color/mlWhite"
@@ -76,8 +73,7 @@
                 android:layout_marginRight="@dimen/_5sdp"
                 android:gravity="center"
                 android:textColor="@color/mlWhite"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
+
                 android:textSize="@dimen/_9sdp"
                 fontPath="font/iransans_web_medium.ttf"
                 android:text="@string/missionRequest"
@@ -108,8 +104,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:gravity="center"
                 android:textColor="@color/mlWhite"
                 android:textSize="@dimen/_9sdp"
@@ -119,13 +115,12 @@
 
             <ImageView
                 android:id="@+id/AnsweredCount"
-                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
                 android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
                 android:gravity="center"
                 android:padding="@dimen/_3sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:tint="@color/mlWhite"
                 android:src="@drawable/ic_professor"
                 />
@@ -148,7 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:gravity="center"
                 android:textColor="@color/mlWhite"
                 android:textSize="@dimen/_9sdp"
@@ -157,14 +152,13 @@
                 />
 
             <ImageView
-                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_5sdp"
                 android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
                 android:gravity="center"
                 android:padding="@dimen/_3sdp"
                 android:textSize="@dimen/_9sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:tint="@color/mlWhite"
                 android:src="@drawable/ic_salary"
                 />

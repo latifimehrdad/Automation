@@ -42,14 +42,16 @@
                 android:text="@string/ML_PleaseEnterPhoneNumber"/>
 
 
-            <ir.ngra.automation.views.customs.ML_EditText
+
+
+<!--            <ML_EditText
                 android:id="@+id/ml_EditTextPersonalCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="@dimen/_130sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:padding="@dimen/_5sdp"
                 app:editTextColor="@color/ML_EditText"
-                app:editWidth="@dimen/_120sdp"
                 app:emptyBack="@drawable/dw_edit_empty"
                 app:normalBack="@drawable/dw_edit_normal"
                 app:editHint="@string/hint_PhoneNumber"
@@ -70,11 +72,11 @@
                 app:textMaxLength="11"
                 app:editSplitter="false"
                 app:validationType="mobile"
-                app:fontFamily="@font/vazir_light"
+                app:fontFamily="@font/vazir_normal"
                 />
 
 
-            <ir.ngra.automation.views.customs.ML_Button
+            <ML_Button
                 android:id="@+id/ml_ButtonLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,7 +93,7 @@
                 app:waitBack="@drawable/dw_button_wait"
                 app:waitText="@string/cancel"
                 app:fontFamily="@font/vazir_light"
-                />
+                />-->
 
 
 

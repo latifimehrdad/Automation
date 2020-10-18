@@ -24,7 +24,6 @@ import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.VerifyBinding;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Verify;
-import ir.ngra.automation.views.customs.ML_Button;
 
 public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
 
@@ -65,8 +64,8 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     @BindView(R.id.textViewElapseMessage)
     TextView textViewElapseMessage;
 
-    @BindView(R.id.ml_ButtonReTry)
-    ML_Button ml_ButtonReTry;
+/*    @BindView(R.id.ml_ButtonReTry)
+    ML_Button ml_ButtonReTry;*/
 
 
     //______________________________________________________________________________________________ onCreateView
@@ -104,7 +103,7 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     @Override
     public void getActionFromObservable(Byte action) {
 
-        ml_ButtonReTry.stopLoading();
+        /*ml_ButtonReTry.stopLoading();*/
         stopLoading();
 
         if (action.equals(ObservableActions.gotoVerify)) {
@@ -125,7 +124,7 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     //______________________________________________________________________________________________ actionWhenFailureRequest
     @Override
     public void actionWhenFailureRequest() {
-        ml_ButtonReTry.stopLoading();
+        /*ml_ButtonReTry.stopLoading();*/
         stopLoading();
     }
     //______________________________________________________________________________________________ actionWhenFailureRequest
@@ -254,7 +253,7 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
 
         textViewElapseTime.setVisibility(View.VISIBLE);
         textViewElapseMessage.setVisibility(View.VISIBLE);
-        ml_ButtonReTry.setVisibility(View.GONE);
+       /* ml_ButtonReTry.setVisibility(View.GONE);*/
 
         Elapse = Elapse * 10;
         progressBarElapse.setMax(Elapse * 2);
@@ -286,7 +285,7 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     private void reTryGetSMS() {
         textViewElapseTime.setVisibility(View.GONE);
         textViewElapseMessage.setVisibility(View.GONE);
-        ml_ButtonReTry.setVisibility(View.VISIBLE);
+        /*ml_ButtonReTry.setVisibility(View.VISIBLE);*/
     }
     //______________________________________________________________________________________________ reTryGetSMS
 
@@ -294,14 +293,14 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     //______________________________________________________________________________________________ setClick
     private void setClick() {
 
-        ml_ButtonReTry.setOnClickListener(v -> {
+        /*ml_ButtonReTry.setOnClickListener(v -> {
             if (ml_ButtonReTry.isClick())
                 vm_verify.cancelRequestByUser();
             else {
                 ml_ButtonReTry.startLoading();
                 vm_verify.sendNumber();
             }
-        });
+        });*/
 
     }
     //______________________________________________________________________________________________ setClick
