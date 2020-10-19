@@ -190,7 +190,7 @@
                     android:layout_marginTop="@dimen/_40sdp"
                     />
 
-<!--                <ir.ngra.automation.views.customs.ML_Button
+                <ir.mlcode.latifiarchitecturelibrary.customs.ML_Button
                     android:id="@+id/ml_ButtonReTry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
                     app:waitBack="@drawable/dw_button_wait"
                     app:waitText="@string/cancel"
                     app:fontFamily="@font/vazir_light"
-                    />-->
+                    />
 
                 <TextView
                     android:id="@+id/textViewElapseTime"

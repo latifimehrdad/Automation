@@ -81,13 +81,6 @@
         android:label="Home"
         tools:layout="@layout/home">
 
-        <action
-            android:id="@+id/action_home_to_workVacation"
-            app:destination="@id/workVacation"
-            app:enterAnim="@anim/slide_in_bottom"
-            app:exitAnim="@anim/slide_out_bottom"
-            app:popEnterAnim="@anim/slide_in_bottom"
-            app:popExitAnim="@anim/slide_out_bottom"/>
 
         <action
             android:id="@+id/action_home_to_mission"
@@ -97,14 +90,22 @@
             app:popEnterAnim="@anim/slide_in_bottom"
             app:popExitAnim="@anim/slide_out_bottom"/>
 
+        <action
+            android:id="@+id/action_home_to_workVacation"
+            app:destination="@id/workVacation"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_bottom"
+            app:popEnterAnim="@anim/slide_in_bottom"
+            app:popExitAnim="@anim/slide_out_bottom"/>
+
 
     </fragment>
 
     <fragment
-        android:id="@+id/workVacation"
-        android:name="ir.ngra.automation.views.fragments.WorkVacation"
-        android:label="WorkVacation"
-        tools:layout="@layout/work_vacation"/>
+        android:id="@+id/newWorkVacation"
+        android:name="ir.ngra.automation.views.fragments.NewWorkVacation"
+        android:label="NewWorkVacation"
+        tools:layout="@layout/new_work_vacation"/>
 
 
     <fragment
@@ -112,5 +113,22 @@
         android:name="ir.ngra.automation.views.fragments.Mission"
         android:label="Mission"
         tools:layout="@layout/mission"/>
+
+
+    <fragment
+        android:id="@+id/workVacation"
+        android:name="ir.ngra.automation.views.fragments.WorkVacation"
+        android:label="WorkVacation"
+        tools:layout="@layout/work_vacation">
+
+        <action
+            android:id="@+id/action_workVacation_to_newWorkVacation"
+            app:destination="@id/newWorkVacation"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+
+    </fragment>
 
 </navigation>

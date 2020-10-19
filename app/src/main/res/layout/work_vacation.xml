@@ -12,231 +12,43 @@
         android:layout_height="match_parent">
 
 
-<!--        <ir.ngra.automation.views.customs.ML_EditText
-            android:id="@+id/ml_EditTextWorkVacation"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:delimiterBack="@drawable/dw_delimiter"
-            app:delimiterWidth="@dimen/_2sdp"
-            app:delimiter_marginLeft="@dimen/_5sdp"
-            app:delimiter_marginRight="@dimen/_5sdp"
-            app:editHint="@string/chooseWorkVacationType"
-            app:editSplitter="false"
-            app:editTextColor="@color/ML_EditText"
-            app:editable="false"
-            app:emptyBack="@drawable/dw_edit_empty"
-            app:fontFamily="@font/vazir_normal"
-            app:image_height="@dimen/_20sdp"
-            app:image_src="@drawable/ic_camping"
-            app:image_tint="@color/colorAccent"
-            app:image_width="@dimen/_20sdp"
-            app:inputTypeEdit="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:normalBack="@drawable/dw_edit_normal"
-            app:textMaxLine="2"
-            app:textSize="@dimen/_11sdp"
-            app:validationType="text" />
 
-
-        <ir.ngra.automation.views.customs.ML_EditText
-            android:id="@+id/ml_EditTextSubstitute"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:padding="@dimen/_5sdp"
-            app:delimiterBack="@drawable/dw_delimiter"
-            app:delimiterWidth="@dimen/_2sdp"
-            app:delimiter_marginLeft="@dimen/_5sdp"
-            app:delimiter_marginRight="@dimen/_5sdp"
-            app:editHint="@string/chooseSubstitute"
-            app:editSplitter="false"
-            app:editTextColor="@color/ML_EditText"
-            app:editable="false"
-            app:emptyBack="@drawable/dw_edit_empty"
-            app:fontFamily="@font/vazir_normal"
-            app:image_height="@dimen/_20sdp"
-            app:image_src="@drawable/ic_player_substitution"
-            app:image_tint="@color/colorAccent"
-            app:image_width="@dimen/_20sdp"
-            app:inputTypeEdit="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ml_EditTextWorkVacation"
-            app:normalBack="@drawable/dw_edit_normal"
-            app:textMaxLine="2"
-            app:textSize="@dimen/_11sdp"
-            app:validationType="text" />
-
-
-        <LinearLayout
-            android:id="@+id/linearLayout5"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_1sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ml_EditTextSubstitute"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:orientation="vertical"
-            android:background="@color/ML_delimiter"/>
-
-
-
-        <ir.ngra.automation.views.customs.ML_EditText
-            android:id="@+id/ml_EditTextStartDate"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:padding="@dimen/_5sdp"
-            app:delimiterBack="@drawable/dw_delimiter"
-            app:delimiterWidth="@dimen/_2sdp"
-            app:delimiter_marginLeft="@dimen/_5sdp"
-            app:delimiter_marginRight="@dimen/_5sdp"
-            app:editHint="@string/chooseStartDate"
-            app:editSplitter="false"
-            app:editTextColor="@color/ML_EditText"
-            app:editable="false"
-            app:emptyBack="@drawable/dw_edit_empty"
-            app:fontFamily="@font/vazir_normal"
-            app:image_height="@dimen/_20sdp"
-            app:image_src="@drawable/ic_calendar_start"
-            app:image_tint="@color/colorAccent"
-            app:image_width="@dimen/_20sdp"
-            app:inputTypeEdit="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-            app:normalBack="@drawable/dw_edit_normal"
-            app:textMaxLine="2"
-            app:textSize="@dimen/_11sdp"
-            app:validationType="text" />
-
-
-        <ir.ngra.automation.views.customs.ML_EditText
-            android:id="@+id/ml_EditTextStartTime"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:padding="@dimen/_5sdp"
-            app:delimiterBack="@drawable/dw_delimiter"
-            app:delimiterWidth="@dimen/_2sdp"
-            app:delimiter_marginLeft="@dimen/_5sdp"
-            app:delimiter_marginRight="@dimen/_5sdp"
-            app:editHint="@string/chooseStartTime"
-            app:editSplitter="false"
-            app:editTextColor="@color/ML_EditText"
-            app:editable="false"
-            app:emptyBack="@drawable/dw_edit_empty"
-            app:fontFamily="@font/vazir_normal"
-            app:image_height="@dimen/_20sdp"
-            app:image_src="@drawable/ic_time_start"
-            app:image_tint="@color/colorAccent"
-            app:image_width="@dimen/_20sdp"
-            app:inputTypeEdit="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ml_EditTextStartDate"
-            app:normalBack="@drawable/dw_edit_normal"
-            app:textMaxLine="2"
-            app:textSize="@dimen/_11sdp"
-            app:validationType="text" />
-
-
-
-        <LinearLayout
-            android:id="@+id/linearLayout6"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_1sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ml_EditTextStartTime"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:orientation="vertical"
-            android:background="@color/ML_delimiter"/>
-
-
-        <ir.ngra.automation.views.customs.ML_EditText
-            android:id="@+id/ml_EditTextEndDate"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:padding="@dimen/_5sdp"
-            app:delimiterBack="@drawable/dw_delimiter"
-            app:delimiterWidth="@dimen/_2sdp"
-            app:delimiter_marginLeft="@dimen/_5sdp"
-            app:delimiter_marginRight="@dimen/_5sdp"
-            app:editHint="@string/chooseEndDate"
-            app:editSplitter="false"
-            app:editTextColor="@color/ML_EditText"
-            app:editable="false"
-            app:emptyBack="@drawable/dw_edit_empty"
-            app:fontFamily="@font/vazir_normal"
-            app:image_height="@dimen/_20sdp"
-            app:image_src="@drawable/ic_calendar_end"
-            app:image_tint="@color/colorAccent"
-            app:image_width="@dimen/_20sdp"
-            app:inputTypeEdit="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-            app:normalBack="@drawable/dw_edit_normal"
-            app:textMaxLine="2"
-            app:textSize="@dimen/_11sdp"
-            app:validationType="text" />
-
-
-        <ir.ngra.automation.views.customs.ML_EditText
-            android:id="@+id/ml_EditTextEndTime"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:padding="@dimen/_5sdp"
-            app:delimiterBack="@drawable/dw_delimiter"
-            app:delimiterWidth="@dimen/_2sdp"
-            app:delimiter_marginLeft="@dimen/_5sdp"
-            app:delimiter_marginRight="@dimen/_5sdp"
-            app:editHint="@string/chooseEndTime"
-            app:editSplitter="false"
-            app:editTextColor="@color/ML_EditText"
-            app:editable="false"
-            app:emptyBack="@drawable/dw_edit_empty"
-            app:fontFamily="@font/vazir_normal"
-            app:image_height="@dimen/_20sdp"
-            app:image_src="@drawable/ic_time_end"
-            app:image_tint="@color/colorAccent"
-            app:image_width="@dimen/_20sdp"
-            app:inputTypeEdit="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ml_EditTextEndDate"
-            app:normalBack="@drawable/dw_edit_normal"
-            app:textMaxLine="2"
-            app:textSize="@dimen/_11sdp"
-            app:validationType="text" />
-
-
-        <ir.ngra.automation.views.customs.ML_Button
-            android:id="@+id/ml_ButtonSend"
+        <TextView
+            android:id="@+id/textViewNoRequest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:connectBack="@drawable/dw_button_normal"
-            app:gif_src="@drawable/gif_clock"
-            app:img_height="@dimen/_18sdp"
-            app:img_src="@drawable/ic_checked"
-            app:img_tint="@color/mlWhite"
-            app:img_width="@dimen/_18sdp"
+            android:alpha="0.5"
+            android:text="@string/noRequest"
+            android:textColor="@color/mlMenu"
+            android:textSize="@dimen/_13sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ml_EditTextEndTime"
-            app:textColor="@color/mlWhite"
-            app:textValue="@string/sendRequest"
-            app:textValueSize="@dimen/_12sdp"
-            app:waitBack="@drawable/dw_button_wait"
-            app:waitText="@string/cancel" />-->
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewWorkVacation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ir.mlcode.latifiarchitecturelibrary.customs.ML_Button
+            android:id="@+id/ml_ButtonNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            app:connectBack="@drawable/dw_circle_inline_primary"
+            app:img_height="@dimen/_20sdp"
+            app:img_src="@drawable/ic_add_button"
+            app:img_tint="@color/mlWhite"
+            app:img_width="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

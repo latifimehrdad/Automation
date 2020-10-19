@@ -24,11 +24,12 @@
             android:src="@drawable/loading_splash"/>
 
 
-<!--        <ir.ngra.automation.views.customs.ML_Button
+        <ir.mlcode.latifiarchitecturelibrary.customs.ML_Button
             android:id="@+id/ml_ButtonReTry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:connectBack="@drawable/dw_button_normal"
+            app:waitBack="@drawable/dw_button_normal"
             app:img_height="@dimen/_20sdp"
             app:img_src="@drawable/ic_refresh"
             app:img_tint="@color/mlWhite"
@@ -40,7 +41,7 @@
             app:textColor="@color/mlWhite"
             app:textValue="@string/reTry"
             app:textValueSize="@dimen/_13sdp"
-            app:fontFamily="@font/vazir_normal"/>-->
+            app:fontFamily="@font/vazir_normal"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,10 +19,15 @@
 
     <color name="ML_delimiter">#591ECBE1</color>
 
+    <color name="ML_recyclerLoading">#0D1ECBE1</color>
+
     <color name="ML_Transparent">#00000000</color>
     <color name="ML_Error">#FFC002</color>
 
     <color name="ML_Line">#ECECEC</color>
+
+    <color name="ML_Cancel">#C5C5C5</color>
+    <color name="ML_TextCancel">#788E91</color>
 
     <color name="mlMenu">#292A2B</color>
     <color name="mlMenu2">#1D1E1E</color>

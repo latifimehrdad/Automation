@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/_5sdp"
+    android:gravity="center">
+
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/ML_EditText"
+        android:textSize="@dimen/_12sdp"
+        android:gravity="right"
+        />
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_10sdp">
+
+        <ir.mlcode.latifiarchitecturelibrary.customs.ML_Button
+            android:id="@+id/ml_ButtonChoose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:connectBack="@drawable/dw_button_normal"
+            app:textColor="@color/mlWhite"
+            app:textValueSize="@dimen/_11sdp"
+            app:textValue="@string/choose"
+            app:img_height="@dimen/_15sdp"
+            app:img_width="@dimen/_15sdp"
+            app:img_src="@drawable/ic_checked"
+            app:img_tint="@color/mlWhite" />
+
+        <ir.mlcode.latifiarchitecturelibrary.customs.ML_Button
+            android:id="@+id/ml_ButtonCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            app:connectBack="@drawable/dw_button_cancel"
+            app:textColor="@color/ML_TextCancel"
+            app:textValueSize="@dimen/_11sdp"
+            app:textValue="@string/cancel"
+            app:img_height="@dimen/_15sdp"
+            app:img_width="@dimen/_15sdp"
+            app:img_src="@drawable/ic_close"
+            app:img_tint="@color/ML_TextCancel" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -23,23 +23,36 @@
     <string name="LegalReceipt">فیش حقوقی</string>
     <string name="doubleExit">"برای خروج 2 بار کلیک کنید"</string>
 
+    <string name="noRequest">درخواستی وجود ندارد</string>
+
     <string name="errorEmptyTextPhoneNumber">شماره تلفن همراه خود را وارد نمایید</string>
+    <string name="errorEmptyWorkVacationType">نوع مرخصی را انتخاب نمایید</string>
+    <string name="errorEmptySubstitute">جانشین را انتخاب نمایید</string>
+    <string name="errorEmptyStartDate">تاریخ شروع را انتخاب نمایید</string>
+    <string name="errorEmptyStartTime">ساعت شروع را انتخاب نمایید</string>
+    <string name="errorEmptyEndDate">تاریخ پایان را انتخاب نمایید</string>
+    <string name="errorEmptyEndTime">ساعت پایان را انتخاب نمایید</string>
 
 
     <string name="workVacationType">نوع مرخصی</string>
     <string name="chooseWorkVacationType">انتخاب نوع مرخصی</string>
     <string name="searchWorkVacationType">جستجوی نوع مرخصی</string>
 
-    <string name="Substitute">جانشین</string>
+    <string name="substitute">جانشین</string>
     <string name="chooseSubstitute">انتخاب جانشین</string>
     <string name="searchSubstitute">جستجوی جانشین</string>
 
+    <string name="startTime">ساعت شروع</string>
+    <string name="endTime">ساعت پایان</string>
+    <string name="startDate">تاریخ شروع</string>
+    <string name="endDate">تاریخ پایان</string>
     <string name="chooseStartDate">انتخاب تاریخ شروع</string>
     <string name="chooseStartTime">انتخاب ساعت شروع</string>
     <string name="chooseEndDate">انتخاب تاریخ پایان</string>
     <string name="chooseEndTime">انتخاب ساعت پایان</string>
     <string name="sendRequest">ارسال در خواست</string>
     <string name="searchHint">جستجو</string>
+    <string name="choose">انتخاب</string>
 
 
     //______________________________________________________________________________________________

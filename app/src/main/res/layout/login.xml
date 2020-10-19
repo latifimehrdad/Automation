@@ -43,8 +43,7 @@
 
 
 
-
-<!--            <ML_EditText
+            <ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText
                 android:id="@+id/ml_EditTextPersonalCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,7 +75,7 @@
                 />
 
 
-            <ML_Button
+            <ir.mlcode.latifiarchitecturelibrary.customs.ML_Button
                 android:id="@+id/ml_ButtonLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,7 +92,7 @@
                 app:waitBack="@drawable/dw_button_wait"
                 app:waitText="@string/cancel"
                 app:fontFamily="@font/vazir_light"
-                />-->
+                />
 
 
 

@@ -1,16 +1,34 @@
 package ir.ngra.automation.views.application;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.TextView;
+import android.widget.TimePicker;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
 
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
 import io.github.inflationx.viewpump.ViewPump;
+import ir.hamsaa.persiandatepicker.Listener;
+import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
+import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 import ir.mlcode.latifiarchitecturelibrary.application.APP_Latifi;
+import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
+import ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText;
 import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_SettingInfo;
+import ir.ngra.automation.models.MD_SpinnerItem;
 import ir.ngra.automation.models.MD_Token;
 import ir.ngra.automation.utility.RetrofitApiInterface;
+import ir.ngra.automation.views.customs.searchspinner.MLSpinnerDialog;
 
 public class AutomationApp extends APP_Latifi {
 
@@ -33,12 +51,11 @@ public class AutomationApp extends APP_Latifi {
         super.onCreate();
         this.context = getApplicationContext();
         setContext(context);
-        setHost(Host);
+
         configurationRetrofit();
         //configurationCalligraphy();
     }
     //______________________________________________________________________________________________ onCreate
-
 
 
     //______________________________________________________________________________________________ configurationCalligraphy
@@ -55,14 +72,15 @@ public class AutomationApp extends APP_Latifi {
     //______________________________________________________________________________________________ configurationCalligraphy
 
 
-
     //______________________________________________________________________________________________ configurationRetrofit
     private void configurationRetrofit() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        setHost(Host,gson);
         retrofitApiInterface = getRetrofitComponent().getRetrofit().create(RetrofitApiInterface.class);
     }
     //______________________________________________________________________________________________ configurationRetrofit
-
-
 
 
     //______________________________________________________________________________________________ getAutomationApp
@@ -72,14 +90,11 @@ public class AutomationApp extends APP_Latifi {
     //______________________________________________________________________________________________ getAutomationApp
 
 
-
     //______________________________________________________________________________________________ getRetrofitApiInterface
     public RetrofitApiInterface getRetrofitApiInterface() {
         return retrofitApiInterface;
     }
     //______________________________________________________________________________________________ getRetrofitApiInterface
-
-
 
 
     //______________________________________________________________________________________________ saveToken
@@ -104,8 +119,6 @@ public class AutomationApp extends APP_Latifi {
     //______________________________________________________________________________________________ saveToken
 
 
-
-
     //______________________________________________________________________________________________ saveProfile
     public boolean saveProfile(
             Context context,
@@ -120,8 +133,6 @@ public class AutomationApp extends APP_Latifi {
         return true;
     }
     //______________________________________________________________________________________________ saveProfile
-
-
 
 
     //______________________________________________________________________________________________ logOut
@@ -142,7 +153,6 @@ public class AutomationApp extends APP_Latifi {
     //______________________________________________________________________________________________ logOut
 
 
-
     //______________________________________________________________________________________________ getUserName
     public String getUserName() {
         SharedPreferences share = context.getSharedPreferences(context.getString(R.string.ML_SharePreferences), 0);
@@ -158,5 +168,96 @@ public class AutomationApp extends APP_Latifi {
         }
     }
     //______________________________________________________________________________________________ getUserName
+
+
+    //______________________________________________________________________________________________ chooseDate
+    public void chooseDate(Activity activity, ML_EditText ml_editText, String type) {
+
+        PersianDatePickerDialog pickerDialog = new PersianDatePickerDialog(activity);
+        pickerDialog.setListener(new Listener() {
+            @Override
+            public void onDateSelected(PersianCalendar persianCalendar) {
+                StringBuilder sb = new StringBuilder();
+                sb.append(persianCalendar.getPersianYear());
+                sb.append("/");
+                sb.append(String.format("%02d", persianCalendar.getPersianMonth()));
+                sb.append("/");
+                sb.append(String.format("%02d", persianCalendar.getPersianDay()));
+                String text = type + System.getProperty("line.separator") + sb.toString();
+                ml_editText.setText(text);
+                ml_editText.removeError();
+            }
+
+            @Override
+            public void onDismissed() {
+
+            }
+        });
+        pickerDialog.show();
+    }
+    //______________________________________________________________________________________________ chooseDate
+
+
+
+    //______________________________________________________________________________________________ chooseTime
+    public void chooseTime(Activity activity, ML_EditText ml_editText, String title, String type) {
+        Dialog dialog = new Dialog(activity);
+        dialog.setCancelable(false);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_time_picker);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        Window window = dialog.getWindow();
+        lp.copyFrom(window.getAttributes());
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        window.setAttributes(lp);
+
+        TimePicker timePicker = dialog.findViewById(R.id.timePicker);
+
+        TextView textViewTitle = dialog.findViewById(R.id.textViewTitle);
+        textViewTitle.setText(title);
+
+        ML_Button ml_ButtonCancel = dialog.findViewById(R.id.ml_ButtonCancel);
+
+        ml_ButtonCancel.setOnClickListener(v -> dialog.dismiss());
+
+        ML_Button ml_ButtonChoose = dialog.findViewById(R.id.ml_ButtonChoose);
+
+        ml_ButtonChoose.setOnClickListener(v -> {
+            StringBuilder sb = new StringBuilder();
+            sb.append(String.format("%02d", timePicker.getCurrentHour()));
+            sb.append(":");
+            sb.append(String.format("%02d", timePicker.getCurrentMinute()));
+            String text = type + System.getProperty("line.separator") + sb.toString();
+            ml_editText.setText(text);
+            ml_editText.removeError();
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+    //______________________________________________________________________________________________ chooseTime
+
+
+
+    //______________________________________________________________________________________________ showSpinner
+    public void showSpinner(Activity activity, ML_EditText ml_editText, ArrayList<MD_SpinnerItem> items, String titleSearch, String type) {
+        MLSpinnerDialog spinner = new MLSpinnerDialog(
+                activity,
+                items,
+                titleSearch,
+                R.style.DialogAnimations_SmileWindow,
+                getResources().getString(R.string.Ignore));
+
+        spinner.setCancellable(true); // for cancellable
+        spinner.setShowKeyboard(false);// for open keyboard by default
+        spinner.bindOnSpinnerListener((item, position) -> {
+            String text = type + System.getProperty("line.separator") + item;
+            ml_editText.setAdditionalValue(position);
+            ml_editText.setText(text);
+            ml_editText.removeError();
+        });
+        spinner.showSpinnerDialog();
+    }
+    //______________________________________________________________________________________________ showSpinner
 
 }

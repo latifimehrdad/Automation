@@ -1,21 +1,19 @@
 package ir.ngra.automation.viewmodels;
 
 import android.app.Activity;
+import android.os.Handler;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
-import ir.ngra.automation.models.MD_SpinnerItem;
-
+import ir.ngra.automation.models.MD_WorkVacation;
+import ir.ngra.automation.utility.ObservableActions;
 
 public class VM_WorkVacation extends VM_Latifi {
 
 
-    private ArrayList<MD_SpinnerItem> workVacationTypeList;
-
-    private ArrayList<MD_SpinnerItem> substituteList;
-
+    private List<MD_WorkVacation> md_workVacationList;
 
     //______________________________________________________________________________________________ VM_WorkVacation
     public VM_WorkVacation(Activity context) {
@@ -24,42 +22,31 @@ public class VM_WorkVacation extends VM_Latifi {
     //______________________________________________________________________________________________ VM_WorkVacation
 
 
-    //______________________________________________________________________________________________ getWorkVacationType
-    public void getWorkVacationType() {
-        workVacationTypeList = new ArrayList<>();
-        for (int i = 0; i < 10; i++){
-            workVacationTypeList.add(new MD_SpinnerItem(i, "item " + i, ""));
-        }
-        substituteList = new ArrayList<>();
-        for (int i = 0; i < 10; i++){
-            substituteList.add(new MD_SpinnerItem(i, "item " + i, ""));
-        }
+
+    //______________________________________________________________________________________________ getWorkVacation
+    public void getWorkVacation() {
+
+        md_workVacationList = new ArrayList<>();
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            for (int i = 0; i < 5; i++)
+                md_workVacationList.add(new MD_WorkVacation(i));
+
+            sendActionToObservable(ObservableActions.getWorkVacationList);
+        }, 5000);
+
     }
-    //______________________________________________________________________________________________ getWorkVacationType
+    //______________________________________________________________________________________________ getWorkVacation
 
 
 
-    //______________________________________________________________________________________________ getWorkVacationTypeList
-    public ArrayList<MD_SpinnerItem> getWorkVacationTypeList() {
-        if (workVacationTypeList == null)
-            workVacationTypeList = new ArrayList<>();
-
-        return workVacationTypeList;
+    //______________________________________________________________________________________________ getMd_workVacationList
+    public List<MD_WorkVacation> getMd_workVacationList() {
+        if (md_workVacationList == null)
+            md_workVacationList = new ArrayList<>();
+        return md_workVacationList;
     }
-    //______________________________________________________________________________________________ getWorkVacationTypeList
-
-
-
-
-    //______________________________________________________________________________________________ getSubstituteList
-    public ArrayList<MD_SpinnerItem> getSubstituteList() {
-        if (substituteList == null)
-            substituteList = new ArrayList<>();
-
-        return substituteList;
-    }
-    //______________________________________________________________________________________________ getSubstituteList
-
+    //______________________________________________________________________________________________ getMd_workVacationList
 
 
 }

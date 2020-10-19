@@ -24,6 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import ir.mlcode.latifiarchitecturelibrary.activity.Activity_Latifi;
+import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
 import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.ActivityMainBinding;
@@ -48,6 +49,9 @@ public class MainActivity extends Activity_Latifi {
 
     @BindView(R.id.textViewUserName)
     TextView textViewUserName;
+
+    @BindView(R.id.ml_ButtonEditProfile)
+    ML_Button ml_ButtonEditProfile;
 
     ConstraintLayout constraintLayout;
 
@@ -84,6 +88,11 @@ public class MainActivity extends Activity_Latifi {
     //______________________________________________________________________________________________ setListener
     @SuppressLint("RtlHardcoded")
     private void setListener() {
+
+        ml_ButtonEditProfile.setOnClickListener(v ->{
+
+        });
+
 
         imageViewMenu.setOnClickListener(v -> {
             drawer_layout.openDrawer(Gravity.RIGHT , true);

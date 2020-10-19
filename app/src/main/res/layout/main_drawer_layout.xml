@@ -19,7 +19,8 @@
         />
 
 
-    <ir.ngra.automation.views.customs.ML_Button
+    <ir.mlcode.latifiarchitecturelibrary.customs.ML_Button
+        android:id="@+id/ml_ButtonEditProfile"
         android:layout_width="@dimen/_80sdp"
         android:layout_height="wrap_content"
         android:padding="@dimen/_5sdp"
