@@ -29,8 +29,8 @@ public class VM_WorkVacation extends VM_Latifi {
         md_workVacationList = new ArrayList<>();
         Handler handler = new Handler();
         handler.postDelayed(() -> {
-            for (int i = 0; i < 5; i++)
-                md_workVacationList.add(new MD_WorkVacation(i));
+/*            for (int i = 0; i < 5; i++)
+                md_workVacationList.add(new MD_WorkVacation(i))*/;
 
             sendActionToObservable(ObservableActions.getWorkVacationList);
         }, 5000);

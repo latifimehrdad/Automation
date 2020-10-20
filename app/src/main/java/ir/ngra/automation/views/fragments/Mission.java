@@ -10,12 +10,11 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
 import butterknife.ButterKnife;
-import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.MissionBinding;
 import ir.ngra.automation.viewmodels.VM_Mission;
 
-public class Mission extends FR_Latifi implements FR_Latifi.fragmentActions {
+public class Mission extends Primary implements Primary.fragmentActions {
 
 
     private VM_Mission vm_mission;

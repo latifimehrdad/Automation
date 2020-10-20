@@ -21,7 +21,7 @@ public class VM_Main extends VM_Latifi {
     //______________________________________________________________________________________________ calSunDate
     private void calSunDate() {
         Date date = new Date();
-        sunDate = getUtility().gregorianToSun(date).getFullStringSun();
+        sunDate = getUtility().gregorianToSolarDate(date).getFullStringSolarDate();
         notifyChange();
     }
     //______________________________________________________________________________________________ calSunDate

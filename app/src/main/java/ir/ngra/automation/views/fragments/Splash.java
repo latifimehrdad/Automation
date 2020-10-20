@@ -12,14 +12,13 @@ import androidx.databinding.DataBindingUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
-import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.SplashBinding;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Splash;
 import pl.droidsonroids.gif.GifImageView;
 
-public class Splash extends FR_Latifi implements FR_Latifi.fragmentActions {
+public class Splash extends Primary implements Primary.fragmentActions {
 
 
     private VM_Splash vm_splash;
@@ -80,7 +79,7 @@ public class Splash extends FR_Latifi implements FR_Latifi.fragmentActions {
 
             Bundle bundle = new Bundle();
             bundle.putString(getResources().getString(R.string.ML_ApplicationId), "ir.ngra.automation");
-            bundle.putString(getResources().getString(R.string.ML_AppName), getContext().getResources().getString(R.string.app_name));
+            bundle.putString(getResources().getString(R.string.ML_AppName), getResources().getString(R.string.app_name));
             bundle.putString(getResources().getString(R.string.ML_UpdateUrl), vm_splash.getMd_hi().getApplicationUrl());
             bundle.putString(getResources().getString(R.string.ML_UpdateFileName), vm_splash.getMd_hi().getFileName());
             getNavController().navigate(R.id.action_splash_to_update, bundle);

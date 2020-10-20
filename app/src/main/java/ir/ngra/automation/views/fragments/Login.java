@@ -14,15 +14,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText;
-import ir.mlcode.latifiarchitecturelibrary.customs.ML_Toast;
-import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.LoginBinding;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Login;
 
 
-public class Login extends FR_Latifi implements FR_Latifi.fragmentActions{
+public class Login extends Primary implements Primary.fragmentActions{
 
 
     private VM_Login vm_login;

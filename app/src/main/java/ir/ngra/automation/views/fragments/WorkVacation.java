@@ -1,40 +1,33 @@
 package ir.ngra.automation.views.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ethanhua.skeleton.RecyclerViewSkeletonScreen;
-import com.ethanhua.skeleton.Skeleton;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
-import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.WorkVacationBinding;
-import ir.ngra.automation.models.MD_WorkVacation;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_WorkVacation;
 import ir.ngra.automation.views.adapter.AP_WorkVacation;
 
-public class WorkVacation extends FR_Latifi implements FR_Latifi.fragmentActions {
+public class WorkVacation extends Primary implements Primary.fragmentActions {
 
 
     private VM_WorkVacation vm_workVacation;
-    private RecyclerViewSkeletonScreen skeletonScreen;
-    private AP_WorkVacation ap_workVacation;
 
     @BindView(R.id.ml_ButtonNew)
     ML_Button ml_ButtonNew;
@@ -57,7 +50,7 @@ public class WorkVacation extends FR_Latifi implements FR_Latifi.fragmentActions
             binding.setWorkVacation(vm_workVacation);
             setView(binding.getRoot());
             ButterKnife.bind(this, getView());
-            setOnClicks();
+            setOnClicksAndListener();
         }
         return getView();
     }
@@ -80,7 +73,7 @@ public class WorkVacation extends FR_Latifi implements FR_Latifi.fragmentActions
     public void getActionFromObservable(Byte action) {
 
         if (action.equals(ObservableActions.getWorkVacationList)) {
-            setAdapter();
+            //setAdapter();
         }
     }
     //______________________________________________________________________________________________ getActionFromObservable
@@ -107,18 +100,7 @@ public class WorkVacation extends FR_Latifi implements FR_Latifi.fragmentActions
     private void getWorkVacationList() {
 
         textViewNoRequest.setVisibility(View.GONE);
-        ap_workVacation = new AP_WorkVacation(vm_workVacation.getMd_workVacationList());
-        recyclerViewWorkVacation.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        skeletonScreen = Skeleton.bind(recyclerViewWorkVacation)
-                .adapter(ap_workVacation)
-                .load(R.layout.adapter_work_vacation)
-                .shimmer(true)      // whether show shimmer animation.                      default is true
-                .count(10)          // the recycler view item count.                        default is 10
-                .color(R.color.ML_recyclerLoading)       // the shimmer color.                                   default is #a2878787
-                .angle(20)          // the shimmer angle.                                   default is 20;
-                .duration(1200)     // the shimmer animation duration.                      default is 1000;
-                .frozen(false)
-                .show();
+        setRecyclerLoading(recyclerViewWorkVacation, R.layout.adapter_work_vacation_loading);
         vm_workVacation.getWorkVacation();
     }
     //______________________________________________________________________________________________ getWorkVacationList
@@ -126,9 +108,31 @@ public class WorkVacation extends FR_Latifi implements FR_Latifi.fragmentActions
 
 
     //______________________________________________________________________________________________ setOnClicks
-    private void setOnClicks() {
+    private void setOnClicksAndListener() {
 
         ml_ButtonNew.setOnClickListener(v -> getNavController().navigate(R.id.action_workVacation_to_newWorkVacation));
+
+        recyclerViewWorkVacation.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrolled(@NotNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy  >= 2) {
+                    if (ml_ButtonNew.getVisibility() == View.VISIBLE) {
+                        ml_ButtonNew.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.slide_out_bottom));
+                        ml_ButtonNew.setVisibility(View.GONE);
+                    }
+                    // Scrolling up
+                } else if (dy <= -2){
+                    if (ml_ButtonNew.getVisibility() == View.GONE) {
+                        ml_ButtonNew.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.slide_in_bottom));
+                        ml_ButtonNew.setVisibility(View.VISIBLE);
+                    }
+                    // Scrolling down
+                }
+            }
+
+        });
 
     }
     //______________________________________________________________________________________________ setOnClicks
@@ -138,9 +142,9 @@ public class WorkVacation extends FR_Latifi implements FR_Latifi.fragmentActions
     //______________________________________________________________________________________________ setAdapter
     private void setAdapter() {
 
-        skeletonScreen.hide();
+        stopLoadingRecycler();
         if (vm_workVacation.getMd_workVacationList().size() > 0) {
-            ap_workVacation = new AP_WorkVacation(vm_workVacation.getMd_workVacationList());
+            AP_WorkVacation ap_workVacation = new AP_WorkVacation(vm_workVacation.getMd_workVacationList());
             recyclerViewWorkVacation.setAdapter(ap_workVacation);
             textViewNoRequest.setVisibility(View.GONE);
         } else {

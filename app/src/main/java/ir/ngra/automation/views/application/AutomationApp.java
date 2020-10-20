@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
@@ -23,6 +24,7 @@ import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 import ir.mlcode.latifiarchitecturelibrary.application.APP_Latifi;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText;
+import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_SettingInfo;
 import ir.ngra.automation.models.MD_SpinnerItem;
@@ -183,7 +185,8 @@ public class AutomationApp extends APP_Latifi {
                 sb.append(String.format("%02d", persianCalendar.getPersianMonth()));
                 sb.append("/");
                 sb.append(String.format("%02d", persianCalendar.getPersianDay()));
-                String text = type + System.getProperty("line.separator") + sb.toString();
+                ml_editText.setAdditionalValue(sb.toString());
+                String text = type + System.getProperty("line.separator") + getUtilityComponent().getApplicationUtility().getFullSolarDateFromSolarDate(sb.toString());
                 ml_editText.setText(text);
                 ml_editText.removeError();
             }

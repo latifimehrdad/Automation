@@ -1,5 +1,6 @@
 package ir.ngra.automation.views.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -13,13 +14,12 @@ import androidx.databinding.DataBindingUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.HomeBinding;
 
 import ir.ngra.automation.viewmodels.VM_Home;
 
-public class Home extends FR_Latifi implements FR_Latifi.fragmentActions {
+public class Home extends Primary implements Primary.fragmentActions {
 
     private VM_Home vm_home;
     private boolean doubleExitApplication = false;
@@ -80,6 +80,7 @@ public class Home extends FR_Latifi implements FR_Latifi.fragmentActions {
 
 
     //______________________________________________________________________________________________ OnBackPress
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void OnBackPress() {
 

@@ -14,13 +14,12 @@ import butterknife.ButterKnife;
 
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText;
-import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.NewWorkVacationBinding;
 import ir.ngra.automation.viewmodels.VM_NewWorkVacation;
 import ir.ngra.automation.views.application.AutomationApp;
 
-public class NewWorkVacation extends FR_Latifi implements FR_Latifi.fragmentActions {
+public class NewWorkVacation extends Primary implements Primary.fragmentActions {
 
 
     private VM_NewWorkVacation vm_New_workVacation;
@@ -102,6 +101,7 @@ public class NewWorkVacation extends FR_Latifi implements FR_Latifi.fragmentActi
 
     //______________________________________________________________________________________________ setOnClicks
     private void setOnClicks() {
+
 
         ml_EditTextWorkVacation.setOnClickListener(v ->
                 AutomationApp.getAutomationApp(getContext()).showSpinner(

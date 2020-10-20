@@ -20,19 +20,17 @@ import androidx.databinding.DataBindingUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
-import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.VerifyBinding;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Verify;
 
-public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
+public class verify extends Primary implements Primary.fragmentActions {
 
 
     private VM_Verify vm_verify;
 
     private Handler timer;
-    private Runnable runnable;
     private Handler timerLoading;
     private Runnable runnableLoading;
     private int index = 1;
@@ -82,7 +80,7 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
             ButterKnife.bind(this, getView());
             setTextChangeListener();
             reTryGetSMS();
-            startTimer(120);
+            startTimer();
             setClick();
         }
         return getView();
@@ -95,6 +93,7 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
     public void onStart() {
         super.onStart();
         setPublishSubjectFromObservable(verify.this, vm_verify);
+        assert getArguments() != null;
         vm_verify.setPhoneNumber(getArguments().getString(getResources().getString(R.string.ML_PhoneNumber), ""));
     }
     //______________________________________________________________________________________________ onCreateView
@@ -108,12 +107,12 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
         stopLoading();
 
         if (action.equals(ObservableActions.gotoVerify)) {
-            startTimer(120);
+            startTimer();
             return;
         }
 
         if (action.equals(ObservableActions.gotoHome)) {
-            String verified = getContext().getResources().getString(R.string.ML_Verified);
+            String verified = getResources().getString(R.string.ML_Verified);
             setVariableToNavigation(verified, verified);
             removeCallBackAndBack();
         }
@@ -250,7 +249,9 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
 
 
     //______________________________________________________________________________________________ startTimer
-    private void startTimer(int Elapse) {
+    private void startTimer() {
+
+        int Elapse = 120;
 
         textViewElapseTime.setVisibility(View.VISIBLE);
         textViewElapseMessage.setVisibility(View.VISIBLE);
@@ -260,7 +261,7 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
         progressBarElapse.setMax(Elapse * 2);
         progressBarElapse.setProgress(Elapse);
         timer = new Handler();
-        runnable = new Runnable() {
+        Runnable runnable = new Runnable() {
             @SuppressLint({"SetTextI18n", "DefaultLocale"})
             @Override
             public void run() {
@@ -308,45 +309,46 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
 
 
     //______________________________________________________________________________________________ editTextLoading
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void editTextLoading(String code) {
         index = 1;
-        VerifyCode1.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+        VerifyCode1.setBackground(getResources().getDrawable(R.drawable.dw_edit_loading));
         timerLoading = new Handler();
         runnableLoading = () -> {
             switch (index) {
                 case 1:
-                    VerifyCode1.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
-                    VerifyCode2.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    VerifyCode1.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode2.setBackground(getResources().getDrawable(R.drawable.dw_edit_loading));
                     index = 2;
                     break;
 
                 case 2:
-                    VerifyCode2.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
-                    VerifyCode3.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    VerifyCode2.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode3.setBackground(getResources().getDrawable(R.drawable.dw_edit_loading));
                     index = 3;
                     break;
 
                 case 3:
-                    VerifyCode3.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
-                    VerifyCode4.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    VerifyCode3.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode4.setBackground(getResources().getDrawable(R.drawable.dw_edit_loading));
                     index = 4;
                     break;
 
                 case 4:
-                    VerifyCode4.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
-                    VerifyCode5.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    VerifyCode4.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode5.setBackground(getResources().getDrawable(R.drawable.dw_edit_loading));
                     index = 5;
                     break;
 
                 case 5:
-                    VerifyCode5.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
-                    VerifyCode6.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    VerifyCode5.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode6.setBackground(getResources().getDrawable(R.drawable.dw_edit_loading));
                     index = 6;
                     break;
 
                 case 6:
-                    VerifyCode6.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
-                    VerifyCode1.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_loading));
+                    VerifyCode6.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
+                    VerifyCode1.setBackground(getResources().getDrawable(R.drawable.dw_edit_loading));
                     index = 1;
                     break;
             }
@@ -361,6 +363,7 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
 
 
     //______________________________________________________________________________________________ stopLoading
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void stopLoading() {
 
         VerifyCode1.requestFocus();
@@ -372,12 +375,12 @@ public class verify extends FR_Latifi implements FR_Latifi.fragmentActions {
         VerifyCode5.getText().clear();
         VerifyCode6.getText().clear();
 
-        VerifyCode1.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
-        VerifyCode2.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
-        VerifyCode3.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
-        VerifyCode4.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
-        VerifyCode5.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
-        VerifyCode6.setBackground(getContext().getResources().getDrawable(R.drawable.dw_edit_normal));
+        VerifyCode1.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
+        VerifyCode2.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
+        VerifyCode3.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
+        VerifyCode4.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
+        VerifyCode5.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
+        VerifyCode6.setBackground(getResources().getDrawable(R.drawable.dw_edit_normal));
         if (timerLoading != null && runnableLoading != null)
             timerLoading.removeCallbacks(runnableLoading);
     }
