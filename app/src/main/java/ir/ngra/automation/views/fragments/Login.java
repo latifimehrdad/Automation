@@ -18,6 +18,7 @@ import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.LoginBinding;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Login;
+import ir.ngra.automation.views.activity.MainActivity;
 
 
 public class Login extends Primary implements Primary.fragmentActions{
@@ -76,7 +77,7 @@ public class Login extends Primary implements Primary.fragmentActions{
         if (action.equals(ObservableActions.gotoVerify)) {
             Bundle bundle = new Bundle();
             bundle.putString(getResources().getString(R.string.ML_PhoneNumber), vm_login.getPhoneNumber());
-            getNavController().navigate(R.id.action_login_to_verify, bundle);
+            gotoFragment(R.id.action_login_to_verify, bundle);
         }
 
     }

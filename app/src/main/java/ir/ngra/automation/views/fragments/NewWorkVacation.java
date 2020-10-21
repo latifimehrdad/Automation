@@ -17,6 +17,7 @@ import ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.NewWorkVacationBinding;
 import ir.ngra.automation.viewmodels.VM_NewWorkVacation;
+import ir.ngra.automation.views.activity.MainActivity;
 import ir.ngra.automation.views.application.AutomationApp;
 
 public class NewWorkVacation extends Primary implements Primary.fragmentActions {
@@ -69,6 +70,7 @@ public class NewWorkVacation extends Primary implements Primary.fragmentActions 
     public void onStart() {
         super.onStart();
         setPublishSubjectFromObservable(NewWorkVacation.this, vm_New_workVacation);
+        MainActivity.showTitle(getContext(), getResources().getString(R.string.newWorkVacation), getResources().getDrawable(R.drawable.ic_camping));
         vm_New_workVacation.getWorkVacationType();
     }
     //______________________________________________________________________________________________ onCreateView

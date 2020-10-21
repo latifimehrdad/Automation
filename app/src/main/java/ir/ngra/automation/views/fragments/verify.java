@@ -24,6 +24,7 @@ import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.VerifyBinding;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Verify;
+import ir.ngra.automation.views.activity.MainActivity;
 
 public class verify extends Primary implements Primary.fragmentActions {
 

@@ -6,7 +6,9 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,6 +35,9 @@ public class Home extends Primary implements Primary.fragmentActions {
     @BindView(R.id.linearLayoutMission)
     LinearLayout linearLayoutMission;
 
+    @BindView(R.id.textViewMessageCount)
+    TextView textViewMessageCount;
+
 
     //______________________________________________________________________________________________ onCreateView
     @Nullable
@@ -46,7 +51,6 @@ public class Home extends Primary implements Primary.fragmentActions {
             setView(binding.getRoot());
             ButterKnife.bind(this, getView());
             setOnClicks();
-
         }
         return getView();
     }
@@ -58,6 +62,7 @@ public class Home extends Primary implements Primary.fragmentActions {
     public void onStart() {
         super.onStart();
         setPublishSubjectFromObservable(Home.this, vm_home);
+        setMessageCount(100);
     }
     //______________________________________________________________________________________________ onCreateView
 
@@ -108,13 +113,31 @@ public class Home extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ setOnClicks
     private void setOnClicks() {
 
-        linearLayoutWorkVacation.setOnClickListener(v -> getNavController().navigate(R.id.action_home_to_workVacation));
+        linearLayoutWorkVacation.setOnClickListener(v -> gotoFragment(R.id.action_home_to_workVacation, null));
 
 
-        linearLayoutMission.setOnClickListener(v -> getNavController().navigate(R.id.action_home_to_mission));
+        linearLayoutMission.setOnClickListener(v -> gotoFragment(R.id.action_home_to_mission, null));
 
     }
     //______________________________________________________________________________________________ setOnClicks
+
+
+    //______________________________________________________________________________________________ setMessageCount
+    private void setMessageCount(int count) {
+        if (count == 0) {
+            textViewMessageCount.setText(String.valueOf(count));
+            textViewMessageCount.setVisibility(View.GONE);
+        } else {
+            if (count > 99)
+                textViewMessageCount.setText("+99");
+            else
+                textViewMessageCount.setText(String.valueOf(count));
+
+            textViewMessageCount.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.bounce));
+            textViewMessageCount.setVisibility(View.VISIBLE);
+        }
+    }
+    //______________________________________________________________________________________________ setMessageCount
 
 
 }

@@ -22,6 +22,7 @@ import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.WorkVacationBinding;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_WorkVacation;
+import ir.ngra.automation.views.activity.MainActivity;
 import ir.ngra.automation.views.adapter.AP_WorkVacation;
 
 public class WorkVacation extends Primary implements Primary.fragmentActions {
@@ -51,6 +52,7 @@ public class WorkVacation extends Primary implements Primary.fragmentActions {
             setView(binding.getRoot());
             ButterKnife.bind(this, getView());
             setOnClicksAndListener();
+
         }
         return getView();
     }
@@ -63,7 +65,7 @@ public class WorkVacation extends Primary implements Primary.fragmentActions {
         super.onStart();
         setPublishSubjectFromObservable(WorkVacation.this, vm_workVacation);
         getWorkVacationList();
-
+        MainActivity.showTitle(getContext(), getResources().getString(R.string.workVacations), getResources().getDrawable(R.drawable.ic_camping));
     }
     //______________________________________________________________________________________________ onCreateView
 
@@ -110,7 +112,7 @@ public class WorkVacation extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ setOnClicks
     private void setOnClicksAndListener() {
 
-        ml_ButtonNew.setOnClickListener(v -> getNavController().navigate(R.id.action_workVacation_to_newWorkVacation));
+        ml_ButtonNew.setOnClickListener(v -> gotoFragment(R.id.action_workVacation_to_newWorkVacation, null));
 
         recyclerViewWorkVacation.addOnScrollListener(new RecyclerView.OnScrollListener() {
 

@@ -1,5 +1,7 @@
 package ir.ngra.automation.views.fragments;
 
+import android.os.Bundle;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,12 +11,38 @@ import ir.ngra.automation.R;
 import ir.ngra.automation.utility.loadings.RecyclerViewSkeletonScreen;
 
 import ir.ngra.automation.utility.loadings.Skeleton;
+import ir.ngra.automation.views.activity.MainActivity;
 import ir.ngra.automation.views.adapter.AP_Loading;
 
 public class Primary extends FR_Latifi {
 
     RecyclerViewSkeletonScreen skeletonScreen;
     AP_Loading ap_loading;
+
+
+
+    //______________________________________________________________________________________________ onCreateView
+    @Override
+    public void onStart() {
+        super.onStart();
+        MainActivity.hideTitle();
+    }
+    //______________________________________________________________________________________________ onCreateView
+
+
+
+    //______________________________________________________________________________________________ gotoFragment
+    public void gotoFragment(int action, Bundle bundle) {
+
+        MainActivity.hideTitle();
+        if (bundle == null)
+            getNavController().navigate(action);
+        else
+            getNavController().navigate(action, bundle);
+    }
+    //______________________________________________________________________________________________ gotoFragment
+
+
 
     //______________________________________________________________________________________________ setRecyclerLoading
     public void setRecyclerLoading(RecyclerView recyclerLoading, int layout) {
@@ -25,7 +53,7 @@ public class Primary extends FR_Latifi {
                 .adapter(ap_loading)
                 .load(layout)
                 .shimmer(true)      // whether show shimmer animation.                      default is true
-                .count(3)          // the recycler view item count.                        default is 10
+                .count(4)          // the recycler view item count.                        default is 10
                 .color(R.color.ML_recyclerLoading)       // the shimmer color.                                   default is #a2878787
                 .angle(20)          // the shimmer angle.                                   default is 20;
                 .duration(1200)     // the shimmer animation duration.                      default is 1000;

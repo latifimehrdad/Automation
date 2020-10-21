@@ -16,6 +16,7 @@ import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.SplashBinding;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Splash;
+import ir.ngra.automation.views.activity.MainActivity;
 import pl.droidsonroids.gif.GifImageView;
 
 public class Splash extends Primary implements Primary.fragmentActions {
@@ -66,12 +67,12 @@ public class Splash extends Primary implements Primary.fragmentActions {
     public void getActionFromObservable(Byte action) {
 
         if (action.equals(ObservableActions.goToLogin)) {
-            getNavController().navigate(R.id.action_splash_to_login);
+            gotoFragment(R.id.action_splash_to_login, null);
             return;
         }
 
         if (action.equals(ObservableActions.gotoHome)) {
-            getNavController().navigate(R.id.action_splash_to_home);
+            gotoFragment(R.id.action_splash_to_home, null);
             return;
         }
 
@@ -82,7 +83,7 @@ public class Splash extends Primary implements Primary.fragmentActions {
             bundle.putString(getResources().getString(R.string.ML_AppName), getResources().getString(R.string.app_name));
             bundle.putString(getResources().getString(R.string.ML_UpdateUrl), vm_splash.getMd_hi().getApplicationUrl());
             bundle.putString(getResources().getString(R.string.ML_UpdateFileName), vm_splash.getMd_hi().getFileName());
-            getNavController().navigate(R.id.action_splash_to_update, bundle);
+            gotoFragment(R.id.action_splash_to_home, bundle);
 
         }
 

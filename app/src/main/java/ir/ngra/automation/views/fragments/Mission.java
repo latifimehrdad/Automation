@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.MissionBinding;
 import ir.ngra.automation.viewmodels.VM_Mission;
+import ir.ngra.automation.views.activity.MainActivity;
 
 public class Mission extends Primary implements Primary.fragmentActions {
 
@@ -44,6 +45,7 @@ public class Mission extends Primary implements Primary.fragmentActions {
     public void onStart() {
         super.onStart();
         setPublishSubjectFromObservable(Mission.this, vm_mission);
+        MainActivity.showTitle(getContext(), getResources().getString(R.string.missions), getResources().getDrawable(R.drawable.ic_businessman));
     }
     //______________________________________________________________________________________________ onCreateView
 

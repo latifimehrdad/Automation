@@ -11,8 +11,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +27,7 @@ import butterknife.ButterKnife;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import ir.mlcode.latifiarchitecturelibrary.activity.Activity_Latifi;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
+import ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText;
 import ir.mlcode.latifiarchitecturelibrary.fragments.FR_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.ActivityMainBinding;
@@ -37,6 +40,7 @@ public class MainActivity extends Activity_Latifi {
     private VM_Main vm_main;
     private NavController navController;
     private boolean preLogin = false;
+    private static ML_EditText ml_EditTextTitle;
 
     @BindView(R.id.imageViewMenu)
     ImageView imageViewMenu;
@@ -64,6 +68,7 @@ public class MainActivity extends Activity_Latifi {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setMain(vm_main);
         constraintLayout = findViewById(R.id.constraintLayout);
+        ml_EditTextTitle = findViewById(R.id.ml_EditTextTitle);
         FR_Latifi.constraintLayout = constraintLayout;
         ButterKnife.bind(this);
         setListener();
@@ -89,13 +94,13 @@ public class MainActivity extends Activity_Latifi {
     @SuppressLint("RtlHardcoded")
     private void setListener() {
 
-        ml_ButtonEditProfile.setOnClickListener(v ->{
+        ml_ButtonEditProfile.setOnClickListener(v -> {
 
         });
 
 
         imageViewMenu.setOnClickListener(v -> {
-            drawer_layout.openDrawer(Gravity.RIGHT , true);
+            drawer_layout.openDrawer(Gravity.RIGHT, true);
         });
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -140,6 +145,34 @@ public class MainActivity extends Activity_Latifi {
         drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
     //______________________________________________________________________________________________ lockDrawer
+
+
+
+    //______________________________________________________________________________________________ showTitle
+    public static void showTitle(Context context, String title, Drawable icon) {
+
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            ml_EditTextTitle.setAnimation(null);
+            ml_EditTextTitle.setVisibility(View.GONE);
+            ml_EditTextTitle.setText(title);
+            ml_EditTextTitle.setImageIcon(icon);
+            ml_EditTextTitle.setAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_in_left));
+            ml_EditTextTitle.setVisibility(View.VISIBLE);
+        }, 700);
+    }
+    //______________________________________________________________________________________________ showTitle
+
+
+
+    //______________________________________________________________________________________________ hideTitle
+    public static void hideTitle() {
+        ml_EditTextTitle.setAnimation(null);
+        ml_EditTextTitle.setVisibility(View.GONE);
+    }
+    //______________________________________________________________________________________________ hideTitle
+
+
 
 
 
