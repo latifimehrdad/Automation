@@ -20,6 +20,7 @@ import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.HomeBinding;
 
 import ir.ngra.automation.viewmodels.VM_Home;
+import ir.ngra.automation.views.activity.MainActivity;
 
 public class Home extends Primary implements Primary.fragmentActions {
 
@@ -62,6 +63,7 @@ public class Home extends Primary implements Primary.fragmentActions {
     public void onStart() {
         super.onStart();
         setPublishSubjectFromObservable(Home.this, vm_home);
+        MainActivity.showTitle(getContext(), getResources().getString(R.string.Home), getResources().getDrawable(R.drawable.ic_quarantine));
         setMessageCount(100);
     }
     //______________________________________________________________________________________________ onCreateView

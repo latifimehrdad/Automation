@@ -33,6 +33,7 @@ public class VM_Splash extends VM_Latifi {
 
     //______________________________________________________________________________________________ callHI
     public void callHI() {
+        cancelRequest();
         Handler handler = new Handler();
         handler.postDelayed(() -> callHiService(), 3000);
     }

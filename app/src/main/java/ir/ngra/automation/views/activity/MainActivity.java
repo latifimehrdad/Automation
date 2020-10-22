@@ -151,15 +151,19 @@ public class MainActivity extends Activity_Latifi {
     //______________________________________________________________________________________________ showTitle
     public static void showTitle(Context context, String title, Drawable icon) {
 
-        Handler handler = new Handler();
+        ml_EditTextTitle.setText(title);
+        ml_EditTextTitle.setImageIcon(icon);
+        ml_EditTextTitle.setVisibility(View.VISIBLE);
+
+/*        Handler handler = new Handler();
         handler.postDelayed(() -> {
             ml_EditTextTitle.setAnimation(null);
             ml_EditTextTitle.setVisibility(View.GONE);
             ml_EditTextTitle.setText(title);
             ml_EditTextTitle.setImageIcon(icon);
-            ml_EditTextTitle.setAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_in_left));
+            ml_EditTextTitle.setAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_in_right));
             ml_EditTextTitle.setVisibility(View.VISIBLE);
-        }, 700);
+        }, 500); */
     }
     //______________________________________________________________________________________________ showTitle
 
