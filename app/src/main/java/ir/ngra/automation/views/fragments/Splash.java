@@ -83,7 +83,7 @@ public class Splash extends Primary implements Primary.fragmentActions {
             bundle.putString(getResources().getString(R.string.ML_AppName), getResources().getString(R.string.app_name));
             bundle.putString(getResources().getString(R.string.ML_UpdateUrl), vm_splash.getMd_hi().getApplicationUrl());
             bundle.putString(getResources().getString(R.string.ML_UpdateFileName), vm_splash.getMd_hi().getFileName());
-            gotoFragment(R.id.action_splash_to_home, bundle);
+            gotoFragment(R.id.action_splash_to_update, bundle);
 
         }
 

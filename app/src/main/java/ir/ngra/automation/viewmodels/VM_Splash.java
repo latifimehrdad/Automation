@@ -62,8 +62,9 @@ public class VM_Splash extends VM_Latifi {
                     md_hi = response.body().getResult();
                     setResponseMessage("");
                     checkUpdate();
-                } else
-                    sendActionToObservable(StaticValues.ML_ResponseError);
+                } else {
+                    refreshToken();
+                }
             }
 
             @Override

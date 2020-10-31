@@ -2,11 +2,13 @@ package ir.ngra.automation.views.adapter;
 
 
 import android.content.res.Resources;
+import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 
 import ir.mlcode.latifiarchitecturelibrary.utility.wave.LatifiWaveProgressView;
 import ir.ngra.automation.R;
+import ir.ngra.automation.models.MD_TodayEntrance;
 
 public class BindingAdapters {
 
@@ -38,6 +40,79 @@ public class BindingAdapters {
 
     }
     //______________________________________________________________________________________________ setLeaveWave
+
+
+
+
+    //______________________________________________________________________________________________ setTodayEntrance
+    @BindingAdapter(value = "setTodayEntrance")
+    public static void setTodayEntrance(TextView textView, MD_TodayEntrance md_todayEntrance) {
+
+        String tag = textView.getTag().toString();
+        String arrival = md_todayEntrance.getArrival();
+        String exit = md_todayEntrance.getExit();
+
+        switch (tag) {
+            case "arrival_h1" :
+                if (arrival == null || arrival.length() < 5)
+                    textView.setText("-");
+                else
+                    textView.setText(arrival.substring(0,1));
+                break;
+
+            case "arrival_h2" :
+                if (arrival == null || arrival.length() < 5)
+                    textView.setText("-");
+                else
+                    textView.setText(arrival.substring(1,2));
+                break;
+
+            case "arrival_m1" :
+                if (arrival == null || arrival.length() < 5)
+                    textView.setText("-");
+                else
+                    textView.setText(arrival.substring(3,4));
+                break;
+
+            case "arrival_m2" :
+                if (arrival == null || arrival.length() < 5)
+                    textView.setText("-");
+                else
+                    textView.setText(arrival.substring(4,5));
+                break;
+
+            case "exit_h1" :
+                if (exit == null || exit.length() < 5)
+                    textView.setText("-");
+                else
+                    textView.setText(exit.substring(0,1));
+                break;
+
+            case "exit_h2" :
+                if (exit == null || exit.length() < 5)
+                    textView.setText("-");
+                else
+                    textView.setText(exit.substring(1,2));
+                break;
+
+            case "exit_m1" :
+                if (exit == null || exit.length() < 5)
+                    textView.setText("-");
+                else
+                    textView.setText(exit.substring(3,4));
+                break;
+
+            case "exit_m2" :
+                if (exit == null || exit.length() < 5)
+                    textView.setText("-");
+                else
+                    textView.setText(exit.substring(4,5));
+                break;
+
+        }
+
+    }
+    //______________________________________________________________________________________________ setTodayEntrance
 
 
 

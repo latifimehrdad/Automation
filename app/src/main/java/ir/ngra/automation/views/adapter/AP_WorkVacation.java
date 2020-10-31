@@ -61,11 +61,7 @@ public class AP_WorkVacation extends RecyclerView.Adapter<AP_WorkVacation.custom
 
 
 
-
-
-
-
-
+    //______________________________________________________________________________________________ customHolder
     public class customHolder extends RecyclerView.ViewHolder {
 
         AdapterWorkVacationBinding binding;
@@ -82,5 +78,6 @@ public class AP_WorkVacation extends RecyclerView.Adapter<AP_WorkVacation.custom
             binding.executePendingBindings();
         }
     }
+    //______________________________________________________________________________________________ customHolder
 
 }

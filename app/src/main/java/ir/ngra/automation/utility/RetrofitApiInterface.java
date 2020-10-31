@@ -4,6 +4,7 @@ import ir.mlcode.latifiarchitecturelibrary.models.MD_ResponsePrimary;
 import ir.ngra.automation.models.MD_SettingInfo;
 import ir.ngra.automation.models.MD_Token;
 import ir.ngra.automation.models.MR_Hi;
+import ir.ngra.automation.models.MR_TodayEntrance;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -35,7 +36,7 @@ public interface RetrofitApiInterface {
             );
 
 
-    @GET(Version + "/citizen/settinginfo")
+    @GET(Version + "/account/settinginfo")
     Call<MD_SettingInfo> getSettingInfo
             (
                     @Header("Authorization") String Authorization
@@ -77,6 +78,13 @@ public interface RetrofitApiInterface {
                     @Field("mobile") String PhoneNumber,
                     @Header("Authorization") String Authorization
 
+            );
+
+
+    @GET(Version + "/AttendanceRequest/GetTodayEntrance")
+    Call<MR_TodayEntrance> getTodayEntrance
+            (
+                    @Header("Authorization") String Authorization
             );
 
 

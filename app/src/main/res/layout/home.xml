@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
@@ -10,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/_7sdp">
+        android:paddingTop="@dimen/_7sdp">
 
 
         <LinearLayout
@@ -103,9 +104,10 @@
                 android:background="@drawable/dw_edit_normal"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:text="0"
                 android:textColor="@color/ML_Border"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                android:tag="arrival_h1"
+                app:setTodayEntrance="@{home.md_todayEntrance}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -115,9 +117,10 @@
                 android:background="@drawable/dw_edit_normal"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:text="7"
                 android:textColor="@color/ML_Border"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                android:tag="arrival_h2"
+                app:setTodayEntrance="@{home.md_todayEntrance}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -137,9 +140,10 @@
                 android:background="@drawable/dw_edit_normal"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:text="5"
                 android:textColor="@color/ML_Border"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                android:tag="arrival_m1"
+                app:setTodayEntrance="@{home.md_todayEntrance}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -149,9 +153,10 @@
                 android:background="@drawable/dw_edit_normal"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:text="7"
                 android:textColor="@color/ML_Border"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                android:tag="arrival_m2"
+                app:setTodayEntrance="@{home.md_todayEntrance}"/>
 
         </LinearLayout>
 
@@ -188,9 +193,10 @@
                 android:background="@drawable/dw_edit_normal"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:text="-"
                 android:textColor="@color/ML_Border"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                android:tag="exit_h1"
+                app:setTodayEntrance="@{home.md_todayEntrance}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -200,9 +206,10 @@
                 android:background="@drawable/dw_edit_normal"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:text="-"
                 android:textColor="@color/ML_Border"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                android:tag="exit_h2"
+                app:setTodayEntrance="@{home.md_todayEntrance}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -222,9 +229,10 @@
                 android:background="@drawable/dw_edit_normal"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:text="-"
                 android:textColor="@color/ML_Border"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                android:tag="exit_m1"
+                app:setTodayEntrance="@{home.md_todayEntrance}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -234,9 +242,10 @@
                 android:background="@drawable/dw_edit_normal"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:text="-"
                 android:textColor="@color/ML_Border"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                android:tag="exit_m2"
+                app:setTodayEntrance="@{home.md_todayEntrance}"/>
 
         </LinearLayout>
 
@@ -250,10 +259,29 @@
             android:gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
-            <include layout="@layout/home_action_circle"
-                android:id="@+id/layoutCircle"/>
+            <LinearLayout
+                android:id="@+id/linearLayoutActionMenu"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:background="@drawable/dw_button_normal">
+
+            </LinearLayout>
 
         </LinearLayout>
+
+
+        <include
+            android:id="@+id/constraintLayoutAction"
+            android:visibility="gone"
+            layout="@layout/home_action"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

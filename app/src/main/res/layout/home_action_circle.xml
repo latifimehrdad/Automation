@@ -148,7 +148,7 @@
                 android:textColor="@color/mlWhite"
                 android:textSize="@dimen/_9sdp"
                 fontPath="font/iransans_web_medium.ttf"
-                android:text="@string/LegalReceipt"
+                android:text="@string/legalReceipt"
                 />
 
             <ImageView
