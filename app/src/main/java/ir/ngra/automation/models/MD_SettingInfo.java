@@ -4,10 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-import ir.mlcode.latifiarchitecturelibrary.models.MD_Message;
-import ir.mlcode.latifiarchitecturelibrary.models.MD_ResponsePrimary;
-
-public class MD_SettingInfo extends MD_ResponsePrimary {
+public class MD_SettingInfo extends MR_Primary {
 
     //______________________________________________________________________________________________ Value
     @SerializedName("result")

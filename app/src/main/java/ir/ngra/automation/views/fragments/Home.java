@@ -75,7 +75,7 @@ public class Home extends Primary implements Primary.fragmentActions, AP_HomeAct
         super.onStart();
         setPublishSubjectFromObservable(Home.this, vm_home);
         MainActivity.showTitle(getContext(), getResources().getString(R.string.Home), getResources().getDrawable(R.drawable.ic_quarantine));
-        vm_home.getTodayEntrance();
+        //vm_home.getTodayEntrance();
         setMessageCount(100);
     }
     //______________________________________________________________________________________________ onCreateView
@@ -187,12 +187,13 @@ public class Home extends Primary implements Primary.fragmentActions, AP_HomeAct
         List<MD_HomeActionMenu> menus = new ArrayList<>();
         menus.add(new MD_HomeActionMenu(getResources().getString(R.string.workVacations),getResources().getDrawable(R.drawable.ic_camping),R.id.action_home_to_workVacation));
         menus.add(new MD_HomeActionMenu(getResources().getString(R.string.missions),getResources().getDrawable(R.drawable.ic_businessman),R.id.action_home_to_mission));
-        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.changeWorkTime),getResources().getDrawable(R.drawable.ic_professor),R.id.action_home_to_workVacation));
+        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.changeAttendanceTime),getResources().getDrawable(R.drawable.ic_professor),R.id.action_home_to_workVacation));
         menus.add(new MD_HomeActionMenu(getResources().getString(R.string.legalReceipt),getResources().getDrawable(R.drawable.ic_salary),R.id.action_home_to_workVacation));
+        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.reports),getResources().getDrawable(R.drawable.ic_user_report),R.id.action_home_to_reports));
 
         AP_HomeActionMenu ap_homeActionMenu = new AP_HomeActionMenu(menus, Home.this);
         recyclerViewMenu.setAdapter(ap_homeActionMenu);
-        recyclerViewMenu.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
+        recyclerViewMenu.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
 
     }
     //______________________________________________________________________________________________ createHomeActionMenu

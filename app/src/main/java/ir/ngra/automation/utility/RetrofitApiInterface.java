@@ -1,10 +1,10 @@
 package ir.ngra.automation.utility;
 
-import ir.mlcode.latifiarchitecturelibrary.models.MD_ResponsePrimary;
 import ir.ngra.automation.models.MD_SettingInfo;
 import ir.ngra.automation.models.MD_Token;
 import ir.ngra.automation.models.MR_Hi;
-import ir.ngra.automation.models.MR_TodayEntrance;
+import ir.ngra.automation.models.MR_Primary;
+import ir.ngra.automation.models.MR_DailyItems;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -71,7 +71,7 @@ public interface RetrofitApiInterface {
 
     @FormUrlEncoded
     @POST(Version + "/account/authrequest")
-    Call<MD_ResponsePrimary> LoginCode
+    Call<MR_Primary> LoginCode
             (
                     @Field("client_id") String client_id,
                     @Field("client_secret") String client_secret,
@@ -82,7 +82,7 @@ public interface RetrofitApiInterface {
 
 
     @GET(Version + "/AttendanceRequest/GetTodayEntrance")
-    Call<MR_TodayEntrance> getTodayEntrance
+    Call<MR_DailyItems> getTodayEntrance
             (
                     @Header("Authorization") String Authorization
             );

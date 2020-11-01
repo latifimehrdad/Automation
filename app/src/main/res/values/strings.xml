@@ -20,10 +20,13 @@
     <string name="workVacations">مرخصی ها</string>
     <string name="newWorkVacation">درخواست مرخصی</string>
     <string name="missions">ماموریت ها</string>
-    <string name="changeWorkTime">تغییر ساعت تردد</string>
+    <string name="changeAttendanceTime">تغییر ساعت</string>
     <string name="legalReceipt">فیش حقوقی</string>
     <string name="doubleExit">"برای خروج 2 بار کلیک کنید"</string>
     <string name="Home">خانه</string>
+    
+    <string name="reports">گزارش ها</string>
+    <string name="functionalityReport">گزارش عملکرد</string>
 
     <string name="noRequest">درخواستی وجود ندارد</string>
 

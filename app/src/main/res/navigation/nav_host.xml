@@ -98,6 +98,15 @@
             app:popEnterAnim="@anim/slide_in_bottom"
             app:popExitAnim="@anim/slide_out_bottom"/>
 
+        <action
+            android:id="@+id/action_home_to_reports"
+            app:destination="@id/reports"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_bottom"
+            app:popEnterAnim="@anim/slide_in_bottom"
+            app:popExitAnim="@anim/slide_out_bottom"/>
+
+
 
     </fragment>
 
@@ -130,5 +139,28 @@
             app:popExitAnim="@anim/slide_out_left"/>
 
     </fragment>
+
+    <fragment
+        android:id="@+id/reports"
+        android:name="ir.ngra.automation.views.fragments.Reports"
+        android:label="Reports"
+        tools:layout="@layout/reports">
+
+        <action
+            android:id="@+id/action_reports_to_functionalityReport"
+            app:destination="@id/functionalityReport"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/functionalityReport"
+        android:name="ir.ngra.automation.views.fragments.FunctionalityReport"
+        android:label="FunctionalityReport"
+        tools:layout="@layout/functionality_report"/>
 
 </navigation>

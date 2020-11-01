@@ -8,7 +8,7 @@ import androidx.databinding.BindingAdapter;
 
 import ir.mlcode.latifiarchitecturelibrary.utility.wave.LatifiWaveProgressView;
 import ir.ngra.automation.R;
-import ir.ngra.automation.models.MD_TodayEntrance;
+import ir.ngra.automation.models.MD_DailyItems;
 
 public class BindingAdapters {
 
@@ -46,11 +46,11 @@ public class BindingAdapters {
 
     //______________________________________________________________________________________________ setTodayEntrance
     @BindingAdapter(value = "setTodayEntrance")
-    public static void setTodayEntrance(TextView textView, MD_TodayEntrance md_todayEntrance) {
+    public static void setTodayEntrance(TextView textView, MD_DailyItems md_dailyItems) {
 
         String tag = textView.getTag().toString();
-        String arrival = md_todayEntrance.getArrival();
-        String exit = md_todayEntrance.getExit();
+        String arrival = md_dailyItems.getArrival();
+        String exit = md_dailyItems.getExit();
 
         switch (tag) {
             case "arrival_h1" :

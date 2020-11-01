@@ -19,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class VM_Splash extends VM_Latifi {
+public class VM_Splash extends VM_Primary {
 
     private MD_Hi md_hi;
 
@@ -60,8 +60,13 @@ public class VM_Splash extends VM_Latifi {
                 setResponseMessage(checkResponse(response, true));
                 if (getResponseMessage() == null) {
                     md_hi = response.body().getResult();
-                    setResponseMessage("");
-                    checkUpdate();
+                    if (md_hi == null) {
+                        setResponseMessage(getResponseMessages(response.body().getMessages()));
+                        sendActionToObservable(StaticValues.ML_ResponseError);
+                    } else {
+                        setResponseMessage("");
+                        checkUpdate();
+                    }
                 } else {
                     refreshToken();
                 }

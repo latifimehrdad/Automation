@@ -107,7 +107,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="arrival_h1"
-                app:setTodayEntrance="@{home.md_todayEntrance}"/>
+                app:setTodayEntrance="@{home.md_dailyItems}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -120,7 +120,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="arrival_h2"
-                app:setTodayEntrance="@{home.md_todayEntrance}"/>
+                app:setTodayEntrance="@{home.md_dailyItems}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -143,7 +143,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="arrival_m1"
-                app:setTodayEntrance="@{home.md_todayEntrance}"/>
+                app:setTodayEntrance="@{home.md_dailyItems}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -156,7 +156,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="arrival_m2"
-                app:setTodayEntrance="@{home.md_todayEntrance}"/>
+                app:setTodayEntrance="@{home.md_dailyItems}"/>
 
         </LinearLayout>
 
@@ -196,7 +196,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="exit_h1"
-                app:setTodayEntrance="@{home.md_todayEntrance}"/>
+                app:setTodayEntrance="@{home.md_dailyItems}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -209,7 +209,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="exit_h2"
-                app:setTodayEntrance="@{home.md_todayEntrance}"/>
+                app:setTodayEntrance="@{home.md_dailyItems}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -232,7 +232,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="exit_m1"
-                app:setTodayEntrance="@{home.md_todayEntrance}"/>
+                app:setTodayEntrance="@{home.md_dailyItems}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -245,7 +245,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="exit_m2"
-                app:setTodayEntrance="@{home.md_todayEntrance}"/>
+                app:setTodayEntrance="@{home.md_dailyItems}"/>
 
         </LinearLayout>
 

@@ -1,19 +1,16 @@
 package ir.ngra.automation.viewmodels;
 
 import android.app.Activity;
-import android.os.Handler;
-
-import ir.mlcode.latifiarchitecturelibrary.models.MD_ResponsePrimary;
 import ir.mlcode.latifiarchitecturelibrary.utility.StaticValues;
-import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
 import ir.ngra.automation.R;
+import ir.ngra.automation.models.MR_Primary;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.views.application.AutomationApp;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class VM_Login extends VM_Latifi {
+public class VM_Login extends VM_Primary {
 
 
     private String phoneNumber;
@@ -44,12 +41,12 @@ public class VM_Login extends VM_Latifi {
         if (getPrimaryCall() == null)
             return;
 
-        getPrimaryCall().enqueue(new Callback<MD_ResponsePrimary>() {
+        getPrimaryCall().enqueue(new Callback<MR_Primary>() {
             @Override
-            public void onResponse(Call<MD_ResponsePrimary> call, Response<MD_ResponsePrimary> response) {
+            public void onResponse(Call<MR_Primary> call, Response<MR_Primary> response) {
                 setResponseMessage(checkResponse(response, false));
                 if (getResponseMessage() == null) {
-                    setResponseMessage(getResponseMessage(response.body()));
+                    setResponseMessage(getResponseMessages(response.body().getMessages()));
                     sendActionToObservable(ObservableActions.gotoVerify);
                 } else {
                     sendActionToObservable(StaticValues.ML_ResponseError);
@@ -57,7 +54,7 @@ public class VM_Login extends VM_Latifi {
             }
 
             @Override
-            public void onFailure(Call<MD_ResponsePrimary> call, Throwable t) {
+            public void onFailure(Call<MR_Primary> call, Throwable t) {
                 onFailureRequest();
             }
         });

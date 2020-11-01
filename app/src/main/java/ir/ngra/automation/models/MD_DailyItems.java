@@ -2,7 +2,8 @@ package ir.ngra.automation.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MD_TodayEntrance {
+public class MD_DailyItems {
+
 
     @SerializedName("arrival")
     private String arrival;
@@ -10,7 +11,7 @@ public class MD_TodayEntrance {
     @SerializedName("exit")
     private String exit;
 
-    public MD_TodayEntrance(String arrival, String exit) {
+    public MD_DailyItems(String arrival, String exit) {
         this.arrival = arrival;
         this.exit = exit;
     }
