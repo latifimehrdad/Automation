@@ -230,6 +230,7 @@ public class AutomationApp extends APP_Latifi {
             sb.append(String.format("%02d", timePicker.getCurrentHour()));
             sb.append(":");
             sb.append(String.format("%02d", timePicker.getCurrentMinute()));
+            ml_editText.setAdditionalValue(sb.toString());
             String text = type + System.getProperty("line.separator") + sb.toString();
             ml_editText.setText(text);
             ml_editText.removeError();

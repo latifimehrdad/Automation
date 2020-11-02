@@ -1,7 +1,6 @@
 package ir.ngra.automation.views.fragments;
 
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,24 +9,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
-import java.text.ParseException;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText;
 import ir.ngra.automation.R;
-import ir.ngra.automation.databinding.NewWorkVacationBinding;
+import ir.ngra.automation.databinding.NewMissionBinding;
 import ir.ngra.automation.utility.ObservableActions;
-import ir.ngra.automation.viewmodels.VM_NewWorkVacation;
+import ir.ngra.automation.viewmodels.VM_NewMission;
 import ir.ngra.automation.views.activity.MainActivity;
 import ir.ngra.automation.views.application.AutomationApp;
 
-public class NewWorkVacation extends Primary implements Primary.fragmentActions {
+public class NewMission extends Primary implements Primary.fragmentActions {
 
 
-    private VM_NewWorkVacation vm_New_workVacation;
+    private VM_NewMission vm_newMission;
 
     @BindView(R.id.ml_EditTextWorkVacation)
     ML_EditText ml_EditTextWorkVacation;
@@ -60,9 +56,9 @@ public class NewWorkVacation extends Primary implements Primary.fragmentActions 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         if (getView() == null) {
-            vm_New_workVacation = new VM_NewWorkVacation(getActivity());
-            NewWorkVacationBinding binding = DataBindingUtil.inflate(inflater, R.layout.new_work_vacation, container, false);
-            binding.setWorkVacation(vm_New_workVacation);
+            vm_newMission = new VM_NewMission(getActivity());
+            NewMissionBinding binding = DataBindingUtil.inflate(inflater, R.layout.new_mission, container, false);
+            binding.setMission(vm_newMission);
             setView(binding.getRoot());
             ButterKnife.bind(this, getView());
             setOnClicks();
@@ -76,9 +72,9 @@ public class NewWorkVacation extends Primary implements Primary.fragmentActions 
     @Override
     public void onStart() {
         super.onStart();
-        setPublishSubjectFromObservable(NewWorkVacation.this, vm_New_workVacation);
+        setPublishSubjectFromObservable(NewMission.this, vm_newMission);
         MainActivity.showTitle(getContext(), getResources().getString(R.string.newWorkVacation), getResources().getDrawable(R.drawable.ic_camping));
-/*        vm_New_workVacation.getWorkVacationType();*/
+        /*        vm_New_workVacation.getWorkVacationType();*/
     }
     //______________________________________________________________________________________________ onCreateView
 
@@ -169,9 +165,9 @@ public class NewWorkVacation extends Primary implements Primary.fragmentActions 
 
         if (checkValidation()) {
             ml_ButtonSend.startLoading();
-            vm_New_workVacation.setFromDate(ml_EditTextStartDate.getAdditionalValue().toString(), ml_EditTextStartTime.getAdditionalValue().toString());
-            vm_New_workVacation.setToDate(ml_EditTextEndDate.getAdditionalValue().toString(), ml_EditTextEndTime.getAdditionalValue().toString());
-            vm_New_workVacation.requestLeave();
+            vm_newMission.setFromDate(ml_EditTextStartDate.getAdditionalValue().toString(), ml_EditTextStartTime.getAdditionalValue().toString());
+            vm_newMission.setToDate(ml_EditTextEndDate.getAdditionalValue().toString(), ml_EditTextEndTime.getAdditionalValue().toString());
+            vm_newMission.requestMission();
 
         }
     }

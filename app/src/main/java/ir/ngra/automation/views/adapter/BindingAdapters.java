@@ -1,14 +1,22 @@
 package ir.ngra.automation.views.adapter;
 
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText;
+import ir.mlcode.latifiarchitecturelibrary.utility.ApplicationUtility;
 import ir.mlcode.latifiarchitecturelibrary.utility.wave.LatifiWaveProgressView;
 import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_DailyItems;
+import ir.ngra.automation.views.application.AutomationApp;
 
 public class BindingAdapters {
 
@@ -26,7 +34,7 @@ public class BindingAdapters {
             wave.setFrontWaveColor(resources.getColor(R.color.ML_WaveTextMin));
             wave.setBorderColor(resources.getColor(R.color.colorPrimaryDark));
             wave.setTextColor(resources.getColor(R.color.ML_WaveTextColor));
-        } else if (degree > 29 && degree < 75){
+        } else if (degree > 29 && degree < 75) {
             wave.setBehindWaveColor(resources.getColor(R.color.mlWave2));
             wave.setFrontWaveColor(resources.getColor(R.color.mlWave));
             wave.setBorderColor(resources.getColor(R.color.ML_WaveTextColor));
@@ -42,8 +50,6 @@ public class BindingAdapters {
     //______________________________________________________________________________________________ setLeaveWave
 
 
-
-
     //______________________________________________________________________________________________ setTodayEntrance
     @BindingAdapter(value = "setTodayEntrance")
     public static void setTodayEntrance(TextView textView, MD_DailyItems md_dailyItems) {
@@ -53,60 +59,60 @@ public class BindingAdapters {
         String exit = md_dailyItems.getExit();
 
         switch (tag) {
-            case "arrival_h1" :
+            case "arrival_h1":
                 if (arrival == null || arrival.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(arrival.substring(0,1));
+                    textView.setText(arrival.substring(0, 1));
                 break;
 
-            case "arrival_h2" :
+            case "arrival_h2":
                 if (arrival == null || arrival.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(arrival.substring(1,2));
+                    textView.setText(arrival.substring(1, 2));
                 break;
 
-            case "arrival_m1" :
+            case "arrival_m1":
                 if (arrival == null || arrival.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(arrival.substring(3,4));
+                    textView.setText(arrival.substring(3, 4));
                 break;
 
-            case "arrival_m2" :
+            case "arrival_m2":
                 if (arrival == null || arrival.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(arrival.substring(4,5));
+                    textView.setText(arrival.substring(4, 5));
                 break;
 
-            case "exit_h1" :
+            case "exit_h1":
                 if (exit == null || exit.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(exit.substring(0,1));
+                    textView.setText(exit.substring(0, 1));
                 break;
 
-            case "exit_h2" :
+            case "exit_h2":
                 if (exit == null || exit.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(exit.substring(1,2));
+                    textView.setText(exit.substring(1, 2));
                 break;
 
-            case "exit_m1" :
+            case "exit_m1":
                 if (exit == null || exit.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(exit.substring(3,4));
+                    textView.setText(exit.substring(3, 4));
                 break;
 
-            case "exit_m2" :
+            case "exit_m2":
                 if (exit == null || exit.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(exit.substring(4,5));
+                    textView.setText(exit.substring(4, 5));
                 break;
 
         }
@@ -114,6 +120,95 @@ public class BindingAdapters {
     }
     //______________________________________________________________________________________________ setTodayEntrance
 
+
+    //______________________________________________________________________________________________ setDateTime
+    @BindingAdapter(value = {"setDate"})
+    public static void setDate(ML_EditText ml_editText, Date date) {
+
+        if (date == null) {
+            ml_editText.setText("");
+            return;
+        }
+
+        String text = ml_editText.getContext().getResources().getString(R.string.date);
+
+        text = text + " : " + AutomationApp
+                .getAutomationApp(ml_editText.getContext())
+                .getUtilityComponent()
+                .getApplicationUtility()
+                .gregorianToSolarDate(date)
+                .getFullStringSolarDate();
+
+        ml_editText.setText(text);
+
+    }
+    //______________________________________________________________________________________________ setDateTime
+
+
+    //______________________________________________________________________________________________ setTime
+    @BindingAdapter(value = {"setTime"})
+    public static void setTime(ML_EditText ml_editText, Double value) {
+
+        String tag = ml_editText.getTag().toString();
+
+        String text = "";
+
+        Context context = ml_editText.getContext();
+
+        switch (tag) {
+
+            case "mainWork":
+                text = context.getResources().getString(R.string.mainWork);
+                break;
+
+            case "leave":
+                text = context.getResources().getString(R.string.leave);
+                break;
+
+            case "mission":
+                text = context.getResources().getString(R.string.mission);
+                break;
+
+            case "absenceOfWork":
+                text = context.getResources().getString(R.string.absenceOfWork);
+                break;
+
+            case "lackOfWork":
+                text = context.getResources().getString(R.string.lackOfWork);
+                break;
+
+            case "overWorkPayTime":
+                text = context.getResources().getString(R.string.overWorkPayTime);
+                break;
+
+            case "holidayPayTime":
+                text = context.getResources().getString(R.string.holidayPayTime);
+                break;
+
+            case "nightPayTime":
+                text = context.getResources().getString(R.string.nightPayTime);
+                break;
+        }
+
+        text = text + " : " + calcTime(value);
+        ml_editText.setText(text);
+
+    }
+    //______________________________________________________________________________________________ setTime
+
+
+    //______________________________________________________________________________________________ calcTime
+    private static String calcTime(double value) {
+
+        value = value * 60;
+        long time = Math.round(value);
+
+        String hours = String.format("%02d", time / 60);
+        String minute = String.format("%02d", time % 60);
+        return hours + ":" + minute;
+
+    }
+    //______________________________________________________________________________________________ calcTime
 
 
 }

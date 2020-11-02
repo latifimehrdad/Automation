@@ -24,11 +24,11 @@
     <string name="legalReceipt">فیش حقوقی</string>
     <string name="doubleExit">"برای خروج 2 بار کلیک کنید"</string>
     <string name="Home">خانه</string>
-    
+    <string name="description">توضیحات</string>
     <string name="reports">گزارش ها</string>
     <string name="functionalityReport">گزارش عملکرد</string>
 
-    <string name="noRequest">درخواستی وجود ندارد</string>
+    <string name="noItemForShow">هیچ موردی برای نمایش وجود ندارد</string>
 
     <string name="errorEmptyTextPhoneNumber">شماره تلفن همراه خود را وارد نمایید</string>
     <string name="errorEmptyWorkVacationType">نوع مرخصی را انتخاب نمایید</string>
@@ -47,6 +47,8 @@
     <string name="chooseSubstitute">انتخاب جانشین</string>
     <string name="searchSubstitute">جستجوی جانشین</string>
 
+    <string name="date">تاریخ</string>
+
     <string name="startTime">ساعت شروع</string>
     <string name="endTime">ساعت پایان</string>
     <string name="startDate">تاریخ شروع</string>
@@ -59,6 +61,14 @@
     <string name="searchHint">جستجو</string>
     <string name="choose">انتخاب</string>
 
+    <string name="mainWork">کار اصلی</string>
+    <string name="leave">مرخصی</string>
+    <string name="mission">ماموریت</string>
+    <string name="absenceOfWork">غیبت</string>
+    <string name="lackOfWork">کسر کار</string>
+    <string name="overWorkPayTime">اضافه کاری</string>
+    <string name="holidayPayTime">تعطیل کاری</string>
+    <string name="nightPayTime">شب کاری</string>
 
     //______________________________________________________________________________________________
     <string name="ML_PersonalCode">PersonalCode</string>

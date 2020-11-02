@@ -64,8 +64,8 @@ public class WorkVacation extends Primary implements Primary.fragmentActions {
     public void onStart() {
         super.onStart();
         setPublishSubjectFromObservable(WorkVacation.this, vm_workVacation);
-        getWorkVacationList();
         MainActivity.showTitle(getContext(), getResources().getString(R.string.workVacations), getResources().getDrawable(R.drawable.ic_camping));
+        getWorkVacationList();
     }
     //______________________________________________________________________________________________ onCreateView
 

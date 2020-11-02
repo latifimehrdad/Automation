@@ -8,6 +8,7 @@ public class ObservableActions{
     public static Byte gotoHome = 4;
     public static Byte getWorkVacationType = 5;
     public static Byte getWorkVacationList = 6;
+    public static Byte getFunctionalityReport = 7;
 
 
 }

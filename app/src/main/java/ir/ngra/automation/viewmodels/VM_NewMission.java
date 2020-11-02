@@ -2,16 +2,10 @@ package ir.ngra.automation.viewmodels;
 
 import android.app.Activity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
-
-import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_SpinnerItem;
-import ir.ngra.automation.models.MR_DailyItems;
 import ir.ngra.automation.models.MR_Primary;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.views.application.AutomationApp;
@@ -19,8 +13,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-public class VM_NewWorkVacation extends VM_Primary {
+public class VM_NewMission extends VM_Primary {
 
 
     private ArrayList<MD_SpinnerItem> workVacationTypeList;
@@ -34,23 +27,23 @@ public class VM_NewWorkVacation extends VM_Primary {
     private String toDate;
 
 
-    //______________________________________________________________________________________________ VM_WorkVacation
-    public VM_NewWorkVacation(Activity context) {
+    //______________________________________________________________________________________________ VM_NewMission
+    public VM_NewMission(Activity context) {
         setContext(context);
     }
-    //______________________________________________________________________________________________ VM_WorkVacation
+    //______________________________________________________________________________________________ VM_NewMission
 
 
 
-    //______________________________________________________________________________________________ getTodayEntrance
-    public void requestLeave() {
+    //______________________________________________________________________________________________ requestMission
+    public void requestMission() {
 
         String authorization = getAuthorizationTokenFromSharedPreferences(R.string.ML_SharePreferences,
                 R.string.ML_AccessToken);
 
         setPrimaryCall(AutomationApp.getAutomationApp(getContext())
                 .getRetrofitApiInterface()
-                .RequestLeave(getFromDate(),getToDate(),getDescription(),authorization));
+                .RequestMission(getFromDate(),getToDate(),getDescription(),authorization));
 
         if (getPrimaryCall() == null)
             return;
@@ -72,7 +65,7 @@ public class VM_NewWorkVacation extends VM_Primary {
             }
         });
     }
-    //______________________________________________________________________________________________ getTodayEntrance
+    //______________________________________________________________________________________________ requestMission
 
 
 

@@ -1,7 +1,10 @@
 package ir.ngra.automation.utility;
 
+import java.util.Date;
+
 import ir.ngra.automation.models.MD_SettingInfo;
 import ir.ngra.automation.models.MD_Token;
+import ir.ngra.automation.models.MR_FunctionalityReport;
 import ir.ngra.automation.models.MR_Hi;
 import ir.ngra.automation.models.MR_Primary;
 import ir.ngra.automation.models.MR_DailyItems;
@@ -85,6 +88,38 @@ public interface RetrofitApiInterface {
     Call<MR_DailyItems> getTodayEntrance
             (
                     @Header("Authorization") String Authorization
+            );
+
+
+    @GET(Version + "/AttendanceCalcDailyItem/GetDailyItems")
+    Call<MR_FunctionalityReport> getDailyItems
+            (
+                    @Header("Authorization") String Authorization
+            );
+
+
+
+    @FormUrlEncoded
+    @POST(Version + "/AttendanceRequest/RequestLeave")
+    Call<MR_Primary> RequestLeave
+            (
+                    @Field("From") String From,
+                    @Field("To") String To,
+                    @Field("Description") String Description,
+                    @Header("Authorization") String Authorization
+
+            );
+
+
+    @FormUrlEncoded
+    @POST(Version + "/AttendanceRequest/RequestMission")
+    Call<MR_Primary> RequestMission
+            (
+                    @Field("From") String From,
+                    @Field("To") String To,
+                    @Field("Description") String Description,
+                    @Header("Authorization") String Authorization
+
             );
 
 
