@@ -121,7 +121,17 @@
         android:id="@+id/mission"
         android:name="ir.ngra.automation.views.fragments.Mission"
         android:label="Mission"
-        tools:layout="@layout/mission"/>
+        tools:layout="@layout/mission">
+
+        <action
+            android:id="@+id/action_mission_to_newMission"
+            app:destination="@id/newMission"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+
+    </fragment>
 
 
     <fragment
@@ -162,5 +172,11 @@
         android:name="ir.ngra.automation.views.fragments.FunctionalityReport"
         android:label="FunctionalityReport"
         tools:layout="@layout/functionality_report"/>
+
+    <fragment
+        android:id="@+id/newMission"
+        android:name="ir.ngra.automation.views.fragments.NewMission"
+        android:label="NewMission"
+        tools:layout="@layout/new_mission"/>
 
 </navigation>

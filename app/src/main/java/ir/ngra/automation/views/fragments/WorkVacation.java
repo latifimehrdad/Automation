@@ -75,7 +75,7 @@ public class WorkVacation extends Primary implements Primary.fragmentActions {
     public void getActionFromObservable(Byte action) {
 
         if (action.equals(ObservableActions.getWorkVacationList)) {
-            //setAdapter();
+            setAdapter();
         }
     }
     //______________________________________________________________________________________________ getActionFromObservable

@@ -109,7 +109,7 @@ public class Mission extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ setOnClicks
     private void setOnClicksAndListener() {
 
-        ml_ButtonNew.setOnClickListener(v -> gotoFragment(R.id.action_workVacation_to_newWorkVacation, null));
+        ml_ButtonNew.setOnClickListener(v -> gotoFragment(R.id.action_mission_to_newMission, null));
 
         recyclerViewMission.addOnScrollListener(new RecyclerView.OnScrollListener() {
 

@@ -16,6 +16,7 @@ import ir.mlcode.latifiarchitecturelibrary.utility.ApplicationUtility;
 import ir.mlcode.latifiarchitecturelibrary.utility.wave.LatifiWaveProgressView;
 import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_DailyItems;
+import ir.ngra.automation.utility.AttendanceRequestState;
 import ir.ngra.automation.views.application.AutomationApp;
 
 public class BindingAdapters {
@@ -48,6 +49,23 @@ public class BindingAdapters {
 
     }
     //______________________________________________________________________________________________ setLeaveWave
+
+
+    //______________________________________________________________________________________________ setState
+    @BindingAdapter(value = "setState")
+    public static void setState(ML_EditText ml_editText, Byte state) {
+        String text = ml_editText.getContext().getResources().getString(R.string.state);
+        if (state.equals(AttendanceRequestState.Pending)) {
+            text = text + " : " + ml_editText.getContext().getResources().getString(R.string.pending);
+        } else if (state.equals(AttendanceRequestState.Canceled)) {
+            text = text + " : " + ml_editText.getContext().getResources().getString(R.string.canceled);
+        } else if (state.equals(AttendanceRequestState.Accepted)) {
+            text = text + " : " + ml_editText.getContext().getResources().getString(R.string.accepted);
+        }
+
+        ml_editText.setText(text);
+    }
+    //______________________________________________________________________________________________ setState
 
 
     //______________________________________________________________________________________________ setTodayEntrance
@@ -130,14 +148,59 @@ public class BindingAdapters {
             return;
         }
 
-        String text = ml_editText.getContext().getResources().getString(R.string.date);
+        String tag = ml_editText.getTag().toString();
 
-        text = text + " : " + AutomationApp
-                .getAutomationApp(ml_editText.getContext())
-                .getUtilityComponent()
-                .getApplicationUtility()
-                .gregorianToSolarDate(date)
-                .getFullStringSolarDate();
+        String text = "";
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm", Locale.US);
+
+        switch (tag) {
+
+            case "date" :
+                text = ml_editText.getContext().getResources().getString(R.string.date);
+                text = text + " : " + AutomationApp
+                        .getAutomationApp(ml_editText.getContext())
+                        .getUtilityComponent()
+                        .getApplicationUtility()
+                        .gregorianToSolarDate(date)
+                        .getFullStringSolarDate();
+                break;
+
+            case "createDate":
+                text = ml_editText.getContext().getResources().getString(R.string.createDate);
+                text = text + " : " + AutomationApp
+                        .getAutomationApp(ml_editText.getContext())
+                        .getUtilityComponent()
+                        .getApplicationUtility()
+                        .gregorianToSolarDate(date)
+                        .getFullStringSolarDate();
+                text = text + " ساعت " + simpleDateFormat.format(date);
+                break;
+
+            case "from":
+                text = ml_editText.getContext().getResources().getString(R.string.startDate);
+                text = text + " : " + AutomationApp
+                        .getAutomationApp(ml_editText.getContext())
+                        .getUtilityComponent()
+                        .getApplicationUtility()
+                        .gregorianToSolarDate(date)
+                        .getFullStringSolarDate();
+                text = text + " ساعت " + simpleDateFormat.format(date);
+                break;
+
+            case "to":
+                text = ml_editText.getContext().getResources().getString(R.string.endDate);
+                text = text + " : " + AutomationApp
+                        .getAutomationApp(ml_editText.getContext())
+                        .getUtilityComponent()
+                        .getApplicationUtility()
+                        .gregorianToSolarDate(date)
+                        .getFullStringSolarDate();
+                text = text + " ساعت " + simpleDateFormat.format(date);
+                break;
+        }
+
+
 
         ml_editText.setText(text);
 

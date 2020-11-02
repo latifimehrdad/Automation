@@ -8,12 +8,14 @@ import ir.ngra.automation.models.MR_FunctionalityReport;
 import ir.ngra.automation.models.MR_Hi;
 import ir.ngra.automation.models.MR_Primary;
 import ir.ngra.automation.models.MR_DailyItems;
+import ir.ngra.automation.models.MR_WorkVacation;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface RetrofitApiInterface {
 
@@ -120,6 +122,14 @@ public interface RetrofitApiInterface {
                     @Field("Description") String Description,
                     @Header("Authorization") String Authorization
 
+            );
+
+
+    @GET(Version + "/AttendanceRequest/GetRequests")
+    Call<MR_WorkVacation> getRequestsWorkVacation
+            (
+                    @Query("type") Byte type,
+                    @Header("Authorization") String Authorization
             );
 
 

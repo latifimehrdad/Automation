@@ -36,6 +36,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:normalBack="@drawable/dw_back_recycler_loading_items"
             app:setDate="@{item.date}"
+            android:tag="date"
             app:textGravity="right"
             app:textSize="@dimen/_10sdp"
             app:fontFamily="@font/vazir_medium"/>

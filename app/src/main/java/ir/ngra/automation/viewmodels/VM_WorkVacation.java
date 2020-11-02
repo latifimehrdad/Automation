@@ -1,14 +1,20 @@
 package ir.ngra.automation.viewmodels;
 
 import android.app.Activity;
-import android.os.Handler;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
+import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_WorkVacation;
+import ir.ngra.automation.models.MR_WorkVacation;
+import ir.ngra.automation.utility.AttendanceType;
 import ir.ngra.automation.utility.ObservableActions;
+import ir.ngra.automation.views.application.AutomationApp;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class VM_WorkVacation extends VM_Latifi {
 
@@ -26,14 +32,32 @@ public class VM_WorkVacation extends VM_Latifi {
     //______________________________________________________________________________________________ getWorkVacation
     public void getWorkVacation() {
 
-        md_workVacationList = new ArrayList<>();
-        Handler handler = new Handler();
-        handler.postDelayed(() -> {
-/*            for (int i = 0; i < 5; i++)
-                md_workVacationList.add(new MD_WorkVacation(i))*/;
+        String authorization = getAuthorizationTokenFromSharedPreferences(R.string.ML_SharePreferences,
+                R.string.ML_AccessToken);
 
-            sendActionToObservable(ObservableActions.getWorkVacationList);
-        }, 5000);
+        setPrimaryCall(AutomationApp.getAutomationApp(getContext())
+                .getRetrofitApiInterface()
+                .getRequestsWorkVacation(AttendanceType.Vacation, authorization));
+
+        if (getPrimaryCall() == null)
+            return;
+
+        getPrimaryCall().enqueue(new Callback<MR_WorkVacation>() {
+            @Override
+            public void onResponse(Call<MR_WorkVacation> call, Response<MR_WorkVacation> response) {
+                setResponseMessage(checkResponse(response, true));
+                if (getResponseMessage() == null) {
+                    md_workVacationList = response.body().getResult();
+                    sendActionToObservable(ObservableActions.getWorkVacationList);
+                } else
+                    onFailureRequest();
+            }
+
+            @Override
+            public void onFailure(Call<MR_WorkVacation> call, Throwable t) {
+                onFailureRequest();
+            }
+        });
 
     }
     //______________________________________________________________________________________________ getWorkVacation

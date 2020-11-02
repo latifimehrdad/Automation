@@ -69,6 +69,12 @@
     <string name="overWorkPayTime">اضافه کاری</string>
     <string name="holidayPayTime">تعطیل کاری</string>
     <string name="nightPayTime">شب کاری</string>
+    
+    <string name="createDate">تاریخ ثبت</string>
+    <string name="state">وضعیت</string>
+    <string name="pending">در انتظار</string>
+    <string name="canceled">رد شده</string>
+    <string name="accepted">تایید شده</string>
 
     //______________________________________________________________________________________________
     <string name="ML_PersonalCode">PersonalCode</string>
