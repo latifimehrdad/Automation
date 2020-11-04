@@ -2,16 +2,11 @@ package ir.ngra.automation.viewmodels;
 
 import android.app.Activity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 
-import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_SpinnerItem;
-import ir.ngra.automation.models.MR_DailyItems;
 import ir.ngra.automation.models.MR_Primary;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.views.application.AutomationApp;

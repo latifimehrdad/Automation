@@ -1,6 +1,7 @@
 package ir.ngra.automation.models;
 
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 
 public class MD_HomeActionMenu {
 
@@ -10,10 +11,13 @@ public class MD_HomeActionMenu {
 
     private int action;
 
-    public MD_HomeActionMenu(String title, Drawable icon, int action) {
+    private Bundle bundle;
+
+    public MD_HomeActionMenu(String title, Drawable icon, int action, Bundle bundle) {
         this.title = title;
         this.icon = icon;
         this.action = action;
+        this.bundle = bundle;
     }
 
     public String getTitle() {
@@ -40,5 +44,11 @@ public class MD_HomeActionMenu {
         this.action = action;
     }
 
+    public Bundle getBundle() {
+        return bundle;
+    }
 
+    public void setBundle(Bundle bundle) {
+        this.bundle = bundle;
+    }
 }

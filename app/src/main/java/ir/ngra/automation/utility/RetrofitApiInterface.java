@@ -1,13 +1,13 @@
 package ir.ngra.automation.utility;
 
-import java.util.Date;
-
 import ir.ngra.automation.models.MD_SettingInfo;
 import ir.ngra.automation.models.MD_Token;
+import ir.ngra.automation.models.MR_EditTime;
 import ir.ngra.automation.models.MR_FunctionalityReport;
 import ir.ngra.automation.models.MR_Hi;
+import ir.ngra.automation.models.MR_Mission;
 import ir.ngra.automation.models.MR_Primary;
-import ir.ngra.automation.models.MR_DailyItems;
+import ir.ngra.automation.models.MR_TodayArrivalAndDeparture;
 import ir.ngra.automation.models.MR_WorkVacation;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -86,8 +86,8 @@ public interface RetrofitApiInterface {
             );
 
 
-    @GET(Version + "/AttendanceRequest/GetTodayEntrance")
-    Call<MR_DailyItems> getTodayEntrance
+    @GET(Version + "/StandardAttendance/GetTodayArrivalAndDeparture")
+    Call<MR_TodayArrivalAndDeparture> getTodayArrivalAndDeparture
             (
                     @Header("Authorization") String Authorization
             );
@@ -127,6 +127,23 @@ public interface RetrofitApiInterface {
 
     @GET(Version + "/AttendanceRequest/GetRequests")
     Call<MR_WorkVacation> getRequestsWorkVacation
+            (
+                    @Query("type") Byte type,
+                    @Header("Authorization") String Authorization
+            );
+
+
+
+    @GET(Version + "/AttendanceRequest/GetRequests")
+    Call<MR_Mission> getRequestsMission
+            (
+                    @Query("type") Byte type,
+                    @Header("Authorization") String Authorization
+            );
+
+
+    @GET(Version + "/AttendanceRequest/GetRequests")
+    Call<MR_EditTime> getRequestsEditTime
             (
                     @Query("type") Byte type,
                     @Header("Authorization") String Authorization

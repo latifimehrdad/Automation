@@ -22,10 +22,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.HomeBinding;
 
 import ir.ngra.automation.models.MD_HomeActionMenu;
+import ir.ngra.automation.utility.AttendanceType;
 import ir.ngra.automation.viewmodels.VM_Home;
 import ir.ngra.automation.views.activity.MainActivity;
 import ir.ngra.automation.views.adapter.AP_HomeActionMenu;
@@ -47,6 +49,12 @@ public class Home extends Primary implements Primary.fragmentActions, AP_HomeAct
 
     @BindView(R.id.recyclerViewMenu)
     RecyclerView recyclerViewMenu;
+
+    @BindView(R.id.ml_ButtonEditArrival)
+    ML_Button ml_ButtonEditArrival;
+
+    @BindView(R.id.ml_ButtonEditDeparture)
+    ML_Button ml_ButtonEditDeparture;
 
 
 
@@ -75,7 +83,7 @@ public class Home extends Primary implements Primary.fragmentActions, AP_HomeAct
         super.onStart();
         setPublishSubjectFromObservable(Home.this, vm_home);
         MainActivity.showTitle(getContext(), getResources().getString(R.string.Home), getResources().getDrawable(R.drawable.ic_quarantine));
-        //vm_home.getTodayEntrance();
+        vm_home.getTodayArrivalAndDeparture();
         setMessageCount(100);
     }
     //______________________________________________________________________________________________ onCreateView
@@ -135,6 +143,19 @@ public class Home extends Primary implements Primary.fragmentActions, AP_HomeAct
 
         constraintLayoutAction.setOnClickListener(v -> closeLayoutAction());
 
+        ml_ButtonEditArrival.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putByte(getResources().getString(R.string.ML_EditTime), AttendanceType.Arrival);
+            gotoFragment(R.id.action_home_to_newEditTime, bundle);
+        });
+
+
+        ml_ButtonEditDeparture.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putByte(getResources().getString(R.string.ML_EditTime), AttendanceType.Departure);
+            gotoFragment(R.id.action_home_to_newEditTime, bundle);
+        });
+
     }
     //______________________________________________________________________________________________ setOnClicks
 
@@ -185,11 +206,13 @@ public class Home extends Primary implements Primary.fragmentActions, AP_HomeAct
     //______________________________________________________________________________________________ createHomeActionMenu
     private void createHomeActionMenu() {
         List<MD_HomeActionMenu> menus = new ArrayList<>();
-        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.workVacations),getResources().getDrawable(R.drawable.ic_camping),R.id.action_home_to_workVacation));
-        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.missions),getResources().getDrawable(R.drawable.ic_businessman),R.id.action_home_to_mission));
-        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.changeAttendanceTime),getResources().getDrawable(R.drawable.ic_professor),R.id.action_home_to_workVacation));
-        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.legalReceipt),getResources().getDrawable(R.drawable.ic_salary),R.id.action_home_to_workVacation));
-        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.reports),getResources().getDrawable(R.drawable.ic_user_report),R.id.action_home_to_reports));
+        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.workVacations),getResources().getDrawable(R.drawable.ic_camping),R.id.action_home_to_workVacation, null));
+        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.missions),getResources().getDrawable(R.drawable.ic_businessman),R.id.action_home_to_mission, null));
+        Bundle bundle = new Bundle();
+        bundle.putByte(getResources().getString(R.string.ML_EditTime), AttendanceType.ArrivalAndDeparture);
+        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.changeAttendanceTime),getResources().getDrawable(R.drawable.ic_edit_time),R.id.action_home_to_newEditTime, bundle));
+        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.legalReceipt),getResources().getDrawable(R.drawable.ic_salary),R.id.action_home_to_workVacation, null));
+        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.reports),getResources().getDrawable(R.drawable.ic_user_report),R.id.action_home_to_reports, null));
 
         AP_HomeActionMenu ap_homeActionMenu = new AP_HomeActionMenu(menus, Home.this);
         recyclerViewMenu.setAdapter(ap_homeActionMenu);
@@ -202,9 +225,9 @@ public class Home extends Primary implements Primary.fragmentActions, AP_HomeAct
 
     //______________________________________________________________________________________________ itemClick
     @Override
-    public void itemClick(int action) {
+    public void itemClick(int action, Bundle bundle) {
         constraintLayoutAction.setVisibility(View.GONE);
-        gotoFragment(action, null);
+        gotoFragment(action, bundle);
     }
     //______________________________________________________________________________________________ itemClick
 

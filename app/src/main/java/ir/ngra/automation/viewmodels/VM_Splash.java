@@ -192,7 +192,6 @@ public class VM_Splash extends VM_Primary {
                     MD_SettingInfo.ModelProfileSetting profile = response.body().getResult();
                     if (profile != null) {
                         if (AutomationApp.getAutomationApp(getContext()).saveProfile(getContext(), profile))
-                            setResponseMessage("خوش آمدید");
                             sendActionToObservable(ObservableActions.gotoHome);
                     } else {
                         if (AutomationApp.getAutomationApp(getContext()).logOut(getContext()))

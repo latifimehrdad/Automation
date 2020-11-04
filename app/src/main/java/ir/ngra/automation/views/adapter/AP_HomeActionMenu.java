@@ -1,5 +1,6 @@
 package ir.ngra.automation.views.adapter;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ public class AP_HomeActionMenu extends RecyclerView.Adapter<AP_HomeActionMenu.cu
 
 
     public interface menuActionClick {
-        void itemClick(int action);
+        void itemClick(int action, Bundle bundle);
     }
 
 
@@ -82,7 +83,7 @@ public class AP_HomeActionMenu extends RecyclerView.Adapter<AP_HomeActionMenu.cu
 
         public void bind(MD_HomeActionMenu item, int position) {
             binding.setMenu(item);
-            view.setOnClickListener(v -> actionClick.itemClick(item.getAction()));
+            view.setOnClickListener(v -> actionClick.itemClick(item.getAction(), item.getBundle()));
             binding.executePendingBindings();
         }
     }

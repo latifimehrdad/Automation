@@ -11,6 +11,7 @@
     <argument android:name="@string/ML_ApplicationId"/>
     <argument android:name="@string/ML_PersonalCode"/>
     <argument android:name="@string/ML_PhoneNumber"/>
+    <argument android:name="@string/ML_EditTime"/>
 
 
 
@@ -106,6 +107,13 @@
             app:popEnterAnim="@anim/slide_in_bottom"
             app:popExitAnim="@anim/slide_out_bottom"/>
 
+        <action
+            android:id="@+id/action_home_to_newEditTime"
+            app:destination="@id/newEditTime"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_bottom"
+            app:popEnterAnim="@anim/slide_in_bottom"
+            app:popExitAnim="@anim/slide_out_bottom"/>
 
 
     </fragment>
@@ -178,5 +186,11 @@
         android:name="ir.ngra.automation.views.fragments.NewMission"
         android:label="NewMission"
         tools:layout="@layout/new_mission"/>
+
+    <fragment
+        android:id="@+id/newEditTime"
+        android:name="ir.ngra.automation.views.fragments.NewEditTime"
+        android:label="NewEditTime"
+        tools:layout="@layout/new_edit_time"/>
 
 </navigation>

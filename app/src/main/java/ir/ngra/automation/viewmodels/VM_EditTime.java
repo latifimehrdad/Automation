@@ -7,10 +7,8 @@ import java.util.List;
 
 import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
 import ir.ngra.automation.R;
-import ir.ngra.automation.models.MD_Mission;
-import ir.ngra.automation.models.MD_WorkVacation;
-import ir.ngra.automation.models.MR_Mission;
-import ir.ngra.automation.models.MR_WorkVacation;
+import ir.ngra.automation.models.MD_EditTime;
+import ir.ngra.automation.models.MR_EditTime;
 import ir.ngra.automation.utility.AttendanceType;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.views.application.AutomationApp;
@@ -18,61 +16,61 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class VM_Mission extends VM_Latifi {
+public class VM_EditTime extends VM_Latifi {
 
 
-    private List<MD_Mission> md_missionsList;
+    private List<MD_EditTime> md_editTimeList;
 
 
     //______________________________________________________________________________________________ VM_Mission
-    public VM_Mission(Activity context) {
+    public VM_EditTime(Activity context) {
         setContext(context);
     }
     //______________________________________________________________________________________________ VM_Mission
 
 
-    //______________________________________________________________________________________________ getMission
-    public void getMission() {
+    //______________________________________________________________________________________________ getEditTime
+    public void getEditTime() {
 
         String authorization = getAuthorizationTokenFromSharedPreferences(R.string.ML_SharePreferences,
                 R.string.ML_AccessToken);
 
         setPrimaryCall(AutomationApp.getAutomationApp(getContext())
                 .getRetrofitApiInterface()
-                .getRequestsMission(AttendanceType.Mission, authorization));
+                .getRequestsEditTime(AttendanceType.Mission, authorization));
 
         if (getPrimaryCall() == null)
             return;
 
-        getPrimaryCall().enqueue(new Callback<MR_Mission>() {
+        getPrimaryCall().enqueue(new Callback<MR_EditTime>() {
             @Override
-            public void onResponse(Call<MR_Mission> call, Response<MR_Mission> response) {
+            public void onResponse(Call<MR_EditTime> call, Response<MR_EditTime> response) {
                 setResponseMessage(checkResponse(response, true));
                 if (getResponseMessage() == null) {
-                    md_missionsList = response.body().getResult();
+                    md_editTimeList = response.body().getResult();
                     sendActionToObservable(ObservableActions.getMissionList);
                 } else
                     onFailureRequest();
             }
 
             @Override
-            public void onFailure(Call<MR_Mission> call, Throwable t) {
+            public void onFailure(Call<MR_EditTime> call, Throwable t) {
                 onFailureRequest();
             }
         });
 
     }
-    //______________________________________________________________________________________________ getMission
+    //______________________________________________________________________________________________ getEditTime
 
 
 
-    //______________________________________________________________________________________________ getMd_MissionList
-    public List<MD_Mission> getMd_MissionList() {
-        if (md_missionsList == null)
-            md_missionsList = new ArrayList<>();
-        return md_missionsList;
+    //______________________________________________________________________________________________ getMd_EditTimeList
+    public List<MD_EditTime> getMd_EditTimeList() {
+        if (md_editTimeList == null)
+            md_editTimeList = new ArrayList<>();
+        return md_editTimeList;
     }
-    //______________________________________________________________________________________________ getMd_MissionList
+    //______________________________________________________________________________________________ getMd_EditTimeList
 
 
 

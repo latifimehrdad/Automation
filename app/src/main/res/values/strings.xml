@@ -21,6 +21,8 @@
     <string name="newWorkVacation">درخواست مرخصی</string>
     <string name="missions">ماموریت ها</string>
     <string name="changeAttendanceTime">تغییر ساعت</string>
+    <string name="changeArrivalTime">تغییر ساعت ورود</string>
+    <string name="changeDepartureTime">تغییر ساعت خروج</string>
     <string name="legalReceipt">فیش حقوقی</string>
     <string name="doubleExit">"برای خروج 2 بار کلیک کنید"</string>
     <string name="Home">خانه</string>
@@ -61,6 +63,18 @@
     <string name="searchHint">جستجو</string>
     <string name="choose">انتخاب</string>
 
+
+    <string name="arrivalDate">تاریخ ورود</string>
+    <string name="departureDate">تاریخ خروج</string>
+    <string name="arrivalTime">ساعت ورود</string>
+    <string name="departureTime">ساعت خروج</string>
+    <string name="chooseArrivalDate">انتخاب تاریخ ورود</string>
+    <string name="chooseDepartureDate">انتخاب تاریخ خروج</string>
+    <string name="chooseArrivalTime">انتخاب ساعت ورود</string>
+    <string name="chooseDepartureTime">انتخاب ساعت خروج</string>
+
+
+
     <string name="mainWork">کار اصلی</string>
     <string name="leave">مرخصی</string>
     <string name="mission">ماموریت</string>
@@ -75,6 +89,8 @@
     <string name="pending">در انتظار</string>
     <string name="canceled">رد شده</string>
     <string name="accepted">تایید شده</string>
+
+    <string name="edit">ویرایش</string>
 
     //______________________________________________________________________________________________
     <string name="ML_PersonalCode">PersonalCode</string>
@@ -91,6 +107,7 @@
     <string name="ML_Name">ML_Name</string>
     <string name="ML_lastName">ML_lastName</string>
     <string name="ML_Gender">ML_Gender</string>
+    <string name="ML_EditTime">ML_EditTime</string>
 
 
 </resources>

@@ -24,6 +24,7 @@ import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 import ir.mlcode.latifiarchitecturelibrary.application.APP_Latifi;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText;
+import ir.mlcode.latifiarchitecturelibrary.models.MD_SolarDate;
 import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_SettingInfo;
@@ -185,10 +186,8 @@ public class AutomationApp extends APP_Latifi {
                 sb.append(String.format("%02d", persianCalendar.getPersianMonth()));
                 sb.append("/");
                 sb.append(String.format("%02d", persianCalendar.getPersianDay()));
-                ml_editText.setAdditionalValue(sb.toString());
-                String text = type + System.getProperty("line.separator") + getUtilityComponent().getApplicationUtility().getFullSolarDateFromSolarDate(sb.toString());
-                ml_editText.setText(text);
-                ml_editText.removeError();
+                Date gregorianDate = getUtilityComponent().getApplicationUtility().solarDateToGregorian(sb.toString()).getDate();
+                setDate(ml_editText, gregorianDate, type);
             }
 
             @Override
@@ -199,6 +198,24 @@ public class AutomationApp extends APP_Latifi {
         pickerDialog.show();
     }
     //______________________________________________________________________________________________ chooseDate
+
+
+
+    //______________________________________________________________________________________________ setDate
+    public void setDate(ML_EditText ml_editText, Date gregorianDate, String type) {
+        MD_SolarDate md_solarDate = getUtilityComponent().getApplicationUtility().gregorianToSolarDate(gregorianDate);
+        String text = type + System.getProperty("line.separator") + md_solarDate.getFullStringSolarDate();
+        StringBuilder sb = new StringBuilder();
+        sb.append(md_solarDate.getStringYear());
+        sb.append("/");
+        sb.append(String.format("%02d", md_solarDate.getIntMonth()));
+        sb.append("/");
+        sb.append(String.format("%02d", md_solarDate.getIntDay()));
+        ml_editText.setAdditionalValue(sb.toString());
+        ml_editText.setText(text);
+        ml_editText.removeError();
+    }
+    //______________________________________________________________________________________________ setDate
 
 
 

@@ -88,7 +88,7 @@ public class Reports extends Primary implements Primary.fragmentActions, AP_Home
     //______________________________________________________________________________________________ createHomeActionMenu
     private void createHomeActionMenu() {
         List<MD_HomeActionMenu> menus = new ArrayList<>();
-        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.functionalityReport), getResources().getDrawable(R.drawable.ic_functionality_report), R.id.action_reports_to_functionalityReport));
+        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.functionalityReport), getResources().getDrawable(R.drawable.ic_functionality_report), R.id.action_reports_to_functionalityReport, null));
 
         AP_HomeActionMenu ap_homeActionMenu = new AP_HomeActionMenu(menus, Reports.this);
         recyclerViewMenu.setAdapter(ap_homeActionMenu);
@@ -101,8 +101,8 @@ public class Reports extends Primary implements Primary.fragmentActions, AP_Home
 
     //______________________________________________________________________________________________ itemClick
     @Override
-    public void itemClick(int action) {
-        gotoFragment(action, null);
+    public void itemClick(int action, Bundle bundle) {
+        gotoFragment(action, bundle);
     }
     //______________________________________________________________________________________________ itemClick
 

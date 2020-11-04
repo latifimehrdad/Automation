@@ -1,5 +1,6 @@
 package ir.ngra.automation.views.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +20,10 @@ import butterknife.ButterKnife;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.MissionBinding;
+import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_Mission;
 import ir.ngra.automation.views.activity.MainActivity;
+import ir.ngra.automation.views.adapter.AP_Mission;
 
 public class Mission extends Primary implements Primary.fragmentActions {
 
@@ -36,7 +39,6 @@ public class Mission extends Primary implements Primary.fragmentActions {
 
     @BindView(R.id.recyclerViewMission)
     RecyclerView recyclerViewMission;
-
 
 
     //______________________________________________________________________________________________ onCreateView
@@ -59,6 +61,7 @@ public class Mission extends Primary implements Primary.fragmentActions {
 
 
     //______________________________________________________________________________________________ onCreateView
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void onStart() {
         super.onStart();
@@ -72,7 +75,9 @@ public class Mission extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ getActionFromObservable
     @Override
     public void getActionFromObservable(Byte action) {
-
+        if (action.equals(ObservableActions.getMissionList)) {
+            setAdapter();
+        }
 
     }
     //______________________________________________________________________________________________ getActionFromObservable
@@ -99,11 +104,9 @@ public class Mission extends Primary implements Primary.fragmentActions {
 
         textViewNoRequest.setVisibility(View.GONE);
         setRecyclerLoading(recyclerViewMission, R.layout.adapter_work_vacation_loading);
-        //vm_workVacation.getWorkVacation();
+        vm_mission.getMission();
     }
     //______________________________________________________________________________________________ getMissionList
-
-
 
 
     //______________________________________________________________________________________________ setOnClicks
@@ -116,13 +119,13 @@ public class Mission extends Primary implements Primary.fragmentActions {
             @Override
             public void onScrolled(@NotNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy  >= 2) {
+                if (dy >= 2) {
                     if (ml_ButtonNew.getVisibility() == View.VISIBLE) {
                         ml_ButtonNew.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.slide_out_bottom));
                         ml_ButtonNew.setVisibility(View.GONE);
                     }
                     // Scrolling up
-                } else if (dy <= -2){
+                } else if (dy <= -2) {
                     if (ml_ButtonNew.getVisibility() == View.GONE) {
                         ml_ButtonNew.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.slide_in_bottom));
                         ml_ButtonNew.setVisibility(View.VISIBLE);
@@ -135,5 +138,21 @@ public class Mission extends Primary implements Primary.fragmentActions {
 
     }
     //______________________________________________________________________________________________ setOnClicks
+
+
+    //______________________________________________________________________________________________ setAdapter
+    private void setAdapter() {
+
+        stopLoadingRecycler();
+        if (vm_mission.getMd_MissionList().size() > 0) {
+            AP_Mission adapter = new AP_Mission(vm_mission.getMd_MissionList());
+            recyclerViewMission.setAdapter(adapter);
+            textViewNoRequest.setVisibility(View.GONE);
+        } else {
+            textViewNoRequest.setVisibility(View.VISIBLE);
+        }
+    }
+    //______________________________________________________________________________________________ setAdapter
+
 
 }

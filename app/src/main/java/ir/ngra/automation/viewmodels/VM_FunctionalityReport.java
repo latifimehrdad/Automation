@@ -7,7 +7,6 @@ import java.util.List;
 
 import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_FunctionalityReport;
-import ir.ngra.automation.models.MR_DailyItems;
 import ir.ngra.automation.models.MR_FunctionalityReport;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.views.application.AutomationApp;

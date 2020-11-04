@@ -12,10 +12,9 @@ import java.util.Date;
 import java.util.Locale;
 
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText;
-import ir.mlcode.latifiarchitecturelibrary.utility.ApplicationUtility;
 import ir.mlcode.latifiarchitecturelibrary.utility.wave.LatifiWaveProgressView;
 import ir.ngra.automation.R;
-import ir.ngra.automation.models.MD_DailyItems;
+import ir.ngra.automation.models.MD_TodayArrivalAndDeparture;
 import ir.ngra.automation.utility.AttendanceRequestState;
 import ir.ngra.automation.views.application.AutomationApp;
 
@@ -55,12 +54,17 @@ public class BindingAdapters {
     @BindingAdapter(value = "setState")
     public static void setState(ML_EditText ml_editText, Byte state) {
         String text = ml_editText.getContext().getResources().getString(R.string.state);
+        Context context = ml_editText.getContext();
+
         if (state.equals(AttendanceRequestState.Pending)) {
             text = text + " : " + ml_editText.getContext().getResources().getString(R.string.pending);
+            ml_editText.getTextView().setTextColor(context.getResources().getColor(R.color.ML_Error));
         } else if (state.equals(AttendanceRequestState.Canceled)) {
             text = text + " : " + ml_editText.getContext().getResources().getString(R.string.canceled);
+            ml_editText.getTextView().setTextColor(context.getResources().getColor(R.color.colorPrimary));
         } else if (state.equals(AttendanceRequestState.Accepted)) {
             text = text + " : " + ml_editText.getContext().getResources().getString(R.string.accepted);
+            ml_editText.getTextView().setTextColor(context.getResources().getColor(R.color.ML_WaveTextMin));
         }
 
         ml_editText.setText(text);
@@ -70,11 +74,22 @@ public class BindingAdapters {
 
     //______________________________________________________________________________________________ setTodayEntrance
     @BindingAdapter(value = "setTodayEntrance")
-    public static void setTodayEntrance(TextView textView, MD_DailyItems md_dailyItems) {
+    public static void setTodayEntrance(TextView textView, MD_TodayArrivalAndDeparture md_todayArrivalAndDeparture) {
 
         String tag = textView.getTag().toString();
-        String arrival = md_dailyItems.getArrival();
-        String exit = md_dailyItems.getExit();
+        Date arrival_d = md_todayArrivalAndDeparture.getArrival();
+        Date departure_d = md_todayArrivalAndDeparture.getDeparture();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm", Locale.US);
+
+        String arrival = null;
+        if (arrival_d != null)
+            arrival = simpleDateFormat.format(arrival_d);
+
+
+        String departure = null;
+        if (departure_d != null)
+            departure = simpleDateFormat.format(departure_d);
+
 
         switch (tag) {
             case "arrival_h1":
@@ -106,31 +121,31 @@ public class BindingAdapters {
                 break;
 
             case "exit_h1":
-                if (exit == null || exit.length() < 5)
+                if (departure == null || departure.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(exit.substring(0, 1));
+                    textView.setText(departure.substring(0, 1));
                 break;
 
             case "exit_h2":
-                if (exit == null || exit.length() < 5)
+                if (departure == null || departure.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(exit.substring(1, 2));
+                    textView.setText(departure.substring(1, 2));
                 break;
 
             case "exit_m1":
-                if (exit == null || exit.length() < 5)
+                if (departure == null || departure.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(exit.substring(3, 4));
+                    textView.setText(departure.substring(3, 4));
                 break;
 
             case "exit_m2":
-                if (exit == null || exit.length() < 5)
+                if (departure == null || departure.length() < 5)
                     textView.setText("-");
                 else
-                    textView.setText(exit.substring(4, 5));
+                    textView.setText(departure.substring(4, 5));
                 break;
 
         }

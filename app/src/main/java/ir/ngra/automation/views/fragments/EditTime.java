@@ -19,16 +19,17 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
 import ir.ngra.automation.R;
-import ir.ngra.automation.databinding.WorkVacationBinding;
+import ir.ngra.automation.databinding.EditTimeBinding;
 import ir.ngra.automation.utility.ObservableActions;
-import ir.ngra.automation.viewmodels.VM_WorkVacation;
+import ir.ngra.automation.viewmodels.VM_EditTime;
 import ir.ngra.automation.views.activity.MainActivity;
-import ir.ngra.automation.views.adapter.AP_WorkVacation;
+import ir.ngra.automation.views.adapter.AP_EditTime;
 
-public class WorkVacation extends Primary implements Primary.fragmentActions {
+public class EditTime extends Primary implements Primary.fragmentActions {
 
 
-    private VM_WorkVacation vm_workVacation;
+    private VM_EditTime vm_editTime;
+
 
     @BindView(R.id.ml_ButtonNew)
     ML_Button ml_ButtonNew;
@@ -36,8 +37,8 @@ public class WorkVacation extends Primary implements Primary.fragmentActions {
     @BindView(R.id.textViewNoRequest)
     TextView textViewNoRequest;
 
-    @BindView(R.id.recyclerViewWorkVacation)
-    RecyclerView recyclerViewWorkVacation;
+    @BindView(R.id.recyclerViewMission)
+    RecyclerView recyclerViewMission;
 
 
     //______________________________________________________________________________________________ onCreateView
@@ -46,9 +47,9 @@ public class WorkVacation extends Primary implements Primary.fragmentActions {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         if (getView() == null) {
-            vm_workVacation = new VM_WorkVacation(getActivity());
-            WorkVacationBinding binding = DataBindingUtil.inflate(inflater, R.layout.work_vacation, container, false);
-            binding.setWorkVacation(vm_workVacation);
+            vm_editTime = new VM_EditTime(getActivity());
+            EditTimeBinding binding = DataBindingUtil.inflate(inflater, R.layout.edit_time, container, false);
+            binding.setMission(vm_editTime);
             setView(binding.getRoot());
             ButterKnife.bind(this, getView());
             setOnClicksAndListener();
@@ -64,9 +65,9 @@ public class WorkVacation extends Primary implements Primary.fragmentActions {
     @Override
     public void onStart() {
         super.onStart();
-        setPublishSubjectFromObservable(WorkVacation.this, vm_workVacation);
-        MainActivity.showTitle(getContext(), getResources().getString(R.string.workVacations), getResources().getDrawable(R.drawable.ic_camping));
-        getWorkVacationList();
+        setPublishSubjectFromObservable(EditTime.this, vm_editTime);
+        MainActivity.showTitle(getContext(), getResources().getString(R.string.missions), getResources().getDrawable(R.drawable.ic_businessman));
+        getMissionList();
     }
     //______________________________________________________________________________________________ onCreateView
 
@@ -74,10 +75,10 @@ public class WorkVacation extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ getActionFromObservable
     @Override
     public void getActionFromObservable(Byte action) {
-
-        if (action.equals(ObservableActions.getWorkVacationList)) {
+        if (action.equals(ObservableActions.getMissionList)) {
             setAdapter();
         }
+
     }
     //______________________________________________________________________________________________ getActionFromObservable
 
@@ -98,35 +99,33 @@ public class WorkVacation extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ OnBackPress
 
 
-
-    //______________________________________________________________________________________________ getWorkVacationList
-    private void getWorkVacationList() {
+    //______________________________________________________________________________________________ getMissionList
+    private void getMissionList() {
 
         textViewNoRequest.setVisibility(View.GONE);
-        setRecyclerLoading(recyclerViewWorkVacation, R.layout.adapter_work_vacation_loading);
-        vm_workVacation.getWorkVacation();
+        setRecyclerLoading(recyclerViewMission, R.layout.adapter_work_vacation_loading);
+        vm_editTime.getEditTime();
     }
-    //______________________________________________________________________________________________ getWorkVacationList
-
+    //______________________________________________________________________________________________ getMissionList
 
 
     //______________________________________________________________________________________________ setOnClicks
     private void setOnClicksAndListener() {
 
-        ml_ButtonNew.setOnClickListener(v -> gotoFragment(R.id.action_workVacation_to_newWorkVacation, null));
+        ml_ButtonNew.setOnClickListener(v -> gotoFragment(R.id.action_mission_to_newMission, null));
 
-        recyclerViewWorkVacation.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        recyclerViewMission.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
             @Override
             public void onScrolled(@NotNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy  >= 2) {
+                if (dy >= 2) {
                     if (ml_ButtonNew.getVisibility() == View.VISIBLE) {
                         ml_ButtonNew.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.slide_out_bottom));
                         ml_ButtonNew.setVisibility(View.GONE);
                     }
                     // Scrolling up
-                } else if (dy <= -2){
+                } else if (dy <= -2) {
                     if (ml_ButtonNew.getVisibility() == View.GONE) {
                         ml_ButtonNew.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.slide_in_bottom));
                         ml_ButtonNew.setVisibility(View.VISIBLE);
@@ -141,21 +140,19 @@ public class WorkVacation extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ setOnClicks
 
 
-
     //______________________________________________________________________________________________ setAdapter
     private void setAdapter() {
 
         stopLoadingRecycler();
-        if (vm_workVacation.getMd_workVacationList().size() > 0) {
-            AP_WorkVacation ap_workVacation = new AP_WorkVacation(vm_workVacation.getMd_workVacationList());
-            recyclerViewWorkVacation.setAdapter(ap_workVacation);
+        if (vm_editTime.getMd_EditTimeList().size() > 0) {
+            AP_EditTime adapter = new AP_EditTime(vm_editTime.getMd_EditTimeList());
+            recyclerViewMission.setAdapter(adapter);
             textViewNoRequest.setVisibility(View.GONE);
         } else {
             textViewNoRequest.setVisibility(View.VISIBLE);
         }
     }
     //______________________________________________________________________________________________ setAdapter
-
 
 
 }

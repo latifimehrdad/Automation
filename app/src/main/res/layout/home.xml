@@ -46,16 +46,17 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
-            android:background="@drawable/dw_circle_outline_red"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_7sdp"
             android:layout_marginLeft="@dimen/_5sdp"
-            android:tint="@color/colorPrimary"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:background="@drawable/dw_circle_outline_red"
             android:padding="@dimen/_7sdp"
-            android:src="@drawable/ic_messages_silhouette"/>
+            android:src="@drawable/ic_messages_silhouette"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -97,6 +98,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2">
 
 
+
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
                 android:layout_width="@dimen/_25sdp"
@@ -107,7 +109,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="arrival_h1"
-                app:setTodayEntrance="@{home.md_dailyItems}"/>
+                app:setTodayEntrance="@{home.md_todayArrivalAndDeparture}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -120,7 +122,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="arrival_h2"
-                app:setTodayEntrance="@{home.md_dailyItems}"/>
+                app:setTodayEntrance="@{home.md_todayArrivalAndDeparture}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -143,7 +145,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="arrival_m1"
-                app:setTodayEntrance="@{home.md_dailyItems}"/>
+                app:setTodayEntrance="@{home.md_todayArrivalAndDeparture}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -156,10 +158,23 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="arrival_m2"
-                app:setTodayEntrance="@{home.md_dailyItems}"/>
+                app:setTodayEntrance="@{home.md_todayArrivalAndDeparture}"/>
 
         </LinearLayout>
 
+
+        <ir.mlcode.latifiarchitecturelibrary.customs.ML_Button
+            android:id="@+id/ml_ButtonEditArrival"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_10sdp"
+            app:img_height="@dimen/_20sdp"
+            app:img_src="@drawable/ic_edit"
+            app:img_tint="@color/ML_Border"
+            app:img_width="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout3" />
 
         <TextView
             android:id="@+id/textView3"
@@ -196,7 +211,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="exit_h1"
-                app:setTodayEntrance="@{home.md_dailyItems}"/>
+                app:setTodayEntrance="@{home.md_todayArrivalAndDeparture}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -209,7 +224,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="exit_h2"
-                app:setTodayEntrance="@{home.md_dailyItems}"/>
+                app:setTodayEntrance="@{home.md_todayArrivalAndDeparture}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -232,7 +247,7 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="exit_m1"
-                app:setTodayEntrance="@{home.md_dailyItems}"/>
+                app:setTodayEntrance="@{home.md_todayArrivalAndDeparture}"/>
 
             <TextView
                 fontPath="font/iransans_web_medium.ttf"
@@ -245,10 +260,23 @@
                 android:textColor="@color/ML_Border"
                 android:textSize="@dimen/_14sdp"
                 android:tag="exit_m2"
-                app:setTodayEntrance="@{home.md_dailyItems}"/>
+                app:setTodayEntrance="@{home.md_todayArrivalAndDeparture}"/>
 
         </LinearLayout>
 
+
+        <ir.mlcode.latifiarchitecturelibrary.customs.ML_Button
+            android:id="@+id/ml_ButtonEditDeparture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_10sdp"
+            app:img_height="@dimen/_20sdp"
+            app:img_src="@drawable/ic_edit"
+            app:img_tint="@color/ML_Border"
+            app:img_width="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout4"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout4" />
 
         <LinearLayout
             android:layout_width="match_parent"

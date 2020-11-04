@@ -4,8 +4,8 @@ import android.app.Activity;
 
 import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
 import ir.ngra.automation.R;
-import ir.ngra.automation.models.MD_DailyItems;
-import ir.ngra.automation.models.MR_DailyItems;
+import ir.ngra.automation.models.MD_TodayArrivalAndDeparture;
+import ir.ngra.automation.models.MR_TodayArrivalAndDeparture;
 import ir.ngra.automation.views.application.AutomationApp;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,7 +14,7 @@ import retrofit2.Response;
 public class VM_Home extends VM_Latifi {
 
 
-    private MD_DailyItems md_dailyItems;
+    private MD_TodayArrivalAndDeparture md_todayArrivalAndDeparture;
 
     //______________________________________________________________________________________________ VM_Home
     public VM_Home(Activity context) {
@@ -24,45 +24,45 @@ public class VM_Home extends VM_Latifi {
 
 
 
-    //______________________________________________________________________________________________ getTodayEntrance
-    public void getTodayEntrance() {
+    //______________________________________________________________________________________________ getTodayArrivalAndDeparture
+    public void getTodayArrivalAndDeparture() {
 
         String authorization = getAuthorizationTokenFromSharedPreferences(R.string.ML_SharePreferences,
                 R.string.ML_AccessToken);
 
         setPrimaryCall(AutomationApp.getAutomationApp(getContext())
                 .getRetrofitApiInterface()
-                .getTodayEntrance(authorization));
+                .getTodayArrivalAndDeparture(authorization));
 
         if (getPrimaryCall() == null)
             return;
 
-        getPrimaryCall().enqueue(new Callback<MR_DailyItems>() {
+        getPrimaryCall().enqueue(new Callback<MR_TodayArrivalAndDeparture>() {
             @Override
-            public void onResponse(Call<MR_DailyItems> call, Response<MR_DailyItems> response) {
+            public void onResponse(Call<MR_TodayArrivalAndDeparture> call, Response<MR_TodayArrivalAndDeparture> response) {
                 setResponseMessage(checkResponse(response, true));
                 if (getResponseMessage() == null) {
-                    md_dailyItems = response.body().getResult();
+                    md_todayArrivalAndDeparture = response.body().getResult();
                     notifyChange();
                 } else
                     onFailureRequest();
             }
 
             @Override
-            public void onFailure(Call<MR_DailyItems> call, Throwable t) {
+            public void onFailure(Call<MR_TodayArrivalAndDeparture> call, Throwable t) {
                 onFailureRequest();
             }
         });
     }
-    //______________________________________________________________________________________________ getTodayEntrance
+    //______________________________________________________________________________________________ getTodayArrivalAndDeparture
 
 
 
     //______________________________________________________________________________________________ getMd_todayEntrance
-    public MD_DailyItems getMd_dailyItems() {
-        if (md_dailyItems == null)
-            md_dailyItems = new MD_DailyItems(null, null);
-        return md_dailyItems;
+    public MD_TodayArrivalAndDeparture getMd_todayArrivalAndDeparture() {
+        if (md_todayArrivalAndDeparture == null)
+            md_todayArrivalAndDeparture = new MD_TodayArrivalAndDeparture(null, null);
+        return md_todayArrivalAndDeparture;
     }
     //______________________________________________________________________________________________ getMd_todayEntrance
 
