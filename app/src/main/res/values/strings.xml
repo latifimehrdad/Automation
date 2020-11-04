@@ -35,6 +35,7 @@
     <string name="errorEmptyTextPhoneNumber">شماره تلفن همراه خود را وارد نمایید</string>
     <string name="errorEmptyWorkVacationType">نوع مرخصی را انتخاب نمایید</string>
     <string name="errorEmptySubstitute">جانشین را انتخاب نمایید</string>
+
     <string name="errorEmptyStartDate">تاریخ شروع را انتخاب نمایید</string>
     <string name="errorEmptyStartTime">ساعت شروع را انتخاب نمایید</string>
     <string name="errorEmptyEndDate">تاریخ پایان را انتخاب نمایید</string>
@@ -73,6 +74,11 @@
     <string name="chooseArrivalTime">انتخاب ساعت ورود</string>
     <string name="chooseDepartureTime">انتخاب ساعت خروج</string>
 
+
+    <string name="errorEmptyArrivalDate">تاریخ ورود را انتخاب نمایید</string>
+    <string name="errorEmptyArrivalTime">ساعت ورود را انتخاب نمایید</string>
+    <string name="errorEmptyDepartureDate">تاریخ خروج را انتخاب نمایید</string>
+    <string name="errorEmptyDepartureTime">ساعت خروج را انتخاب نمایید</string>
 
 
     <string name="mainWork">کار اصلی</string>

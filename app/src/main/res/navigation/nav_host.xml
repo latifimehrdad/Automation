@@ -108,8 +108,8 @@
             app:popExitAnim="@anim/slide_out_bottom"/>
 
         <action
-            android:id="@+id/action_home_to_newEditTime"
-            app:destination="@id/newEditTime"
+            android:id="@+id/action_home_to_editTime"
+            app:destination="@id/editTime"
             app:enterAnim="@anim/slide_in_bottom"
             app:exitAnim="@anim/slide_out_bottom"
             app:popEnterAnim="@anim/slide_in_bottom"
@@ -186,6 +186,22 @@
         android:name="ir.ngra.automation.views.fragments.NewMission"
         android:label="NewMission"
         tools:layout="@layout/new_mission"/>
+
+    <fragment
+        android:id="@+id/editTime"
+        android:name="ir.ngra.automation.views.fragments.EditTime"
+        android:label="EditTime"
+        tools:layout="@layout/edit_time">
+
+        <action
+            android:id="@+id/action_editTime_to_newEditTime"
+            app:destination="@id/newEditTime"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+
+    </fragment>
 
     <fragment
         android:id="@+id/newEditTime"

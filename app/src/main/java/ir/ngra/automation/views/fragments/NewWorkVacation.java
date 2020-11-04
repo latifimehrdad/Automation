@@ -105,6 +105,7 @@ public class NewWorkVacation extends Primary implements Primary.fragmentActions 
     //______________________________________________________________________________________________ OnBackPress
     @Override
     public void OnBackPress() {
+
         removeCallBackAndBack();
     }
     //______________________________________________________________________________________________ OnBackPress

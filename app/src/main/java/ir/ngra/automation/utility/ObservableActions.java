@@ -10,6 +10,7 @@ public class ObservableActions{
     public static Byte getWorkVacationList = 6;
     public static Byte getFunctionalityReport = 7;
     public static Byte getMissionList = 8;
+    public static Byte getEditTime = 9;
 
 
 }

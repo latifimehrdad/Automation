@@ -9,7 +9,6 @@ import ir.mlcode.latifiarchitecturelibrary.viewmodels.VM_Latifi;
 import ir.ngra.automation.R;
 import ir.ngra.automation.models.MD_EditTime;
 import ir.ngra.automation.models.MR_EditTime;
-import ir.ngra.automation.utility.AttendanceType;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.views.application.AutomationApp;
 import retrofit2.Call;
@@ -30,14 +29,14 @@ public class VM_EditTime extends VM_Latifi {
 
 
     //______________________________________________________________________________________________ getEditTime
-    public void getEditTime() {
+    public void getEditTime(Byte attendanceType) {
 
         String authorization = getAuthorizationTokenFromSharedPreferences(R.string.ML_SharePreferences,
                 R.string.ML_AccessToken);
 
         setPrimaryCall(AutomationApp.getAutomationApp(getContext())
                 .getRetrofitApiInterface()
-                .getRequestsEditTime(AttendanceType.Mission, authorization));
+                .getRequestsEditTime(attendanceType, authorization));
 
         if (getPrimaryCall() == null)
             return;

@@ -146,14 +146,14 @@ public class Home extends Primary implements Primary.fragmentActions, AP_HomeAct
         ml_ButtonEditArrival.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putByte(getResources().getString(R.string.ML_EditTime), AttendanceType.Arrival);
-            gotoFragment(R.id.action_home_to_newEditTime, bundle);
+            gotoFragment(R.id.action_home_to_editTime, bundle);
         });
 
 
         ml_ButtonEditDeparture.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putByte(getResources().getString(R.string.ML_EditTime), AttendanceType.Departure);
-            gotoFragment(R.id.action_home_to_newEditTime, bundle);
+            gotoFragment(R.id.action_home_to_editTime, bundle);
         });
 
     }
@@ -210,7 +210,7 @@ public class Home extends Primary implements Primary.fragmentActions, AP_HomeAct
         menus.add(new MD_HomeActionMenu(getResources().getString(R.string.missions),getResources().getDrawable(R.drawable.ic_businessman),R.id.action_home_to_mission, null));
         Bundle bundle = new Bundle();
         bundle.putByte(getResources().getString(R.string.ML_EditTime), AttendanceType.ArrivalAndDeparture);
-        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.changeAttendanceTime),getResources().getDrawable(R.drawable.ic_edit_time),R.id.action_home_to_newEditTime, bundle));
+        menus.add(new MD_HomeActionMenu(getResources().getString(R.string.changeAttendanceTime),getResources().getDrawable(R.drawable.ic_edit_time),R.id.action_home_to_editTime, bundle));
         menus.add(new MD_HomeActionMenu(getResources().getString(R.string.legalReceipt),getResources().getDrawable(R.drawable.ic_salary),R.id.action_home_to_workVacation, null));
         menus.add(new MD_HomeActionMenu(getResources().getString(R.string.reports),getResources().getDrawable(R.drawable.ic_user_report),R.id.action_home_to_reports, null));
 

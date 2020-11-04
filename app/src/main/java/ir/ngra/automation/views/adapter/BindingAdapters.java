@@ -3,6 +3,7 @@ package ir.ngra.automation.views.adapter;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
@@ -160,6 +161,7 @@ public class BindingAdapters {
 
         if (date == null) {
             ml_editText.setText("");
+            ml_editText.setVisibility(View.GONE);
             return;
         }
 
@@ -213,6 +215,27 @@ public class BindingAdapters {
                         .getFullStringSolarDate();
                 text = text + " ساعت " + simpleDateFormat.format(date);
                 break;
+
+            case "arrival":
+                text = ml_editText.getContext().getResources().getString(R.string.arrivalDate);
+                text = text + " : " + AutomationApp
+                        .getAutomationApp(ml_editText.getContext())
+                        .getUtilityComponent()
+                        .getApplicationUtility()
+                        .gregorianToSolarDate(date)
+                        .getFullStringSolarDate();
+                text = text + " ساعت " + simpleDateFormat.format(date);
+                break;
+            case "departure":
+                text = ml_editText.getContext().getResources().getString(R.string.departureDate);
+                text = text + " : " + AutomationApp
+                        .getAutomationApp(ml_editText.getContext())
+                        .getUtilityComponent()
+                        .getApplicationUtility()
+                        .gregorianToSolarDate(date)
+                        .getFullStringSolarDate();
+                text = text + " ساعت " + simpleDateFormat.format(date);
+                break;
         }
 
 
@@ -221,6 +244,40 @@ public class BindingAdapters {
 
     }
     //______________________________________________________________________________________________ setDateTime
+
+
+
+
+    //______________________________________________________________________________________________ setTextValue
+    @BindingAdapter(value = {"setTextValue"})
+    public static void setTextValue(ML_EditText ml_editText, String value) {
+
+        if (value == null) {
+            ml_editText.setText("");
+            ml_editText.setVisibility(View.GONE);
+            return;
+        }
+
+        String tag = ml_editText.getTag().toString();
+
+        String text = "";
+
+
+        switch (tag) {
+
+            case "description" :
+                text = ml_editText.getContext().getResources().getString(R.string.description);
+                text = text + " : " + value;
+                break;
+        }
+
+
+        ml_editText.setText(text);
+
+    }
+    //______________________________________________________________________________________________ setTextValue
+
+
 
 
     //______________________________________________________________________________________________ setTime

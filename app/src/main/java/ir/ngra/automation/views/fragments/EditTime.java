@@ -15,21 +15,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.mlcode.latifiarchitecturelibrary.customs.ML_Button;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.EditTimeBinding;
+import ir.ngra.automation.utility.AttendanceType;
 import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_EditTime;
 import ir.ngra.automation.views.activity.MainActivity;
 import ir.ngra.automation.views.adapter.AP_EditTime;
+import ir.ngra.automation.views.application.AutomationApp;
 
 public class EditTime extends Primary implements Primary.fragmentActions {
 
 
     private VM_EditTime vm_editTime;
 
+    private Byte editTimeType;
 
     @BindView(R.id.ml_ButtonNew)
     ML_Button ml_ButtonNew;
@@ -66,8 +71,12 @@ public class EditTime extends Primary implements Primary.fragmentActions {
     public void onStart() {
         super.onStart();
         setPublishSubjectFromObservable(EditTime.this, vm_editTime);
-        MainActivity.showTitle(getContext(), getResources().getString(R.string.missions), getResources().getDrawable(R.drawable.ic_businessman));
-        getMissionList();
+        if (getArguments() != null) {
+            editTimeType = getArguments().getByte(getResources().getString(R.string.ML_EditTime), AttendanceType.ArrivalAndDeparture);
+            setTitle();
+            checkEditType();
+        }
+
     }
     //______________________________________________________________________________________________ onCreateView
 
@@ -99,20 +108,61 @@ public class EditTime extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ OnBackPress
 
 
-    //______________________________________________________________________________________________ getMissionList
-    private void getMissionList() {
+    //______________________________________________________________________________________________ setTitle
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void setTitle() {
+
+        if (editTimeType.equals(AttendanceType.ArrivalAndDeparture)) {
+            MainActivity.showTitle(getContext(), getResources().getString(R.string.changeAttendanceTime), getResources().getDrawable(R.drawable.ic_edit_time));
+        } else if (editTimeType.equals(AttendanceType.Arrival)) {
+            MainActivity.showTitle(getContext(), getResources().getString(R.string.changeArrivalTime), getResources().getDrawable(R.drawable.ic_edit_time));
+        } else if (editTimeType.equals(AttendanceType.Departure)) {
+            MainActivity.showTitle(getContext(), getResources().getString(R.string.changeDepartureTime), getResources().getDrawable(R.drawable.ic_edit_time));
+        }
+    }
+    //______________________________________________________________________________________________ setTitle
+
+
+    //______________________________________________________________________________________________ checkEditType
+    private void checkEditType() {
+        if (editTimeType.equals(AttendanceType.ArrivalAndDeparture))
+            getEditTimeList();
+        else {
+            String value = getVariableFromNavigation(getResources().getString(R.string.ML_EditTime));
+            if (value != null) {
+                setVariableToNavigation(getResources().getString(R.string.ML_EditTime), null);
+                if (value.equalsIgnoreCase("Back"))
+                    removeCallBackAndBack();
+                else getEditTimeList();
+            } else {
+                getEditTimeList();
+/*                Bundle bundle = new Bundle();
+                bundle.putByte(getResources().getString(R.string.ML_EditTime), editTimeType);
+                gotoFragment(R.id.action_editTime_to_newEditTime, bundle);*/
+            }
+        }
+    }
+    //______________________________________________________________________________________________ checkEditType
+
+
+    //______________________________________________________________________________________________ getEditTimeList
+    private void getEditTimeList() {
 
         textViewNoRequest.setVisibility(View.GONE);
         setRecyclerLoading(recyclerViewMission, R.layout.adapter_work_vacation_loading);
-        vm_editTime.getEditTime();
+        vm_editTime.getEditTime(editTimeType);
     }
-    //______________________________________________________________________________________________ getMissionList
+    //______________________________________________________________________________________________ getEditTimeList
 
 
     //______________________________________________________________________________________________ setOnClicks
     private void setOnClicksAndListener() {
 
-        ml_ButtonNew.setOnClickListener(v -> gotoFragment(R.id.action_mission_to_newMission, null));
+        ml_ButtonNew.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putByte(getResources().getString(R.string.ML_EditTime), editTimeType);
+            gotoFragment(R.id.action_editTime_to_newEditTime, bundle);;
+        });
 
         recyclerViewMission.addOnScrollListener(new RecyclerView.OnScrollListener() {
 

@@ -20,6 +20,7 @@ import ir.mlcode.latifiarchitecturelibrary.customs.ML_EditText;
 import ir.ngra.automation.R;
 import ir.ngra.automation.databinding.NewEditTimeBinding;
 import ir.ngra.automation.utility.AttendanceType;
+import ir.ngra.automation.utility.ObservableActions;
 import ir.ngra.automation.viewmodels.VM_NewEditTime;
 import ir.ngra.automation.views.activity.MainActivity;
 import ir.ngra.automation.views.application.AutomationApp;
@@ -31,17 +32,17 @@ public class NewEditTime extends Primary implements Primary.fragmentActions {
 
     private Byte editTimeType;
 
-    @BindView(R.id.ml_EditTextStartDate)
-    ML_EditText ml_EditTextStartDate;
+    @BindView(R.id.ml_EditTextArrivalDate)
+    ML_EditText ml_EditTextArrivalDate;
 
-    @BindView(R.id.ml_EditTextEndDate)
-    ML_EditText ml_EditTextEndDate;
+    @BindView(R.id.ml_EditTextDepartureDate)
+    ML_EditText ml_EditTextDepartureDate;
 
-    @BindView(R.id.ml_EditTextStartTime)
-    ML_EditText ml_EditTextStartTime;
+    @BindView(R.id.ml_EditTextArrivalTime)
+    ML_EditText ml_EditTextArrivalTime;
 
-    @BindView(R.id.ml_EditTextEndTime)
-    ML_EditText ml_EditTextEndTime;
+    @BindView(R.id.ml_EditTextDepartureTime)
+    ML_EditText ml_EditTextDepartureTime;
 
     @BindView(R.id.ml_EditTextDescription)
     ML_EditText ml_EditTextDescription;
@@ -89,6 +90,12 @@ public class NewEditTime extends Primary implements Primary.fragmentActions {
     @Override
     public void getActionFromObservable(Byte action) {
 
+        ml_ButtonSend.stopLoading();
+
+        if (action.equals(ObservableActions.getEditTime)) {
+            setVariableToNavigation(getResources().getString(R.string.ML_EditTime), "Done");
+            removeCallBackAndBack();
+        }
     }
     //______________________________________________________________________________________________ getActionFromObservable
 
@@ -96,7 +103,7 @@ public class NewEditTime extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ actionWhenFailureRequest
     @Override
     public void actionWhenFailureRequest() {
-
+        ml_ButtonSend.stopLoading();
     }
     //______________________________________________________________________________________________ actionWhenFailureRequest
 
@@ -104,6 +111,7 @@ public class NewEditTime extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ OnBackPress
     @Override
     public void OnBackPress() {
+        setVariableToNavigation(getResources().getString(R.string.ML_EditTime), "Back");
         removeCallBackAndBack();
     }
     //______________________________________________________________________________________________ OnBackPress
@@ -115,29 +123,29 @@ public class NewEditTime extends Primary implements Primary.fragmentActions {
 
         if (editTimeType.equals(AttendanceType.ArrivalAndDeparture)) {
             MainActivity.showTitle(getContext(), getResources().getString(R.string.changeAttendanceTime), getResources().getDrawable(R.drawable.ic_edit_time));
-            ml_EditTextStartDate.setVisibility(View.VISIBLE);
-            ml_EditTextStartTime.setVisibility(View.VISIBLE);
-            ml_EditTextEndDate.setVisibility(View.VISIBLE);
-            ml_EditTextEndTime.setVisibility(View.VISIBLE);
+            ml_EditTextArrivalDate.setVisibility(View.VISIBLE);
+            ml_EditTextArrivalTime.setVisibility(View.VISIBLE);
+            ml_EditTextDepartureDate.setVisibility(View.VISIBLE);
+            ml_EditTextDepartureTime.setVisibility(View.VISIBLE);
             linearLayout6.setVisibility(View.VISIBLE);
         } else if (editTimeType.equals(AttendanceType.Arrival)) {
             MainActivity.showTitle(getContext(), getResources().getString(R.string.changeArrivalTime), getResources().getDrawable(R.drawable.ic_edit_time));
-            ml_EditTextStartDate.setVisibility(View.VISIBLE);
-            ml_EditTextStartTime.setVisibility(View.VISIBLE);
-            ml_EditTextEndDate.setVisibility(View.GONE);
-            ml_EditTextEndTime.setVisibility(View.GONE);
+            ml_EditTextArrivalDate.setVisibility(View.VISIBLE);
+            ml_EditTextArrivalTime.setVisibility(View.VISIBLE);
+            ml_EditTextDepartureDate.setVisibility(View.GONE);
+            ml_EditTextDepartureTime.setVisibility(View.GONE);
             linearLayout6.setVisibility(View.GONE);
             Date date = new Date();
-            AutomationApp.getAutomationApp(getContext()).setDate(ml_EditTextStartDate,date ,getResources().getString(R.string.arrivalDate));
+            AutomationApp.getAutomationApp(getContext()).setDate(ml_EditTextArrivalDate, date, getResources().getString(R.string.arrivalDate));
         } else if (editTimeType.equals(AttendanceType.Departure)) {
             MainActivity.showTitle(getContext(), getResources().getString(R.string.changeDepartureTime), getResources().getDrawable(R.drawable.ic_edit_time));
-            ml_EditTextStartDate.setVisibility(View.GONE);
-            ml_EditTextStartTime.setVisibility(View.GONE);
-            ml_EditTextEndDate.setVisibility(View.VISIBLE);
-            ml_EditTextEndTime.setVisibility(View.VISIBLE);
+            ml_EditTextArrivalDate.setVisibility(View.GONE);
+            ml_EditTextArrivalTime.setVisibility(View.GONE);
+            ml_EditTextDepartureDate.setVisibility(View.VISIBLE);
+            ml_EditTextDepartureTime.setVisibility(View.VISIBLE);
             linearLayout6.setVisibility(View.GONE);
             Date date = new Date();
-            AutomationApp.getAutomationApp(getContext()).setDate(ml_EditTextEndDate,date ,getResources().getString(R.string.departureDate));
+            AutomationApp.getAutomationApp(getContext()).setDate(ml_EditTextDepartureDate, date, getResources().getString(R.string.departureDate));
         }
     }
     //______________________________________________________________________________________________ setTitleAndInputs
@@ -146,29 +154,29 @@ public class NewEditTime extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ setOnClicks
     private void setOnClicks() {
 
-        ml_EditTextStartDate.setOnClickListener(v ->
+        ml_EditTextArrivalDate.setOnClickListener(v ->
                 AutomationApp.getAutomationApp(getContext()).chooseDate(
                         getContext(),
-                        ml_EditTextStartDate,
+                        ml_EditTextArrivalDate,
                         getResources().getString(R.string.arrivalDate)));
 
-        ml_EditTextEndDate.setOnClickListener(v ->
+        ml_EditTextDepartureDate.setOnClickListener(v ->
                 AutomationApp.getAutomationApp(getContext()).chooseDate(
                         getContext(),
-                        ml_EditTextEndDate,
+                        ml_EditTextDepartureDate,
                         getResources().getString(R.string.departureDate)));
 
-        ml_EditTextStartTime.setOnClickListener(v ->
+        ml_EditTextArrivalTime.setOnClickListener(v ->
                 AutomationApp.getAutomationApp(getContext()).chooseTime(
                         getContext(),
-                        ml_EditTextStartTime,
+                        ml_EditTextArrivalTime,
                         getResources().getString(R.string.chooseArrivalTime),
                         getResources().getString(R.string.arrivalTime)));
 
-        ml_EditTextEndTime.setOnClickListener(v ->
+        ml_EditTextDepartureTime.setOnClickListener(v ->
                 AutomationApp.getAutomationApp(
                         getContext()).chooseTime(getContext(),
-                        ml_EditTextEndTime,
+                        ml_EditTextDepartureTime,
                         getResources().getString(R.string.chooseDepartureTime),
                         getResources().getString(R.string.departureTime)));
 
@@ -183,9 +191,11 @@ public class NewEditTime extends Primary implements Primary.fragmentActions {
 
         if (checkValidation()) {
             ml_ButtonSend.startLoading();
-/*            vm_New_workVacation.setFromDate(ml_EditTextStartDate.getAdditionalValue().toString(), ml_EditTextStartTime.getAdditionalValue().toString());
-            vm_New_workVacation.setToDate(ml_EditTextEndDate.getAdditionalValue().toString(), ml_EditTextEndTime.getAdditionalValue().toString());
-            vm_New_workVacation.requestLeave();*/
+            if (ml_EditTextArrivalDate.getAdditionalValue() != null && ml_EditTextArrivalTime.getAdditionalValue() != null)
+                vm_New_editTime.setFromDate(ml_EditTextArrivalDate.getAdditionalValue().toString(), ml_EditTextArrivalTime.getAdditionalValue().toString());
+            if (ml_EditTextDepartureDate.getAdditionalValue() != null && ml_EditTextDepartureTime.getAdditionalValue() != null)
+                vm_New_editTime.setToDate(ml_EditTextDepartureDate.getAdditionalValue().toString(), ml_EditTextDepartureTime.getAdditionalValue().toString());
+            vm_New_editTime.requestEditTime(editTimeType);
 
         }
     }
@@ -195,23 +205,49 @@ public class NewEditTime extends Primary implements Primary.fragmentActions {
     //______________________________________________________________________________________________ checkValidation
     private boolean checkValidation() {
 
-        if (!ml_EditTextStartDate.checkValidation())
-            ml_EditTextStartDate.setErrorLayout(getResources().getString(R.string.errorEmptyStartDate));
+        if (editTimeType.equals(AttendanceType.ArrivalAndDeparture)) {
 
-        if (!ml_EditTextStartTime.checkValidation())
-            ml_EditTextStartTime.setErrorLayout(getResources().getString(R.string.errorEmptyStartTime));
+            if (!ml_EditTextArrivalDate.checkValidation())
+                ml_EditTextArrivalDate.setErrorLayout(getResources().getString(R.string.errorEmptyArrivalDate));
 
-        if (!ml_EditTextEndDate.checkValidation())
-            ml_EditTextEndDate.setErrorLayout(getResources().getString(R.string.errorEmptyEndDate));
+            if (!ml_EditTextArrivalTime.checkValidation())
+                ml_EditTextArrivalTime.setErrorLayout(getResources().getString(R.string.errorEmptyArrivalTime));
 
-        if (!ml_EditTextEndTime.checkValidation())
-            ml_EditTextEndTime.setErrorLayout(getResources().getString(R.string.errorEmptyEndTime));
+            if (!ml_EditTextDepartureDate.checkValidation())
+                ml_EditTextDepartureDate.setErrorLayout(getResources().getString(R.string.errorEmptyDepartureDate));
+
+            if (!ml_EditTextDepartureTime.checkValidation())
+                ml_EditTextDepartureTime.setErrorLayout(getResources().getString(R.string.errorEmptyDepartureTime));
 
 
-        return ml_EditTextStartDate.checkValidation() &&
-                ml_EditTextStartTime.checkValidation() &&
-                ml_EditTextEndDate.checkValidation() &&
-                ml_EditTextEndTime.checkValidation();
+            return ml_EditTextArrivalDate.checkValidation() &&
+                    ml_EditTextArrivalTime.checkValidation() &&
+                    ml_EditTextDepartureDate.checkValidation() &&
+                    ml_EditTextDepartureTime.checkValidation();
+        } else if (editTimeType.equals(AttendanceType.Arrival)) {
+
+            if (!ml_EditTextArrivalDate.checkValidation())
+                ml_EditTextArrivalDate.setErrorLayout(getResources().getString(R.string.errorEmptyArrivalDate));
+
+            if (!ml_EditTextArrivalTime.checkValidation())
+                ml_EditTextArrivalTime.setErrorLayout(getResources().getString(R.string.errorEmptyArrivalTime));
+
+
+            return ml_EditTextArrivalDate.checkValidation() &&
+                    ml_EditTextArrivalTime.checkValidation();
+        } else {
+
+            if (!ml_EditTextArrivalDate.checkValidation())
+                ml_EditTextArrivalDate.setErrorLayout(getResources().getString(R.string.errorEmptyArrivalDate));
+
+            if (!ml_EditTextArrivalTime.checkValidation())
+                ml_EditTextArrivalTime.setErrorLayout(getResources().getString(R.string.errorEmptyArrivalTime));
+
+
+            return ml_EditTextDepartureDate.checkValidation() &&
+                    ml_EditTextDepartureTime.checkValidation();
+        }
+
     }
     //______________________________________________________________________________________________ checkValidation
 

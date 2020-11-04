@@ -150,4 +150,39 @@ public interface RetrofitApiInterface {
             );
 
 
+
+    @FormUrlEncoded
+    @POST(Version + "/AttendanceRequest/RequestArrival")
+    Call<MR_Primary> RequestArrival
+            (
+                    @Field("From") String From,
+                    @Field("Description") String Description,
+                    @Header("Authorization") String Authorization
+
+            );
+
+
+    @FormUrlEncoded
+    @POST(Version + "/AttendanceRequest/RequestDeparture")
+    Call<MR_Primary> RequestDeparture
+            (
+                    @Field("To") String To,
+                    @Field("Description") String Description,
+                    @Header("Authorization") String Authorization
+
+            );
+
+
+    @FormUrlEncoded
+    @POST(Version + "/AttendanceRequest/RequestArrivalAndDeparture")
+    Call<MR_Primary> RequestArrivalAndDeparture
+            (
+                    @Field("From") String From,
+                    @Field("To") String To,
+                    @Field("Description") String Description,
+                    @Header("Authorization") String Authorization
+
+            );
+
+
 }
